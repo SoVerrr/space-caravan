@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
+    [SerializeField] bool debug;
     [SerializeField] private int gridSizeX, gridSizeY;
     [SerializeField] private GameObject tile;
 
@@ -18,8 +19,11 @@ public class Grid : MonoBehaviour
             for(int y = 0 - Mathf.CeilToInt(gridSizeY / 2); y < ySize; y++)
             {
                 tileArray[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = new Vector3((float)x, 0, (float)x);
-                var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
-                spawnedTile.name = $"Tile {x} {y}";
+                if (debug)
+                {
+                    var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
+                    spawnedTile.name = $"Tile {x} {y}";
+                }
             }
         }
     }
