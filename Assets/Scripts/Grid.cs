@@ -23,6 +23,7 @@ public class Grid : MonoBehaviour
                 {
                     var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
                     spawnedTile.name = $"Tile {x} {y}";
+                    spawnedTile.transform.SetParent(gameObject.transform, true);
                 }
             }
         }
