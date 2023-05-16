@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class MaterialPlanet : Planet
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<GameObject> materialPlanetList;
+    override public void InstantiateObject(int x, int y)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var planet = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+        materialPlanetList.Add(planet);
     }
 }
