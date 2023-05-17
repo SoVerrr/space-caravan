@@ -47,13 +47,13 @@ public class SpaceGrid : MonoBehaviour
     {
         get
         {
-            return status[x + gridSizeX/2, y + gridSizeX / 2];
+            return status[x, y];
         }
         set
         {
             if(value == GridStatus.Route)
             {
-                status[x + gridSizeX / 2, y + gridSizeX / 2] = GridStatus.Route;
+                status[x, y] = GridStatus.Route;
             }
             
         }
