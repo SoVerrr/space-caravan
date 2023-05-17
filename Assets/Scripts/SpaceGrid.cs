@@ -43,6 +43,23 @@ public class SpaceGrid : MonoBehaviour
         
     }
     public Vector3 AccessCell(int x, int y) { return tileArray[x, y]; }
+    public GridStatus this[int x, int y]
+    {
+        get
+        {
+            return status[x + gridSizeX/2, y + gridSizeX / 2];
+        }
+        set
+        {
+            if(value == GridStatus.Route)
+            {
+                status[x + gridSizeX / 2, y + gridSizeX / 2] = GridStatus.Route;
+            }
+            
+        }
+         
+    }
+    // public void SetStatus(GridStatus type, int x, int y) { status[x, y] = type; }
     public int DimensionX()
     {
         return gridSizeX;

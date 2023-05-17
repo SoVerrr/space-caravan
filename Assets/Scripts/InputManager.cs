@@ -67,7 +67,6 @@ public class InputManager : MonoBehaviour
 
             if (position != null)
             {
-                Debug.Log("ClickDown");
                 OnMouseClick?.Invoke(position.Value);
             }
         }
