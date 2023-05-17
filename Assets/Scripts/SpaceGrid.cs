@@ -16,40 +16,41 @@ public class SpaceGrid : MonoBehaviour
     [SerializeField] bool debug;
     [SerializeField] private int gridSizeX, gridSizeY;
     [SerializeField] private GameObject tile;
+    [SerializeField] private Camera mainCamera;
 
     public Vector3[,] tileArray;
     public GridStatus[,] status;
 
     private void GenerateGrid()
     {
-        int xSize = gridSizeX % 2 == 0 ? Mathf.FloorToInt(gridSizeX / 2) : Mathf.FloorToInt(gridSizeX / 2) + 1; //assign floored size / 2 if size is even and size / 2 + 1 if size is odd
-        int ySize = gridSizeY % 2 == 0 ? Mathf.FloorToInt(gridSizeY / 2) : Mathf.FloorToInt(gridSizeY / 2) + 1; //assign floored size / 2 if size is even and size / 2 + 1 if size is odd
-        for (int x = 0 - Mathf.CeilToInt(gridSizeX / 2); x < xSize; x++)
+        int count = 0;
+        for (int x = 0; x < gridSizeX; x++)
         {
-            for(int y = 0 - Mathf.CeilToInt(gridSizeY / 2); y < ySize; y++)
+            for(int y = 0; y < gridSizeY; y++)
             {
-                tileArray[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = new Vector3(x, 0, y);
-                status[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = GridStatus.Empty; //setting base status of a tile to empty 
+                tileArray[x, y] = new Vector3(x, 0, y);
+                status[x, y] = GridStatus.Empty; //setting base status of a tile to empty 
                 if (debug)
                 {
                     var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
                     spawnedTile.name = $"Tile {x} {y}";
                     spawnedTile.transform.SetParent(gameObject.transform, true);
+                    Debug.Log(++count);
                 }
             }
         }
+        mainCamera.transform.position = new Vector3(gridSizeX/2, 14, gridSizeY/2);
+        
     }
     public Vector3 AccessCell(int x, int y) { return tileArray[x, y]; }
     public int DimensionX()
     {
-        int xSize = gridSizeX % 2 == 0 ? Mathf.FloorToInt(gridSizeX / 2) : Mathf.FloorToInt(gridSizeX / 2) + 1; //assign floored size / 2 if size is even and size / 2 + 1 if size is odd
-        return xSize;
+        return gridSizeX;
     }
 
     public int DimensionY() 
     {
-        int ySize = gridSizeY % 2 == 0 ? Mathf.FloorToInt(gridSizeY / 2) : Mathf.FloorToInt(gridSizeY / 2) + 1; //assign floored size / 2 if size is even and size / 2 + 1 if size is odd
-        return ySize; 
+        return gridSizeY; 
     }
 
     void Start()
