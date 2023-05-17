@@ -29,6 +29,8 @@ public class Grid : MonoBehaviour
         }
     }
     public Vector3 AccessCell(int x, int y) { return tileArray[x, y]; }
+    public int DimensionX() { return gridSizeX; }
+    public int DimensionY() { return gridSizeY; }
 
     void Start()
     {
