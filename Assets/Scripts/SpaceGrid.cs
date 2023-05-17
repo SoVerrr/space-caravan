@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class SpaceGrid : MonoBehaviour
 {
     [SerializeField] bool debug;
     [SerializeField] private int gridSizeX, gridSizeY;
@@ -29,6 +29,17 @@ public class Grid : MonoBehaviour
         }
     }
     public Vector3 AccessCell(int x, int y) { return tileArray[x, y]; }
+    public int DimensionX()
+    {
+        int xSize = gridSizeX % 2 == 0 ? Mathf.FloorToInt(gridSizeX / 2) : Mathf.FloorToInt(gridSizeX / 2) + 1; //assign floored size / 2 if size is even and size / 2 + 1 if size is odd
+        return xSize;
+    }
+
+    public int DimensionY() 
+    {
+        int ySize = gridSizeY % 2 == 0 ? Mathf.FloorToInt(gridSizeY / 2) : Mathf.FloorToInt(gridSizeY / 2) + 1; //assign floored size / 2 if size is even and size / 2 + 1 if size is odd
+        return ySize; 
+    }
 
     void Start()
     {
