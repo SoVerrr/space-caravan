@@ -123,7 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &120971113
 --- !u!1 &90854050
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,16 +135,11 @@ GameObject:
   - component: {fileID: 120971114}
   m_Layer: 0
   m_Name: PlanetSpawner
-  - component: {fileID: 90854052}
-  - component: {fileID: 90854051}
-  m_Layer: 0
-  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &120971114
 --- !u!114 &90854051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,15 +155,6 @@ MonoBehaviour:
   sellPlanet: {fileID: 4585577613246122883}
   starterPlanet: {fileID: 8088885480507914459}
   materialPlanet: {fileID: 911485131529837218}
---- !u!4 &120971115
-  m_GameObject: {fileID: 90854050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbcb1715a22f5ee408e99c78b1c38c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputManager: {fileID: 1867257034}
-  routeManager: {fileID: 504770014}
 --- !u!4 &90854052
 Transform:
   m_ObjectHideFlags: 0
@@ -182,14 +167,50 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &120971113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90854052}
+  - component: {fileID: 90854051}
+  m_Layer: 0
+  m_Name: PlanetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &120971114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90854050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &120971115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90854050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8509797, y: -1.4807762, z: -5.053945}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &395711839
 GameObject:
@@ -272,7 +293,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &504770013
 GameObject:
@@ -318,7 +339,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644488874
 GameObject:
@@ -414,7 +435,7 @@ Transform:
   m_LocalScale: {x: 3.42, y: 1, z: 3.76}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &700453620
 GameObject:
@@ -507,7 +528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1555258113
 GameObject:
@@ -519,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1555258115}
   - component: {fileID: 1555258114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362fcfc72313f8e40a44db3fb7f1a1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   gridSizeX: 50
   gridSizeY: 50
   tile: {fileID: 7781095089120771474, guid: 62c9f98ac3339074ba7df4c75011bc10, type: 3}
@@ -554,7 +575,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1700782838
 GameObject:
@@ -585,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814c0ebaf7ec2814f979b674b09dc3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementGrid: {fileID: 1464578335}
+  placementGrid: {fileID: 1555258114}
 --- !u!4 &1700782840
 Transform:
   m_ObjectHideFlags: 0
@@ -598,7 +619,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867257033
 GameObject:
@@ -645,7 +666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &911485131529837216
 PrefabInstance:
@@ -660,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5850875920480369648, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5850875920480369648, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -792,7 +813,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 407337099378539849, guid: 9fc9a2e972c55bf439dfd06eff392ffb, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 407337099378539849, guid: 9fc9a2e972c55bf439dfd06eff392ffb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -854,7 +875,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1385864331687247655, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1385864331687247655, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
       propertyPath: m_LocalPosition.x
