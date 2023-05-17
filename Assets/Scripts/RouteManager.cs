@@ -14,14 +14,11 @@ public class RouteManager : MonoBehaviour
     {
         if (placement.CheckIfTileInBound(position) == false)
             return;
-        
-            
-        //if (placement.CheckIfTileIsFree(position) == false)
-        //{
-        //    Debug.Log("Dzia³aFree?");
-        //    return;
-        //}
 
-        placement.PlaceTempStructure(position, structure);
+
+        if (placement.CheckIfTileIsFree(position) == false)
+            return;
+
+        placement.PlaceTempStructure(position, structure, GridStatus.Route);
     }
 }

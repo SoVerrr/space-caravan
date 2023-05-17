@@ -30,6 +30,8 @@ public class SpaceGrid : MonoBehaviour
             {
                 tileArray[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = new Vector3(x, 0, y);
                 status[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = GridStatus.Empty; //setting base status of a tile to empty 
+                //status = new GridStatus[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)];
+
                 if (debug)
                 {
                     var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
@@ -40,6 +42,23 @@ public class SpaceGrid : MonoBehaviour
         }
     }
     public Vector3 AccessCell(int x, int y) { return tileArray[x, y]; }
+    public GridStatus this[int x, int y]
+    {
+        get
+        {
+            return status[x + gridSizeX/2, y + gridSizeX / 2];
+        }
+        set
+        {
+            if(value == GridStatus.Route)
+            {
+                status[x + gridSizeX / 2, y + gridSizeX / 2] = GridStatus.Route;
+            }
+            
+        }
+         
+    }
+    // public void SetStatus(GridStatus type, int x, int y) { status[x, y] = type; }
     public int DimensionX()
     {
         int xSize = gridSizeX % 2 == 0 ? Mathf.FloorToInt(gridSizeX / 2) : Mathf.FloorToInt(gridSizeX / 2) + 1; //assign floored size / 2 if size is even and size / 2 + 1 if size is odd

@@ -25,14 +25,20 @@ public class Placement : MonoBehaviour
         return false;
     }
 
-    //internal bool CheckIfTileIsFree(Vector3Int position)
-    //{
-    //    throw new NotImplementedException();
-    //}
-
-    public void PlaceTempStructure(Vector3Int position, GameObject structure)
+    internal bool CheckIfTileIsFree(Vector3Int position)
     {
-        
+        return CheckIfPositionStatus(position, GridStatus.Empty);
+    }
+
+    private bool CheckIfPositionStatus(Vector3Int position, GridStatus type)
+    {
+        Debug.Log("Halo");
+        return placementGrid[position.x, position.z] == type;
+    }
+
+    public void PlaceTempStructure(Vector3Int position, GameObject structure, GridStatus type)
+    {
+        placementGrid[position.x, position.z] = type;
         GameObject newStructure = Instantiate(structure, position, Quaternion.identity);
         
     }
