@@ -13,10 +13,8 @@ public class RouteManager : MonoBehaviour
     public void PlaceRoute(Vector3Int position)
     {
         if (placement.CheckIfTileInBound(position) == false)
-        {
-            Debug.Log("Dzia³aBound?");
             return;
-        }
+        
             
         //if (placement.CheckIfTileIsFree(position) == false)
         //{

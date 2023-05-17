@@ -562,8 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814c0ebaf7ec2814f979b674b09dc3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 50
-  height: 50
+  placementGrid: {fileID: 1464578335}
 --- !u!4 &1700782840
 Transform:
   m_ObjectHideFlags: 0

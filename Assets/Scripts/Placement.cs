@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class Placement : MonoBehaviour
 {
-    public int width, height;
-    Grid placementGrid;
+    private int width, height;
+
+    [SerializeField]
+    SpaceGrid placementGrid;
 
     private void Start()
     {
-        //width = placementGrid.DimensionX();
-        //height = placementGrid.DimensionY();
+        width = placementGrid.DimensionX();
+        height = placementGrid.DimensionY();
     }
 
     internal bool CheckIfTileInBound(Vector3Int position)
