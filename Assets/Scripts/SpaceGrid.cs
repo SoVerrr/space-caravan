@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum GridStatus
+{
+    Empty,
+    StarterPlanet,
+    SellPlanet,
+    MaterialPlanet,
+    Route
+}
 public class SpaceGrid : MonoBehaviour
 {
     [SerializeField] bool debug;
@@ -9,6 +18,7 @@ public class SpaceGrid : MonoBehaviour
     [SerializeField] private GameObject tile;
 
     public Vector3[,] tileArray;
+    public GridStatus[,] status;
 
     private void GenerateGrid()
     {
@@ -18,7 +28,8 @@ public class SpaceGrid : MonoBehaviour
         {
             for(int y = 0 - Mathf.CeilToInt(gridSizeY / 2); y < ySize; y++)
             {
-                tileArray[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = new Vector3((float)x, 0, (float)x);
+                tileArray[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = new Vector3(x, 0, y);
+                status[x + Mathf.CeilToInt(gridSizeX / 2), y + Mathf.CeilToInt(gridSizeY / 2)] = GridStatus.Empty; //setting base status of a tile to empty 
                 if (debug)
                 {
                     var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
@@ -44,6 +55,7 @@ public class SpaceGrid : MonoBehaviour
     void Start()
     {
         tileArray = new Vector3[gridSizeX, gridSizeY];
+        status = new GridStatus[gridSizeX, gridSizeY];
         GenerateGrid();
     }
 
