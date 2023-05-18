@@ -21,7 +21,18 @@ public class PlanetManager : MonoBehaviour
             grid[x, y] = GridStatus.MaterialPlanet;
         }
     }
-
+    private void GeneratePlanet(Planet planetPrefab, int x, int y, PlanetData data)
+    {
+        Collider[] hitColliders = new Collider[3];
+        int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
+        if (colliders > 0)
+            Debug.Log("New planet overlapping with another, wrong position");
+        else
+        {
+            planetPrefab.InstantiatePlanet(x, y);
+            grid[x, y] = GridStatus.MaterialPlanet;
+        }
+    }
     void Start()
     {
        

@@ -72,7 +72,7 @@ public class SpaceGrid : MonoBehaviour
         return gridSizeY; 
     }
 
-    void Start()
+    void Awake()
     {
         tileArray = new Vector3[gridSizeX, gridSizeY];
         status = new GridStatus[gridSizeX, gridSizeY];
