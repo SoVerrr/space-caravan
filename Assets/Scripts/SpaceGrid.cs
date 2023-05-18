@@ -23,7 +23,6 @@ public class SpaceGrid : MonoBehaviour
 
     private void GenerateGrid()
     {
-        int count = 0;
         for (int x = 0; x < gridSizeX; x++)
         {
             for(int y = 0; y < gridSizeY; y++)
@@ -35,7 +34,6 @@ public class SpaceGrid : MonoBehaviour
                     var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
                     spawnedTile.name = $"Tile {x} {y}";
                     spawnedTile.transform.SetParent(gameObject.transform, true);
-                    Debug.Log(++count);
                 }
             }
         }
@@ -55,7 +53,11 @@ public class SpaceGrid : MonoBehaviour
             {
                 status[x, y] = GridStatus.Route;
             }
-            
+            if (value == GridStatus.MaterialPlanet)
+            {
+                status[x, y] = GridStatus.MaterialPlanet;
+            }
+
         }
          
     }

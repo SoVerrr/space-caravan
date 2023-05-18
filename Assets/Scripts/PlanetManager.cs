@@ -7,7 +7,7 @@ public class PlanetManager : MonoBehaviour
     [SerializeField] private SellPlanet sellPlanet;
     [SerializeField] private StarterPlanet starterPlanet;
     [SerializeField] private MaterialPlanet materialPlanet;
-    [SerializeField] private SpaceGrid spaceGrid;
+    [SerializeField] SpaceGrid grid;
 
     private void GenerateMaterialPlanet(MaterialPlanet planetPrefab, int x, int y, int production, string material)
     {
@@ -18,22 +18,21 @@ public class PlanetManager : MonoBehaviour
         else
         {
             planetPrefab.InstantiatePlanet(x, y);
-            
+            grid[x, y] = GridStatus.MaterialPlanet;
         }
     }
 
-
-
     void Start()
     {
-        for(int x = 0; x < 5; x++)
+       
+        for(int x = 32; x < 37; x++)
         {
-            for(int y = 0; y < 5; y++)
+            for(int y = 32; y < 37; y++)
             {
                 GenerateMaterialPlanet(materialPlanet, x, y, 2, "stone");
+                //Debug.Log(spaceGrid[x, y] == GridStatus.MaterialPlanet);
             }
         }
-        Debug.Log(MaterialPlanet.materialPlanetList.Count);
     }
 
     // Update is called once per frame

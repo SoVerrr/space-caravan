@@ -32,7 +32,6 @@ public class Placement : MonoBehaviour
 
     private bool CheckIfPositionStatus(Vector3Int position, GridStatus type)
     {
-        Debug.Log("Halo");
         return placementGrid[position.x, position.z] == type;
     }
 
