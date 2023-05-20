@@ -21,6 +21,7 @@ public class Placement : MonoBehaviour
     {
         return placementGrid.GetAllAdjacentCellStatus(position.x, position.z);
     }
+
     internal bool CheckIfTileInBound(Vector3Int position)
     {
         if(position.x >= -(width/2) && position.x < width && position.z >= -(height / 2) && position.z < height) 
@@ -38,6 +39,20 @@ public class Placement : MonoBehaviour
     private bool CheckIfPositionStatus(Vector3Int position, GridStatus type)
     {
         return placementGrid[position.x, position.z] == type;
+    }
+
+    internal List<Vector3Int> getNeighbourtOfStatusFor(Vector3Int routePosition, GridStatus route)
+    {
+        var neighbourCells = placementGrid.GetAllAdjacentCellStatusOfType(routePosition.x, routePosition.z, route); // List of points
+
+        List<Vector3Int> neiggbours = new List<Vector3Int>();
+
+        foreach (var point in neighbourCells)
+        {
+            neiggbours.Add(new Vector3Int(point.x, 0, point.y));
+        }
+
+        return neiggbours;
     }
 
     public void PlaceTempStructure(Vector3Int position, GameObject structurePrefab, GridStatus type)

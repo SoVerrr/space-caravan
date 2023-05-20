@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,7 +62,45 @@ public class SpaceGrid : MonoBehaviour
         }
          
     }
-    
+
+    public List<Vector2Int> GetAllAdjacentCellStatusOfType(int x, int y, GridStatus type)
+    {
+        List<Vector2Int> adjacentCells = GetAllAdjacentCell(x, y);
+
+        for (int i = adjacentCells.Count - 1; i >= 0; i--)
+        {
+            if (status[adjacentCells[i].x, adjacentCells[i].y] != type)
+            {
+                adjacentCells.RemoveAt(i);
+            }
+        }
+        return adjacentCells;
+    }
+
+    private List<Vector2Int> GetAllAdjacentCell(int x, int y)
+    {
+        List<Vector2Int> adjacentCells = new List<Vector2Int>();
+        
+
+        if (x > 0)
+        {
+            adjacentCells.Add(new Vector2Int(x - 1, y));
+        }
+        if (x < gridSizeX - 1)
+        {
+            adjacentCells.Add(new Vector2Int(x + 1, y));
+        }
+        if (y > 0)
+        {
+            adjacentCells.Add(new Vector2Int(x , y  - 1));
+        }
+        if (y < gridSizeY - 1)
+        {
+            adjacentCells.Add(new Vector2Int(x, y + 1));
+        }
+        return adjacentCells;
+    }
+
     public GridStatus[] GetAllAdjacentCellStatus(int x, int y) // Returns array [Left neighbour, Top neighbour, Right neighbour, Down neighbour]
     {
         GridStatus[] neighbours = { GridStatus.Empty, GridStatus.Empty, GridStatus.Empty, GridStatus.Empty };

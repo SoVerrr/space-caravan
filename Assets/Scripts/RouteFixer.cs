@@ -46,19 +46,19 @@ public class RouteFixer : MonoBehaviour
     {
         if (result[1] == GridStatus.Route && result[2] == GridStatus.Route && result[3] == GridStatus.Route) // reverse T-turn 
         {
-            placement.ModifyStructureModel(temporaryPosition, corner, Quaternion.identity);
+            placement.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.Euler(0, 180, 0));
         }
         else if (result[2] == GridStatus.Route && result[3] == GridStatus.Route && result[0] == GridStatus.Route) // T-turn 
         {
-            placement.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 90, 0));
+            placement.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.Euler(0, 270, 0));
         }
         else if (result[3] == GridStatus.Route && result[0] == GridStatus.Route && result[1] == GridStatus.Route) // T-turn connecting from the down, left, up
         {
-            placement.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 180, 0));
+            placement.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.identity);
         }
         else if (result[0] == GridStatus.Route && result[1] == GridStatus.Route && result[2] == GridStatus.Route) // T-turn connecting from the left, up, right
         {
-            placement.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 270, 0));
+            placement.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.Euler(0, 90, 0));
         }
     }
 
