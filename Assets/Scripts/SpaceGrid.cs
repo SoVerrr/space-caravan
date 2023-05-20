@@ -61,7 +61,31 @@ public class SpaceGrid : MonoBehaviour
         }
          
     }
-    // public void SetStatus(GridStatus type, int x, int y) { status[x, y] = type; }
+    
+    public GridStatus[] GetAllAdjacentCellStatus(int x, int y) // Returns array [Left neighbour, Top neighbour, Right neighbour, Down neighbour]
+    {
+        GridStatus[] neighbours = { GridStatus.Empty, GridStatus.Empty, GridStatus.Empty, GridStatus.Empty };
+
+        if(x > 0)
+        {
+            neighbours[0] = status[x - 1, y];
+        }
+        if (x < gridSizeX - 1)
+        {
+            neighbours[2] = status[x + 1, y];
+        }
+        if (y > 0)
+        {
+            neighbours[3] = status[x, y - 1];
+        }
+        if (x < gridSizeY - 1)
+        {
+            neighbours[1] = status[x, y + 1];
+        }
+
+        return neighbours;
+    }
+
     public int DimensionX()
     {
         return gridSizeX;
