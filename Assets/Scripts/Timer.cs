@@ -4,18 +4,17 @@ using UnityEngine;
 using UnityEngine.UI; // Text UI
 public class Timer : MonoBehaviour
 {
-    public float time;
+    private float time;
     //public bool timerIsRunning = true;
     private float timeRemaining = 1;
-    public Text textElement;
-    public Button pause;
-    public Button start;
-    public Button speedUp;
+    private Text textElement;
+    private Button pause;
+    private Button start;
+    private Button speedUp;
 
+    private float DisplayTime;
 
-    public float DisplayTime;
-
-    public float oneSecond;
+    private float oneSecond;
 
     void Start()
     {
@@ -68,7 +67,6 @@ public class Timer : MonoBehaviour
         else{
             time+=1;
             timeRemaining=1;
-            Debug.Log(time);
             textElement.text = time.ToString();
         }
     }
