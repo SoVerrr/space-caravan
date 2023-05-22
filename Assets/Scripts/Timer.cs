@@ -7,10 +7,12 @@ public class Timer : MonoBehaviour
     private float time;
     //public bool timerIsRunning = true;
     private float timeRemaining = 1;
-    private Text textElement;
-    private Button pause;
-    private Button start;
-    private Button speedUp;
+
+
+    [SerializeField] Text textElement;
+    [SerializeField] Button pause;
+    [SerializeField] Button start;
+    [SerializeField] Button speedUp;
 
     private float DisplayTime;
 
