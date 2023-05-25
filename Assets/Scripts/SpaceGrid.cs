@@ -12,6 +12,11 @@ public enum GridStatus
     MaterialPlanet,
     Route
 }
+public enum SpawnStatus
+{
+    Spawnable,
+    NotSpawnable
+}
 public class SpaceGrid : MonoBehaviour
 {
     [SerializeField] bool debug;
@@ -21,7 +26,7 @@ public class SpaceGrid : MonoBehaviour
 
     public Vector3[,] tileArray;
     public GridStatus[,] status;
-
+    public SpawnStatus[,] spawnStatus;
     private void GenerateGrid()
     {
         for (int x = 0; x < gridSizeX; x++)
@@ -30,6 +35,7 @@ public class SpaceGrid : MonoBehaviour
             {
                 tileArray[x, y] = new Vector3(x, 0, y);
                 status[x, y] = GridStatus.Empty; //setting base status of a tile to empty 
+                spawnStatus[x, y] = SpawnStatus.Spawnable;
                 if (debug)
                 {
                     var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
@@ -139,6 +145,7 @@ public class SpaceGrid : MonoBehaviour
     {
         tileArray = new Vector3[gridSizeX, gridSizeY];
         status = new GridStatus[gridSizeX, gridSizeY];
+        spawnStatus = new SpawnStatus[gridSizeX, gridSizeY];
         GenerateGrid();
     }
 
