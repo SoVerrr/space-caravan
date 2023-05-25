@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Text UI
+using System;
 public class Timer : MonoBehaviour
 {
-    private float time;
+    public static float time;
     //public bool timerIsRunning = true;
     private float timeRemaining = 1;
-
+    public static Action timeChanged;
 
     [SerializeField] Text textElement;
     [SerializeField] Button pause;
     [SerializeField] Button start;
     [SerializeField] Button speedUp;
-
+    [SerializeField] float customTime;
     private float DisplayTime;
+
+
 
     private float oneSecond;
 
     void Start()
     {
         buttons();
+        Time.timeScale = customTime;
     }
     void Update()
     {
@@ -68,7 +72,8 @@ public class Timer : MonoBehaviour
         }
         else{
             time+=1;
-            timeRemaining=1;
+            timeChanged?.Invoke();
+            timeRemaining =1;
             textElement.text = time.ToString();
         }
     }
