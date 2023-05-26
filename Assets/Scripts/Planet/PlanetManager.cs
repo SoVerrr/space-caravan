@@ -24,22 +24,32 @@ public class PlanetManager : MonoBehaviour
     public void GeneratePlanet(Planet planetPrefab, PlanetData data)
     {
         int[] coords = FindSpawnSpot();
-        int x = coords[0];
-        int y = coords[1];
-        Collider[] hitColliders = new Collider[3];
-        int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
-        if (colliders > 0)
-            Debug.Log("New planet overlapping with another, wrong position");
+        if (coords == null || coords.Length == 0)
+        {
+            Debug.Log("No more suitable spawn points");
+            return;
+        }
         else
         {
-            planetPrefab.InstantiatePlanet(x, y, data);
-            grid[x, y] = GridStatus.MaterialPlanet;
-            for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
+            int x = coords[0];
+            int y = coords[1];
+
+            Collider[] hitColliders = new Collider[3];
+            int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
+            if (colliders > 0)
+                Debug.Log("New planet overlapping with another, wrong position");
+            else
             {
-                for(int yCoord = y - 4; yCoord < y + 4; yCoord++)
+                planetPrefab.InstantiatePlanet(x, y, data);
+                grid[x, y] = GridStatus.MaterialPlanet;
+                for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
                 {
-                    if(xCoord > 0 && xCoord < grid.DimensionX() - 1 && yCoord > 0 && yCoord < grid.DimensionY() - 1)
-                        grid.spawnStatus[xCoord, yCoord] = SpawnStatus.NotSpawnable;
+                    for (int yCoord = y - 4; yCoord < y + 4; yCoord++)
+                    {
+
+                        if (xCoord >= 0 && xCoord < grid.DimensionX() && yCoord >= 0 && yCoord < grid.DimensionY())
+                            grid.spawnStatus[xCoord, yCoord] = SpawnStatus.NotSpawnable;
+                    }
                 }
             }
         }
@@ -76,7 +86,9 @@ public class PlanetManager : MonoBehaviour
                 }
             }
         }
-        return spawnableCoords[Random.Range(0, spawnableCoords.Count)];
+        if(spawnableCoords.Count > 0)
+            return spawnableCoords[Random.Range(0, spawnableCoords.Count)];
+        return null;
         //Debug.Log("x: " + xCoord + "y: " + yCoord + "dimensions: " + grid.DimensionX() + " " + grid.DimensionY());
 
     }
