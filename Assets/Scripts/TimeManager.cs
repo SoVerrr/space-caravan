@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] private PlanetManager planetManager;
+    [SerializeField] private PointManager planetManager;
 
     private void OnEnable()
     {
@@ -23,9 +23,12 @@ public class TimeManager : MonoBehaviour
             if (Timer.time % 5 == 0)
             {
                 Debug.Log("hej minê³o 5 sekund");
-                planetManager.GeneratePlanet(planetManager.materialPlanet,new PlanetDataMaterial(5, "stone"));
+                planetManager.GeneratePoint(planetManager.materialPoint,new PointDataMaterial(5, "stone"));
             }
-
+            if (Timer.time % 10 == 0)
+            {
+                planetManager.GeneratePoint(planetManager.sellPoint, new PointDataMaterial(5, "stone"));
+            }
             if (Timer.time % 15 == 0)
             {
                 Debug.Log("hej minê³o 15 sekund");

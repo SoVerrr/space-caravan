@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetManager : MonoBehaviour
+public class PointManager : MonoBehaviour
 {
-    [SerializeField] public SellPlanet sellPlanet;
-    [SerializeField] public StarterPlanet starterPlanet;
-    [SerializeField] public MaterialPlanet materialPlanet;
+    [SerializeField] public SellPoint sellPoint;
+    [SerializeField] public StarterPoint starterPoint;
+    [SerializeField] public MaterialPoint materialPoint;
     [SerializeField] SpaceGrid grid;
 
     // private void GenerateMaterialPlanet(MaterialPlanet planetPrefab, int x, int y, int production, string material)
@@ -21,7 +21,7 @@ public class PlanetManager : MonoBehaviour
     //         grid[x, y] = GridStatus.MaterialPlanet;
     //     }
     // }
-    public void GeneratePlanet(Planet planetPrefab, PlanetData data)
+    public void GeneratePoint(Point planetPrefab, PointData data)
     {
         int[] coords = FindSpawnSpot();
         if (coords == null || coords.Length == 0)
@@ -37,11 +37,11 @@ public class PlanetManager : MonoBehaviour
             Collider[] hitColliders = new Collider[3];
             int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
             if (colliders > 0)
-                Debug.Log("New planet overlapping with another, wrong position");
+                Debug.Log("New point overlapping with another, wrong position");
             else
             {
-                planetPrefab.InstantiatePlanet(x, y, data);
-                grid[x, y] = GridStatus.MaterialPlanet;
+                planetPrefab.InstantiatePoint(x, y, data);
+                grid[x, y] = GridStatus.MaterialPoint;
                 for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
                 {
                     for (int yCoord = y - 4; yCoord < y + 4; yCoord++)
@@ -54,7 +54,7 @@ public class PlanetManager : MonoBehaviour
             }
         }
     }
-    private void GeneratePlanet(Planet planetPrefab, PlanetData data, int x, int y)
+    private void GeneratePlanet(Point planetPrefab, PointData data, int x, int y)
     {
         Collider[] hitColliders = new Collider[3];
         int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
@@ -62,8 +62,8 @@ public class PlanetManager : MonoBehaviour
             Debug.Log("New planet overlapping with another, wrong position");
         else
         {
-            planetPrefab.InstantiatePlanet(x, y, data);
-            grid[x, y] = GridStatus.MaterialPlanet;
+            planetPrefab.InstantiatePoint(x, y, data);
+            grid[x, y] = GridStatus.MaterialPoint;
             for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
             {
                 for (int yCoord = y - 4; yCoord < y + 4; yCoord++)
@@ -94,8 +94,8 @@ public class PlanetManager : MonoBehaviour
     }
     void Start()
     {
-        PlanetDataMaterial dt = new PlanetDataMaterial(5, "stone");
-        GeneratePlanet(starterPlanet, dt, grid.DimensionX() / 2, grid.DimensionY() / 2);
+        PointDataMaterial dt = new PointDataMaterial(5, "stone");
+        GeneratePlanet(starterPoint, dt, grid.DimensionX() / 2, grid.DimensionY() / 2);
         
     }
     // Update is called once per frame

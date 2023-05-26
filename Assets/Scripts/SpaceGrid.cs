@@ -7,9 +7,9 @@ using UnityEngine;
 public enum GridStatus
 {
     Empty,
-    StarterPlanet,
-    SellPlanet,
-    MaterialPlanet,
+    StarterPoint,
+    SellPoint,
+    MaterialPoint,
     Route
 }
 public enum SpawnStatus
@@ -60,9 +60,9 @@ public class SpaceGrid : MonoBehaviour
             {
                 status[x, y] = GridStatus.Route;
             }
-            if (value == GridStatus.MaterialPlanet)
+            if (value == GridStatus.MaterialPoint)
             {
-                status[x, y] = GridStatus.MaterialPlanet;
+                status[x, y] = GridStatus.MaterialPoint;
             }
 
         }
