@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    [SerializeField] private PlanetManager planetManager;
+
     private void OnEnable()
     {
         Timer.timeChanged += TimeCheck;
@@ -21,6 +23,7 @@ public class TimeManager : MonoBehaviour
             if (Timer.time % 5 == 0)
             {
                 Debug.Log("hej minê³o 5 sekund");
+                planetManager.GeneratePlanet(planetManager.materialPlanet,new PlanetDataMaterial(5, "stone"));
             }
 
             if (Timer.time % 15 == 0)
@@ -30,5 +33,7 @@ public class TimeManager : MonoBehaviour
 
         }
     }
-
+    private void Start()
+    {
+    }
 }

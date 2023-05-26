@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlanetManager : MonoBehaviour
 {
-    [SerializeField] private SellPlanet sellPlanet;
-    [SerializeField] private StarterPlanet starterPlanet;
-    [SerializeField] private MaterialPlanet materialPlanet;
+    [SerializeField] public SellPlanet sellPlanet;
+    [SerializeField] public StarterPlanet starterPlanet;
+    [SerializeField] public MaterialPlanet materialPlanet;
     [SerializeField] SpaceGrid grid;
 
     // private void GenerateMaterialPlanet(MaterialPlanet planetPrefab, int x, int y, int production, string material)
@@ -21,7 +21,7 @@ public class PlanetManager : MonoBehaviour
     //         grid[x, y] = GridStatus.MaterialPlanet;
     //     }
     // }
-    private void GeneratePlanet(Planet planetPrefab, PlanetData data)
+    public void GeneratePlanet(Planet planetPrefab, PlanetData data)
     {
         int[] coords = FindSpawnSpot();
         int x = coords[0];
@@ -83,16 +83,7 @@ public class PlanetManager : MonoBehaviour
     void Start()
     {
         PlanetDataMaterial dt = new PlanetDataMaterial(5, "stone");
-        GeneratePlanet(starterPlanet, dt, 32, 32);
-
-        for (int x = 32; x < 37; x++)
-        {
-            for (int y = 32; y < 37; y++)
-            {
-                GeneratePlanet(sellPlanet, dt);
-                //Debug.Log(spaceGrid[x, y] == GridStatus.MaterialPlanet);
-            }
-        }
+        GeneratePlanet(starterPlanet, dt, grid.DimensionX() / 2, grid.DimensionY() / 2);
         
     }
     // Update is called once per frame
