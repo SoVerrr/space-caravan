@@ -5,8 +5,9 @@ using UnityEngine;
 public class PointManager : MonoBehaviour
 {
     [SerializeField] public SellPoint sellPoint;
-    [SerializeField] public StarterPoint starterPoint;
+    [SerializeField] public HubPoint hubPoint;
     [SerializeField] public MaterialPoint materialPoint;
+    [SerializeField] public ProcessingPoint processingPoint;
     [SerializeField] SpaceGrid grid;
 
     // private void GenerateMaterialPlanet(MaterialPlanet planetPrefab, int x, int y, int production, string material)
@@ -95,7 +96,7 @@ public class PointManager : MonoBehaviour
     void Start()
     {
         PointDataMaterial dt = new PointDataMaterial(5, "stone");
-        GeneratePlanet(starterPoint, dt, grid.DimensionX() / 2, grid.DimensionY() / 2);
+        GeneratePlanet(hubPoint, dt, grid.DimensionX() / 2, grid.DimensionY() / 2);
         
     }
     // Update is called once per frame

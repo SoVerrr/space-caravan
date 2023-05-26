@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] private PointManager planetManager;
+    [SerializeField] private PointManager pointManager;
 
     private void OnEnable()
     {
@@ -23,15 +24,19 @@ public class TimeManager : MonoBehaviour
             if (Timer.time % 5 == 0)
             {
                 Debug.Log("hej minê³o 5 sekund");
-                planetManager.GeneratePoint(planetManager.materialPoint,new PointDataMaterial(5, "stone"));
+                pointManager.GeneratePoint(pointManager.materialPoint,new PointDataMaterial(5, "stone"));
             }
             if (Timer.time % 10 == 0)
             {
-                planetManager.GeneratePoint(planetManager.sellPoint, new PointDataMaterial(5, "stone"));
+                pointManager.GeneratePoint(pointManager.processingPoint, new PointDataProcessing(new string[] {"stone"}, new string[] {"pickaxe"}, 3));
             }
             if (Timer.time % 15 == 0)
             {
-                Debug.Log("hej minê³o 15 sekund");
+                pointManager.GeneratePoint(pointManager.sellPoint, new PointDataMaterial(5, "stone"));
+            }
+            if (Timer.time % 40 == 0)
+            {
+                pointManager.GeneratePoint(pointManager.hubPoint, new PointDataMaterial(5, "stone"));
             }
 
         }

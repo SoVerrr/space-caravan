@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProcessingPoint : MonoBehaviour
+public class ProcessingPoint : Point
 {
-    // Start is called before the first frame update
-    void Start()
+    public static List<GameObject> processingPointsList;
+
+    private PointDataProcessing processingData;
+
+    override public void InstantiatePoint(int x, int y, PointData data)
     {
-        
+        var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+        processingPointsList.Add(point);
+
+        processingData = (PointDataProcessing)data;
+
+
+    }
+    static ProcessingPoint()
+    {
+        processingPointsList = new List<GameObject>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
