@@ -881,6 +881,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: planetManager
+      value: 
+      objectReference: {fileID: 90854051}
     - target: {fileID: 4983457262464664276, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: inputManager
       value: 
