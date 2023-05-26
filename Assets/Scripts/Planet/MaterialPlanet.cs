@@ -13,6 +13,7 @@ public class MaterialPlanet : Planet
     {
         var planet = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         materialPlanetList.Add(planet);
+
         materialData = (PlanetDataMaterial)data;        
 
 
