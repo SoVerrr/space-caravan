@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -213,6 +213,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &362512569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4983457262606373266, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+  m_PrefabInstance: {fileID: 4983457263435601373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &395711839
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 362512569}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &815432894
@@ -881,6 +886,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4983457262386332839, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262386332839, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262386332839, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262386332839, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262386332839, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262386332839, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.015686275
+      objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: planetManager
       value: 
@@ -896,6 +925,10 @@ PrefabInstance:
     - target: {fileID: 4983457262464664277, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: customTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664279, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_RootOrder
@@ -940,6 +973,58 @@ PrefabInstance:
     - target: {fileID: 4983457262464664279, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262606373260, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262606373260, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262606373260, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262606373260, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.011764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262606373260, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262606373260, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457262606373260, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.012384772
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457263464862039, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457263464862039, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457263464862039, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457263464862039, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457263464862039, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983457263464862039, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.015686275
       objectReference: {fileID: 0}
     - target: {fileID: 4983457264045411056, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_Camera

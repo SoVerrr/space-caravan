@@ -44,12 +44,21 @@ public class Timer : MonoBehaviour
         speedUp.onClick.AddListener(speedUpTimer);
         void pauseTimer(){
             Time.timeScale=0;
+            pause.interactable = false;
+            start.interactable = true;
+            speedUp.interactable = true;
         }
         void startTimer(){
             Time.timeScale=1;
+            pause.interactable = true;
+            start.interactable = false;
+            speedUp.interactable = true;
         }
         void speedUpTimer(){
             Time.timeScale=2;
+            pause.interactable = true;
+            start.interactable = true;
+            speedUp.interactable = false;
         }
     }
 
