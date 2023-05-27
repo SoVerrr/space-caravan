@@ -29,10 +29,12 @@ public class RouteManager : MonoBehaviour
             return;
 
         tempPlacementPosition.Clear(); // Clear before using new prefab
+        routePositionToRecheck.Clear();
+
         tempPlacementPosition.Add(position);
 
 
-        placement.PlaceTempStructure(position, structure, GridStatus.Route);
+        placement.PlaceTempStructure(position, routeFixer.routeStraight, GridStatus.Route);
 
         FixRoutePrefab();
     }

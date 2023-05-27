@@ -123,7 +123,7 @@ public class SpaceGrid : MonoBehaviour
         {
             neighbours[3] = status[x, y - 1];
         }
-        if (x < gridSizeY - 1)
+        if (y < gridSizeY - 1)
         {
             neighbours[1] = status[x, y + 1];
         }
