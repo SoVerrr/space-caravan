@@ -1,4 +1,4 @@
-public class PlanetData
+public class PointData
 {
     public GridStatus status;
 }

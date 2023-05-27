@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1871932651797338867
+--- !u!1 &1991931501848368911
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4585568374485263233}
-  - component: {fileID: 7801091400377714290}
-  - component: {fileID: 6154833252961522876}
-  - component: {fileID: 3091093828431113101}
-  - component: {fileID: 4585577613246122883}
+  - component: {fileID: 5850875920480369648}
+  - component: {fileID: 4367995886122002670}
+  - component: {fileID: 7403609447736398157}
+  - component: {fileID: 6428448683387621332}
+  - component: {fileID: 5747229553469825562}
   m_Layer: 0
-  m_Name: Sell Planet
+  m_Name: Processing Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4585568374485263233
+--- !u!4 &5850875920480369648
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871932651797338867}
+  m_GameObject: {fileID: 1991931501848368911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,21 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7801091400377714290
+--- !u!33 &4367995886122002670
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871932651797338867}
+  m_GameObject: {fileID: 1991931501848368911}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6154833252961522876
+--- !u!23 &7403609447736398157
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871932651797338867}
+  m_GameObject: {fileID: 1991931501848368911}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 13eb10b344599b7499569af6901d454b, type: 2}
+  - {fileID: 2100000, guid: d278f31d46cf8a943af345677cd3358f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,29 +83,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3091093828431113101
+--- !u!135 &6428448683387621332
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871932651797338867}
+  m_GameObject: {fileID: 1991931501848368911}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4585577613246122883
+--- !u!114 &5747229553469825562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871932651797338867}
+  m_GameObject: {fileID: 1991931501848368911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0cbb22f8df7ac044be56d8ff23d746c, type: 3}
+  m_Script: {fileID: 11500000, guid: fd0c2545c5d01ba4183b834336301919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sellPlanetList: []

@@ -32,7 +32,7 @@ public class RouteManager : MonoBehaviour
         tempPlacementPosition.Add(position);
 
 
-        placement.PlaceTempStructure(position, routeFixer.deadEnd, GridStatus.Route);
+        placement.PlaceTempStructure(position, routeFixer.routeStraight, GridStatus.Route);
 
         FixRoutePrefab();
     }

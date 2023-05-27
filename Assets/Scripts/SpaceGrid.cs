@@ -7,10 +7,15 @@ using UnityEngine;
 public enum GridStatus
 {
     Empty,
-    StarterPlanet,
-    SellPlanet,
-    MaterialPlanet,
+    StarterPoint,
+    SellPoint,
+    MaterialPoint,
     Route
+}
+public enum SpawnStatus
+{
+    Spawnable,
+    NotSpawnable
 }
 public class SpaceGrid : MonoBehaviour
 {
@@ -21,7 +26,7 @@ public class SpaceGrid : MonoBehaviour
 
     public Vector3[,] tileArray;
     public GridStatus[,] status;
-
+    public SpawnStatus[,] spawnStatus;
     private void GenerateGrid()
     {
         for (int x = 0; x < gridSizeX; x++)
@@ -30,6 +35,7 @@ public class SpaceGrid : MonoBehaviour
             {
                 tileArray[x, y] = new Vector3(x, 0, y);
                 status[x, y] = GridStatus.Empty; //setting base status of a tile to empty 
+                spawnStatus[x, y] = SpawnStatus.Spawnable;
                 if (debug)
                 {
                     var spawnedTile = Instantiate(tile, new Vector3(x, -0.5f, y), Quaternion.identity);
@@ -89,9 +95,9 @@ public class SpaceGrid : MonoBehaviour
             {
                 status[x, y] = GridStatus.Route;
             }
-            if (value == GridStatus.MaterialPlanet)
+            if (value == GridStatus.MaterialPoint)
             {
-                status[x, y] = GridStatus.MaterialPlanet;
+                status[x, y] = GridStatus.MaterialPoint;
             }
 
         }
@@ -152,7 +158,7 @@ public class SpaceGrid : MonoBehaviour
         {
             neighbours[3] = status[x, y - 1];
         }
-        if (x < gridSizeY - 1)
+        if (y < gridSizeY - 1)
         {
             neighbours[1] = status[x, y + 1];
         }
@@ -174,6 +180,7 @@ public class SpaceGrid : MonoBehaviour
     {
         tileArray = new Vector3[gridSizeX, gridSizeY];
         status = new GridStatus[gridSizeX, gridSizeY];
+        spawnStatus = new SpawnStatus[gridSizeX, gridSizeY];
         GenerateGrid();
     }
 
