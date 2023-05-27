@@ -10,9 +10,7 @@ public class RouteManager : MonoBehaviour
     public List<Vector3Int> tempPlacementPosition = new List<Vector3Int>();
     public List<Vector3Int> routePositionToRecheck = new List<Vector3Int>(); // List for neighbours if they need to be changed
 
-    public GameObject structure;
-
-    public RouteFixer routeFixer;
+    public RouteFixer routeFixer; // has access to all routes
 
     private void Start()
     {
@@ -29,10 +27,12 @@ public class RouteManager : MonoBehaviour
             return;
 
         tempPlacementPosition.Clear(); // Clear before using new prefab
+        routePositionToRecheck.Clear(); // Clear position to recheck prevents from rechecking already checked position
+
         tempPlacementPosition.Add(position);
 
 
-        placement.PlaceTempStructure(position, structure, GridStatus.Route);
+        placement.PlaceTempStructure(position, routeFixer.deadEnd, GridStatus.Route);
 
         FixRoutePrefab();
     }
