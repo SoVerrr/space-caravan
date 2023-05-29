@@ -38,7 +38,7 @@ public class RouteManager : MonoBehaviour
             startPos = position;
 
             tempPlacementPosition.Add(position);
-            Debug.Log("eeeeee");
+            
             placement.PlaceTempStructure(position, routeFixer.routeStraight, GridStatus.Route);
 
             
@@ -54,7 +54,7 @@ public class RouteManager : MonoBehaviour
 
             foreach (var tempPos in tempPlacementPosition)
             {
-                Debug.Log("IFFFFF");
+                
                 if (placement.CheckIfTileIsFree(tempPos) == false)
                 {
                     Debug.Log(placement.placementGrid[position.x, position.z]);
