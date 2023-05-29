@@ -24,7 +24,11 @@ public class TimeManager : MonoBehaviour
     {
         if (Timer.time > 1)
         {
-            if (Timer.time % 5 == 0)
+            if (Timer.time % 40 == 0)
+            {
+                pointManager.GeneratePoint(pointManager.hubPoint, new PointDataMaterial(5, "stone"));
+            }
+            else if (Timer.time % 5 == 0)
             {
                 pointManager.GeneratePoint(pointsArray[counter], pointsDataArray[counter]);
                 if(counter != 2)
@@ -33,11 +37,6 @@ public class TimeManager : MonoBehaviour
                     counter = 0;
 
             }
-            if (Timer.time % 40 == 0)
-            {
-                pointManager.GeneratePoint(pointManager.hubPoint, new PointDataMaterial(5, "stone"));
-            }
-
         }
     }
     private void Awake()
