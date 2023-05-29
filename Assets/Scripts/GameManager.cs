@@ -10,13 +10,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        inputManager.OnMouseClick += HandleMouseClick;
+        inputManager.OnMouseClick += routeManager.PlaceRoute;
+        inputManager.OnMouseHold += routeManager.PlaceRoute;
+        inputManager.OnMouseUp += routeManager.FinishPlacingRoute;
     }
 
-    private void HandleMouseClick(Vector3Int position)
-    {
-        Debug.Log(position);
-        routeManager.PlaceRoute(position);
-    }
+    //private void HandleMouseClick(Vector3Int position)
+    //{
+    //    Debug.Log(position);
+    //    routeManager.PlaceRoute(position);
+    //}
 
 }

@@ -7,9 +7,10 @@ public class Placement : MonoBehaviour
 {
     private int width, height;
     private Dictionary<Vector3Int, StructureModel> temporaryRouteObject = new Dictionary<Vector3Int, StructureModel>();// Position of our structureModel, structure Model -> provide as with easy swap beacuse we can find postion and then swap model
-
+    private Dictionary<Vector3Int, StructureModel> structureDict = new Dictionary<Vector3Int, StructureModel>();
+    
     [SerializeField]
-    SpaceGrid placementGrid;
+    public SpaceGrid placementGrid;
 
     private void Start()
     {
@@ -58,7 +59,7 @@ public class Placement : MonoBehaviour
     public void PlaceTempStructure(Vector3Int position, GameObject structurePrefab, GridStatus type)
     {
         placementGrid[position.x, position.z] = type;
-
+        
         StructureModel structureModel = CreateNewStrucutreModel(position, structurePrefab, type);
 
         temporaryRouteObject.Add(position, structureModel);
@@ -74,8 +75,44 @@ public class Placement : MonoBehaviour
 
         var structureModel = newStructure.AddComponent<StructureModel>();
         structureModel.CreateStructure(structurePrefab); // Strucutre Model will Instantiate structure for as
-
+        Debug.Log("CreateNewStructureModel");
         return structureModel;
+    }
+
+    internal List<Vector3Int> GetPathBetween(Vector3Int startPos, Vector3Int endPosition)
+    {
+        var resultPath = Pathfinding.AStarSearch(placementGrid, new Vector2Int(startPos.x, startPos.z), new Vector2Int(endPosition.x, endPosition.z));
+
+        List<Vector3Int> path = new List<Vector3Int>();
+
+        foreach (Vector2Int point in resultPath)
+        {
+            path.Add(new Vector3Int(point.x, 0, point.y));
+        }
+
+        return path;
+    }
+
+    internal void RemoveAllTemporaryStructure()
+    {
+        foreach (var structure in temporaryRouteObject.Values)
+        {
+            var pos = Vector3Int.RoundToInt(structure.transform.position);
+
+            placementGrid[pos.x, pos.z] = GridStatus.Empty;
+            Destroy(structure.gameObject);
+        }
+        temporaryRouteObject.Clear();
+    }
+
+    internal void AddtemporaryStructuresToStructureDict()
+    {
+        foreach (var structure in temporaryRouteObject)
+        {
+            structureDict.Add(structure.Key, structure.Value);
+        }
+
+        temporaryRouteObject.Clear();
     }
 
     public void ModifyStructureModel(Vector3Int position, GameObject newModel, Quaternion rotation)

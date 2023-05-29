@@ -19,7 +19,7 @@ public class Pathfinding : MonoBehaviour
         posToCheck.Add(starPos);
         priorityDictionary.Add(starPos, 0);
         costDictionary.Add(starPos, 0);
-        parentsDictionary.Add(starPos, starPos);
+        parentsDictionary.Add(starPos, new Vector2Int(-999999, -999999));
 
         while(posToCheck.Count > 0)
         {
