@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class MaterialPoint : Point
 {
     public static List<GameObject> materialPointList;
-
+    [SerializeField] TextMeshProUGUI textElement;
     private PointDataMaterial materialData;
     override public void InstantiatePoint(int x, int y, PointData data)
     {
@@ -13,7 +13,10 @@ public class MaterialPoint : Point
         materialPointList.Add(point);
         materialData = new PointDataMaterial();
         Debug.Log(materialData.GetMaterialType());
+        Debug.Log(materialData.GetProductionRate());
+        textElement.text = materialData.GetProductionRate().ToString();
     }
+
     
     static MaterialPoint()
     {

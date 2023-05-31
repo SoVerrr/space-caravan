@@ -24,4 +24,9 @@ public class PointDataMaterial : PointData
     {
         return materialType;
     }
+
+    public int GetProductionRate()
+    {
+        return productionRate;
+    }
 }
