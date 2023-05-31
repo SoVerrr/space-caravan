@@ -6,17 +6,13 @@ public class MaterialPoint : Point
 {
     public static List<GameObject> materialPointList;
 
-    private string materialType;
-    private int productionRate;
     private PointDataMaterial materialData;
     override public void InstantiatePoint(int x, int y, PointData data)
     {
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         materialPointList.Add(point);
-
-        materialData = (PointDataMaterial)data;        
-
-
+        materialData = new PointDataMaterial();
+        Debug.Log(materialData.GetMaterialType());
     }
     
     static MaterialPoint()

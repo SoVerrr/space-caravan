@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class PointDataMaterial : PointData
 {
-    public int productionRate; 
-    public string materialType;
+    [SerializeField] private static string[] materialTypeList;
+    private int productionRate; 
+    private string materialType;
+
     public PointDataMaterial(int prodRate, string matType)
     {
         productionRate = prodRate;
         materialType = matType;
+    }
+    public PointDataMaterial()
+    {
+        materialTypeList = new string[3] {"stone", "iron", "wood"};
+        productionRate = Random.Range(5, 30);
+        materialType = materialTypeList[Random.Range(0, materialTypeList.Length)];
+    }
+
+    public string GetMaterialType()
+    {
+        return materialType;
     }
 }
