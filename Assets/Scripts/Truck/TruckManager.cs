@@ -19,7 +19,7 @@ public class TruckManager : MonoBehaviour
         truckInventory.addItem("coal", 999999);
         Debug.Log(truckInventory.getItemValue("coal"));
         // Instantiate(gameObject, new Vector3(1, 0, 1), Quaternion.identity);
-        TruckMovement.move_forward();
+        //TruckMovement.move_forward();
     }
 
     // Update is called once per frame
