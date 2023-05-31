@@ -31,5 +31,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void substractItem(string itemName, int substractedVal)
+    {
+        if(substractedVal>0)
+        {
+            // Limits substraction down to 0            
+            Item[itemName] = ( Math.Abs(Item[itemName]-substractedVal) + (Item[itemName]-substractedVal) ) / 2;
+        }
+    }
 
 }
