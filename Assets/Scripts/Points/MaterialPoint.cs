@@ -9,12 +9,15 @@ public class MaterialPoint : Point
     private PointDataMaterial materialData;
     override public void InstantiatePoint(int x, int y, PointData data)
     {
+        // var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+        // materialPointList.Add(point);
+        materialData = new PointDataMaterial();
+        //prodRate = materialData.GetProductionRate();
+        Debug.Log("coords: " + x + " " + y + " type: " + materialData.GetProductionRate());
+        textElement.text = materialData.GetProductionRate().ToString();
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         materialPointList.Add(point);
-        materialData = new PointDataMaterial();
-        Debug.Log(materialData.GetMaterialType());
-        Debug.Log(materialData.GetProductionRate());
-        textElement.text = materialData.GetProductionRate().ToString();
+
     }
 
     
