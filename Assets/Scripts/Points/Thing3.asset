@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd773a2020f3c9a438a1fa730798c625, type: 3}
   m_Name: Thing3
   m_EditorClassIdentifier: 
+  resultName: thing3
   materialsNeeded:
   - gold
-  - stone
+  - iron
   - coal
   numberOfMaterialsNeeded: 010000000200000003000000
