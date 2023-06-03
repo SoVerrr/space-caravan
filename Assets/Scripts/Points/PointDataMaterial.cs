@@ -15,7 +15,7 @@ public class PointDataMaterial : PointData
     }
     public PointDataMaterial()
     {
-        materialTypeList = new string[3] {"stone", "iron", "wood"};
+        materialTypeList = new string[3] {"coal", "iron", "gold"};
         productionRate = Random.Range(5, 30);
         materialType = materialTypeList[Random.Range(0, materialTypeList.Length)];
     }
@@ -23,5 +23,9 @@ public class PointDataMaterial : PointData
     public string GetMaterialType()
     {
         return materialType;
+    }
+    public int GetProductionRate()
+    {
+        return productionRate;
     }
 }
