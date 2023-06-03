@@ -21,5 +21,5 @@ public class ProcessingPoint : Point
     {
         processingPointsList = new List<GameObject>();
     }
-
+    
 }
