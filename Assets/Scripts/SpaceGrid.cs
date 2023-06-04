@@ -99,6 +99,18 @@ public class SpaceGrid : MonoBehaviour
             {
                 status[x, y] = GridStatus.MaterialPoint;
             }
+            if (value == GridStatus.Empty)
+            {
+                status[x, y] = GridStatus.Empty;
+            }
+            if (value == GridStatus.SellPoint)
+            {
+                status[x, y] = GridStatus.SellPoint;
+            }
+            if (value == GridStatus.StarterPoint)
+            {
+                status[x, y] = GridStatus.StarterPoint;
+            }
 
         }
          
