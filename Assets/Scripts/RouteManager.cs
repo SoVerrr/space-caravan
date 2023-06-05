@@ -10,9 +10,10 @@ public class RouteManager : MonoBehaviour
     public List<Vector3Int> tempPlacementPosition = new List<Vector3Int>();
     public List<Vector3Int> routePositionToRecheck = new List<Vector3Int>(); // List for neighbours if they need to be changed
 
-    public GameObject structure;
+    public RouteFixer routeFixer; // has access to all routes
 
-    public RouteFixer routeFixer;
+    private Vector3Int startPos;
+    private bool placmentMode = false;
 
     private void Start()
     {
@@ -28,14 +29,46 @@ public class RouteManager : MonoBehaviour
         if (placement.CheckIfTileIsFree(position) == false)
             return;
 
-        tempPlacementPosition.Clear(); // Clear before using new prefab
-        routePositionToRecheck.Clear();
+        
+        if (placmentMode == false)
+        {
+            tempPlacementPosition.Clear(); // Clear before using new prefab
+            routePositionToRecheck.Clear(); // Clear position to recheck prevents from rechecking already checked position
 
-        tempPlacementPosition.Add(position);
+            placmentMode = true;
+            startPos = position;
 
+            tempPlacementPosition.Add(position);
+            
+            placement.PlaceTempStructure(position, routeFixer.routeStraight, GridStatus.Route);
 
-        placement.PlaceTempStructure(position, routeFixer.routeStraight, GridStatus.Route);
+            
+        }
+        else
+        {
+            placement.RemoveAllTemporaryStructure();
+            
+            tempPlacementPosition.Clear();
 
+            foreach (var positionToFix in routePositionToRecheck)
+            {
+                routeFixer.FixRouteAtPosition(placement, positionToFix);
+            }
+            
+            routePositionToRecheck.Clear();
+
+            tempPlacementPosition = placement.GetPathBetween(startPos, position);
+
+            foreach (var tempPos in tempPlacementPosition)
+            {
+                
+                if (placement.CheckIfTileIsFree(tempPos) == false)
+                    continue;
+                
+                placement.PlaceTempStructure(tempPos, routeFixer.routeStraight, GridStatus.Route);
+            }
+        }
+        
         FixRoutePrefab();
     }
 
@@ -48,7 +81,10 @@ public class RouteManager : MonoBehaviour
 
             foreach (var routeposition in neighbours)
             {
-                routePositionToRecheck.Add(routeposition);
+                if (routePositionToRecheck.Contains(routeposition) == false)
+                {
+                    routePositionToRecheck.Add(routeposition);
+                }
             }
         }
 
@@ -56,5 +92,16 @@ public class RouteManager : MonoBehaviour
         {
             routeFixer.FixRouteAtPosition(placement, positionToFix);
         }
+    }
+
+    public void FinishPlacingRoute()
+    {
+        placmentMode = false;
+        placement.AddtemporaryStructuresToStructureDict();
+
+        tempPlacementPosition.Clear();
+
+        startPos = Vector3Int.zero;
+
     }
 }

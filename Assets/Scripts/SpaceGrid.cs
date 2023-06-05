@@ -48,6 +48,41 @@ public class SpaceGrid : MonoBehaviour
         
     }
     public Vector3 AccessCell(int x, int y) { return tileArray[x, y]; }
+
+    public List<Vector2Int> GetAdjacentCells(Vector2Int cell, bool isAgent)
+    {
+        return GetWakableAdjacentCells(cell.x, cell.y, isAgent);
+    }
+
+    public float GetCostOfEnteringCell(Vector2Int cell)
+    {
+        return 1;
+    }
+
+    private List<Vector2Int> GetWakableAdjacentCells(int x, int y, bool isAgent)
+    {
+        List<Vector2Int> addjacentCells = GetAllAdjacentCell(x, y);
+
+        for (int i = addjacentCells.Count - 1; i >= 0; i--)
+        {
+            if (IsCellWakable(status[addjacentCells[i].x, addjacentCells[i].y], isAgent) == false)
+            {
+                addjacentCells.RemoveAt(i);
+            }
+        }
+        return addjacentCells;
+    }
+
+    private bool IsCellWakable(GridStatus gridStatus, bool aiAgent = false)
+    {
+        if (aiAgent)
+        {
+            return gridStatus == GridStatus.Route;
+        }
+
+        return gridStatus == GridStatus.Empty || gridStatus == GridStatus.Route;
+    }
+
     public GridStatus this[int x, int y]
     {
         get
@@ -63,6 +98,18 @@ public class SpaceGrid : MonoBehaviour
             if (value == GridStatus.MaterialPoint)
             {
                 status[x, y] = GridStatus.MaterialPoint;
+            }
+            if (value == GridStatus.Empty)
+            {
+                status[x, y] = GridStatus.Empty;
+            }
+            if (value == GridStatus.SellPoint)
+            {
+                status[x, y] = GridStatus.SellPoint;
+            }
+            if (value == GridStatus.StarterPoint)
+            {
+                status[x, y] = GridStatus.StarterPoint;
             }
 
         }
