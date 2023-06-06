@@ -8,7 +8,6 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private PointManager pointManager;
 
     private Point[] pointsArray;
-    private PointData[] pointsDataArray = new PointData[3];
     private int counter = 0;
     private void OnEnable()
     {
@@ -26,11 +25,11 @@ public class TimeManager : MonoBehaviour
         {
             if (Timer.time % 40 == 0)
             {
-                pointManager.GeneratePoint(pointManager.hubPoint, new PointDataMaterial(5, "stone"));
+                pointManager.GeneratePoint(pointManager.hubPoint);
             }
             else if (Timer.time % 5 == 0)
             {
-                pointManager.GeneratePoint(pointsArray[counter], pointsDataArray[counter]);
+                pointManager.GeneratePoint(pointsArray[counter]);
                 if(counter != 2)
                     counter++;
                 else
@@ -42,7 +41,6 @@ public class TimeManager : MonoBehaviour
     private void Awake()
     {
         pointsArray = new Point[3] {pointManager.materialPoint, pointManager.processingPoint, pointManager.sellPoint};
-        pointsDataArray = new PointData[3] { new PointDataMaterial(5, "stone"),new PointDataProcessing(new string[] {"stone"}, new string[] {"pickaxe"}, 3) , new PointDataMaterial(5, "stone") };
     }
     private void Start()
     {

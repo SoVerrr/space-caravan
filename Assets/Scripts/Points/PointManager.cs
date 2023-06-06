@@ -10,19 +10,7 @@ public class PointManager : MonoBehaviour
     [SerializeField] public ProcessingPoint processingPoint;
     [SerializeField] SpaceGrid grid;
 
-    // private void GenerateMaterialPlanet(MaterialPlanet planetPrefab, int x, int y, int production, string material)
-    // {
-    //     Collider[] hitColliders = new Collider[3];
-    //     int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
-    //     if (colliders > 0)
-    //         Debug.Log("New planet overlapping with another, wrong position");
-    //     else
-    //     {
-    //         planetPrefab.InstantiatePlanet(x, y);
-    //         grid[x, y] = GridStatus.MaterialPlanet;
-    //     }
-    // }
-    public void GeneratePoint(Point planetPrefab, PointData data)
+    public void GeneratePoint(Point planetPrefab)
     {
         int[] coords = FindSpawnSpot();
         if (coords == null || coords.Length == 0)
@@ -41,8 +29,7 @@ public class PointManager : MonoBehaviour
                 Debug.Log("New point overlapping with another, wrong position");
             else
             {
-                planetPrefab.InstantiatePoint(x, y, data);
-                grid[x, y] = GridStatus.MaterialPoint;
+                planetPrefab.InstantiatePoint(x, y);
                 for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
                 {
                     for (int yCoord = y - 4; yCoord < y + 4; yCoord++)
@@ -55,7 +42,7 @@ public class PointManager : MonoBehaviour
             }
         }
     }
-    private void GeneratePlanet(Point planetPrefab, PointData data, int x, int y)
+    public void GeneratePlanet(Point planetPrefab, int x, int y)
     {
         Collider[] hitColliders = new Collider[3];
         int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
@@ -63,8 +50,7 @@ public class PointManager : MonoBehaviour
             Debug.Log("New planet overlapping with another, wrong position");
         else
         {
-            planetPrefab.InstantiatePoint(x, y, data);
-            grid[x, y] = GridStatus.MaterialPoint;
+            planetPrefab.InstantiatePoint(x, y);
             for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
             {
                 for (int yCoord = y - 4; yCoord < y + 4; yCoord++)
@@ -90,16 +76,13 @@ public class PointManager : MonoBehaviour
         if(spawnableCoords.Count > 0)
             return spawnableCoords[Random.Range(0, spawnableCoords.Count)];
         return null;
-        //Debug.Log("x: " + xCoord + "y: " + yCoord + "dimensions: " + grid.DimensionX() + " " + grid.DimensionY());
 
     }
     void Start()
     {
-        PointDataMaterial dt = new PointDataMaterial(5, "stone");
-        GeneratePlanet(hubPoint, dt, grid.DimensionX() / 2, grid.DimensionY() / 2);
+        GeneratePlanet(hubPoint, grid.DimensionX() / 2, grid.DimensionY() / 2);
         
     }
-    // Update is called once per frame
     void Update()
     {
         
