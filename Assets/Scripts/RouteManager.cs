@@ -29,6 +29,7 @@ public class RouteManager : MonoBehaviour
         if (placement.CheckIfTileIsFree(position) == false)
             return;
 
+        
         if (placmentMode == false)
         {
             tempPlacementPosition.Clear(); // Clear before using new prefab
@@ -48,6 +49,12 @@ public class RouteManager : MonoBehaviour
             placement.RemoveAllTemporaryStructure();
             
             tempPlacementPosition.Clear();
+
+            foreach (var positionToFix in routePositionToRecheck)
+            {
+                routeFixer.FixRouteAtPosition(placement, positionToFix);
+            }
+            
             routePositionToRecheck.Clear();
 
             tempPlacementPosition = placement.GetPathBetween(startPos, position);
@@ -56,15 +63,12 @@ public class RouteManager : MonoBehaviour
             {
                 
                 if (placement.CheckIfTileIsFree(tempPos) == false)
-                {
-                    Debug.Log(placement.placementGrid[position.x, position.z]);
                     continue;
-                }
                 
                 placement.PlaceTempStructure(tempPos, routeFixer.routeStraight, GridStatus.Route);
             }
         }
-
+        
         FixRoutePrefab();
     }
 

@@ -75,7 +75,7 @@ public class Placement : MonoBehaviour
 
         var structureModel = newStructure.AddComponent<StructureModel>();
         structureModel.CreateStructure(structurePrefab); // Strucutre Model will Instantiate structure for as
-        Debug.Log("CreateNewStructureModel");
+        
         return structureModel;
     }
 
@@ -119,5 +119,7 @@ public class Placement : MonoBehaviour
     {
         if (temporaryRouteObject.ContainsKey(position)) // Check if position is true
             temporaryRouteObject[position].SwapStructure(newModel, rotation);
+        else if (structureDict.ContainsKey(position)) // Check if position is true
+            structureDict[position].SwapStructure(newModel, rotation);
     }
 }
