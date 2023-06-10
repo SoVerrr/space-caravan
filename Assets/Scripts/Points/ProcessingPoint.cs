@@ -20,7 +20,7 @@ public class ProcessingPoint : Point
         processingResultIndex = Random.Range(0, ProcessingResults.Length);
         materialsNeeded = ProcessingResults[processingResultIndex].GetMaterialNeeded();
         numberofMaterials = ProcessingResults[processingResultIndex].GetNumberOfMaterialNeeded();
-        materialsPrint = ProcessingResults[processingResultIndex].GetResultName().ToString()+"\n";
+        materialsPrint = "Craft "+ProcessingResults[processingResultIndex].GetResultName().ToString()+"\n";
         for(int i=0; i<materialsNeeded.Length;i++){
             materialsPrint += materialsNeeded[i]+" "+numberofMaterials[i]+"\n";
         }

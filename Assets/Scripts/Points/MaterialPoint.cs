@@ -11,7 +11,7 @@ public class MaterialPoint : Point
     {
         materialData = new PointDataMaterial();
         //Debug.Log("coords: " + x + " " + y + " type: " + materialData.GetProductionRate());
-        textElement.text = materialData.GetMaterialType().ToString() + "\n" + materialData.GetProductionRate().ToString();
+        textElement.text = "Collect\n" +materialData.GetProductionRate().ToString()+" "+materialData.GetMaterialType().ToString()+"\n";
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         materialPointList.Add(point);
     }

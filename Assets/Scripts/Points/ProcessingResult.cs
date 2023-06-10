@@ -8,6 +8,8 @@ public class ProcessingResult : ScriptableObject
     [SerializeField] string resultName;
     [SerializeField] string[] materialsNeeded;
     [SerializeField] int[] numberOfMaterialsNeeded;
+    [SerializeField] int priceMax;
+    [SerializeField] int priceMin;
 
     public string GetResultName()
     {       
@@ -21,4 +23,15 @@ public class ProcessingResult : ScriptableObject
     {
         return numberOfMaterialsNeeded;
     }
+    public int GetPriceMin()
+    {
+        return priceMin;
+    }
+    public int GetPriceMax()
+    {
+        return priceMax;
+    }
+
+
+
 }
