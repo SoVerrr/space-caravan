@@ -108,4 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cbb22f8df7ac044be56d8ff23d746c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sellPlanetList: []
+  grid: {fileID: 0}
+  sellPointList: []

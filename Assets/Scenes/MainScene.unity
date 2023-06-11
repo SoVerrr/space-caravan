@@ -171,17 +171,6 @@ MonoBehaviour:
   materialPoint: {fileID: 1568498036}
   processingPoint: {fileID: 1317976195}
   grid: {fileID: 1555258114}
---- !u!114 &160877245 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6248714672425238244, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
-  m_PrefabInstance: {fileID: 569039423}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &235551541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237,6 +226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hub Point
       objectReference: {fileID: 0}
+    - target: {fileID: 7792914219286464075, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1555258114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
 --- !u!4 &235551542 stripped
@@ -409,9 +402,9 @@ PrefabInstance:
       value: Processing Point
       objectReference: {fileID: 0}
     - target: {fileID: 5747229553469825562, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
-      propertyPath: textElement
+      propertyPath: grid
       value: 
-      objectReference: {fileID: 160877245}
+      objectReference: {fileID: 1555258114}
     - target: {fileID: 5850875920480369648, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -566,6 +559,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1210810450}
     m_Modifications:
+    - target: {fileID: 911485131529837218, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1555258114}
     - target: {fileID: 1991931501848368911, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
       propertyPath: m_Name
       value: Material Point
@@ -835,6 +832,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4585577613246122883, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1555258114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
 --- !u!4 &1005569608 stripped
