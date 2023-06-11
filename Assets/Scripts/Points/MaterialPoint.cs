@@ -10,7 +10,8 @@ public class MaterialPoint : Point
     override public void InstantiatePoint(int x, int y)
     {
         materialData = new PointDataMaterial();
-        textElement.text = materialData.GetMaterialType().ToString() + "\n" + materialData.GetProductionRate().ToString();
+        //Debug.Log("coords: " + x + " " + y + " type: " + materialData.GetProductionRate());
+        textElement.text = "Collect\n" +materialData.GetProductionRate().ToString()+" "+materialData.GetMaterialType().ToString()+"\n";
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         grid.status[x, y] = GridStatus.MaterialPoint;
         materialPointList.Add(point);

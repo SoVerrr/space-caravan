@@ -18,3 +18,5 @@ MonoBehaviour:
   - iron
   - coal
   numberOfMaterialsNeeded: 010000000200000003000000
+  priceMax: 20
+  priceMin: 10

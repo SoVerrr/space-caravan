@@ -10,16 +10,17 @@ public class ProcessingPoint : Point
     [SerializeField] private ProcessingResult[] ProcessingResults;
     private int processingResultIndex;
     [SerializeField] TextMeshProUGUI textElement;
+    private string[] materialsNeeded;
+    private int[] numberofMaterials;
+    private string materialsPrint;
 
     override public void InstantiatePoint(int x, int y)
     {
 
         processingResultIndex = Random.Range(0, ProcessingResults.Length);
-
-        string[] materialsNeeded = ProcessingResults[processingResultIndex].GetMaterialNeeded();
-        int[] numberofMaterials = ProcessingResults[processingResultIndex].GetNumberOfMaterialNeeded();
-        string materialsPrint = ProcessingResults[processingResultIndex].GetResultName().ToString()+"\n";
-
+        materialsNeeded = ProcessingResults[processingResultIndex].GetMaterialNeeded();
+        numberofMaterials = ProcessingResults[processingResultIndex].GetNumberOfMaterialNeeded();
+        materialsPrint = "Craft "+ProcessingResults[processingResultIndex].GetResultName().ToString()+"\n";
         for(int i=0; i<materialsNeeded.Length;i++){
             materialsPrint += materialsNeeded[i]+" "+numberofMaterials[i]+"\n";
         }
