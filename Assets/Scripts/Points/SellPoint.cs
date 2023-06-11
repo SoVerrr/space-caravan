@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
-using System.Collections.Generic;
 public class SellPoint : Point
 {
     public static List<GameObject> sellPointList;
@@ -16,7 +15,7 @@ public class SellPoint : Point
     private int priceMin;
     private int price;
 
-    override public void InstantiatePoint(int x, int y, PointData data)
+    override public void InstantiatePoint(int x, int y)
     {   
         buyListPrint = "Sell:\n";
         for(int i=0; i<SellingResults.Length;i++){
@@ -30,7 +29,14 @@ public class SellPoint : Point
         sellPointList.Add(point);
         grid.status[x, y] = GridStatus.SellPoint;
     }
-
+    override public void Functionality(Inventory truckInventory)
+    {
+        foreach (var item in SellingResults)
+        {
+            truckInventory.substractItem(item.GetResultName(), 255);
+        }
+        //TODO: add items/money for selling
+    }
     static SellPoint()
     {
         sellPointList = new List<GameObject>();

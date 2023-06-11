@@ -11,4 +11,8 @@ public class HubPoint : Point
         hubPointList.Add(point);
         grid.status[x, y] = GridStatus.HubPoint;
     }
+    public override void Functionality(Inventory truckInventory)
+    {
+        Debug.Log("Collision");
+    }
 }

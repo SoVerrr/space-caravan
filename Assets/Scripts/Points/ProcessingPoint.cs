@@ -31,6 +31,24 @@ public class ProcessingPoint : Point
 
 
     }
+    public override void Functionality(Inventory truckInventory)
+    {
+        int canProduce = 0;
+        //count how many items can be produced by setting smallest quotient from materials available and materials needed
+        for (int i = 0; i < materialsNeeded.Length; i++)
+        {
+            if (Mathf.Floor(truckInventory.getItemValue(materialsNeeded[i]) / numberofMaterials[i]) < canProduce)
+                canProduce = Mathf.FloorToInt(truckInventory.getItemValue(materialsNeeded[i]) / numberofMaterials[i]);
+        }
+        //subtracting needed amount of materials from inventorty
+        for (int i = 0; i < materialsNeeded.Length; i++)
+        {
+            truckInventory.substractItem(materialsNeeded[i], numberofMaterials[i] * canProduce);
+        }
+        //adding produced items to truck inventory
+        truckInventory.addItem(ProcessingResults[processingResultIndex].GetResultName(), canProduce);
+    }
+
     static ProcessingPoint()
     {
         processingPointsList = new List<GameObject>();

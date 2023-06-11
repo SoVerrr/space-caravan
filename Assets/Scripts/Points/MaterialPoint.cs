@@ -16,7 +16,10 @@ public class MaterialPoint : Point
         grid.status[x, y] = GridStatus.MaterialPoint;
         materialPointList.Add(point);
     }
-
+    public override void Functionality(Inventory truckInventory)
+    {
+        truckInventory.addItem(materialData.GetMaterialType(), materialData.GetProductionRate());
+    }
     static MaterialPoint()
     {
         materialPointList = new List<GameObject>();
