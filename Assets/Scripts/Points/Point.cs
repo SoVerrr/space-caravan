@@ -5,6 +5,6 @@ using UnityEngine;
 public abstract class Point : MonoBehaviour
 {
     private int xCoordinate, yCoordinate;
-    protected SpaceGrid grid;
+    [SerializeField] protected SpaceGrid grid;
     abstract public void InstantiatePoint(int x, int y);
 }
