@@ -171,6 +171,7 @@ MonoBehaviour:
   materialPoint: {fileID: 1568498036}
   processingPoint: {fileID: 1317976195}
   grid: {fileID: 1555258114}
+  spawnSpacing: 1
 --- !u!1001 &235551541
 PrefabInstance:
   m_ObjectHideFlags: 0
