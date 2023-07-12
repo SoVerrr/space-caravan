@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8556121278611884047}
   - component: {fileID: 2030857150404154513}
   - component: {fileID: 7792914219286464075}
+  - component: {fileID: 3930071609722861345}
   m_Layer: 0
   m_Name: Hub Point
   m_TagString: Untagged
@@ -110,3 +111,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   hubPointList: []
+--- !u!114 &3930071609722861345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276528088274818158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c28fb74b63d27e4db443cdf60d7011b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truckObject: {fileID: 1452474200504713116, guid: 729ecf2e44fac4c4bb3a4b0dd72c16ea, type: 3}
