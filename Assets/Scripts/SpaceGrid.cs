@@ -28,6 +28,8 @@ public class SpaceGrid : MonoBehaviour
     public GridStatus[,] status;
     public SpawnStatus[,] spawnStatus;
     [SerializeField] public int roadCounter;
+    [SerializeField] public int roadLimit;
+    private int availableroads;  
 
 
     private void GenerateGrid()
@@ -132,8 +134,9 @@ public class SpaceGrid : MonoBehaviour
             }
         }
         //Debug.Log(roadCounter);
-        textElement.text = "Roads Built: "+roadCounter;
-        return roadCounter;
+        availableroads = roadLimit-roadCounter;
+        textElement.text = "Available roads: "+availableroads;
+        return availableroads;
 
     }
 

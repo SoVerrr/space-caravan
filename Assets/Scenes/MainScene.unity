@@ -1032,6 +1032,7 @@ MonoBehaviour:
   mainCamera: {fileID: 395711841}
   textElement: {fileID: 444091828}
   roadCounter: 0
+  roadLimit: 40
 --- !u!4 &1555258115
 Transform:
   m_ObjectHideFlags: 0
@@ -1135,6 +1136,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   mainCamera: {fileID: 395711841}
+  spacerGrid: {fileID: 1555258114}
 --- !u!4 &1867257035
 Transform:
   m_ObjectHideFlags: 0
@@ -1318,11 +1320,11 @@ PrefabInstance:
     - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: roadCounter
       value: 
-      objectReference: {fileID: 4983457263435601374}
+      objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: roadCounterDisplay
       value: 
-      objectReference: {fileID: 4983457263435601374}
+      objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664279, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1425,17 +1427,6 @@ PrefabInstance:
       objectReference: {fileID: 395711841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
---- !u!114 &4983457263435601374 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8887457289531949857, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-  m_PrefabInstance: {fileID: 4983457263435601373}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5841874283015054799
 PrefabInstance:
   m_ObjectHideFlags: 0
