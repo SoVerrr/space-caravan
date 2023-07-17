@@ -10,15 +10,17 @@ public class InputManager : MonoBehaviour
     public Action OnMouseUp;
 
     public LayerMask spaceMask;
-
+    private int roadCounter;
     [SerializeField]
     Camera mainCamera;
+    public SpaceGrid spacerGrid;
 
     private void Update()
     {
         CheckClickDownEvent();
         CheckClickUpEvent();
         CheckClickHoldEvent();
+        roadCounter = spacerGrid.GetRoadCounter();
     }
 
     private Vector3Int? RaycastSpace()
@@ -40,7 +42,7 @@ public class InputManager : MonoBehaviour
     private void CheckClickHoldEvent()
     {
        
-        if(Input.GetMouseButton(0)) // && EventSystem.current.IsPointerOverGameObject() == false
+        if(Input.GetMouseButton(0) && roadCounter > 0 ) // && EventSystem.current.IsPointerOverGameObject() == false
         {
             var position = RaycastSpace();
 
@@ -53,7 +55,7 @@ public class InputManager : MonoBehaviour
 
     private void CheckClickUpEvent()  
     {
-        if (Input.GetMouseButtonUp(0)) // && EventSystem.current.IsPointerOverGameObject() == false
+        if (Input.GetMouseButtonUp(0) ) // && EventSystem.current.IsPointerOverGameObject() == false
         {
             OnMouseUp?.Invoke();
         }
@@ -61,7 +63,7 @@ public class InputManager : MonoBehaviour
 
     private void CheckClickDownEvent()
     {
-        if (Input.GetMouseButtonDown(0)) //  && EventSystem.current.IsPointerOverGameObject() == false
+        if (Input.GetMouseButtonDown(0) && roadCounter > 0 ) //  && EventSystem.current.IsPointerOverGameObject() == false
         {
             var position = RaycastSpace();
 
