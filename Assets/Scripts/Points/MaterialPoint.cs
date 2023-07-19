@@ -7,7 +7,7 @@ public class MaterialPoint : Point
     public static List<GameObject> materialPointList;
     [SerializeField] TextMeshProUGUI textElement;
     private PointDataMaterial materialData;
-    override public void InstantiatePoint(int x, int y)
+    override public GameObject InstantiatePoint(int x, int y)
     {
         materialData = new PointDataMaterial();
         //Debug.Log("coords: " + x + " " + y + " type: " + materialData.GetProductionRate());
@@ -15,6 +15,7 @@ public class MaterialPoint : Point
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         grid.status[x, y] = GridStatus.MaterialPoint;
         materialPointList.Add(point);
+        return point;
     }
     public override void Functionality(Inventory truckInventory)
     {

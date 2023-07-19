@@ -15,7 +15,7 @@ public class SellPoint : Point
     private int priceMin;
     private int price;
 
-    override public void InstantiatePoint(int x, int y)
+    override public GameObject InstantiatePoint(int x, int y)
     {   
         buyListPrint = "Sell:\n";
         for(int i=0; i<SellingResults.Length;i++){
@@ -28,6 +28,7 @@ public class SellPoint : Point
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         sellPointList.Add(point);
         grid.status[x, y] = GridStatus.SellPoint;
+        return point;
     }
     override public void Functionality(Inventory truckInventory)
     {

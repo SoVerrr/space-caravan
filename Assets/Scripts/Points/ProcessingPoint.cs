@@ -14,7 +14,7 @@ public class ProcessingPoint : Point
     private int[] numberofMaterials;
     private string materialsPrint;
 
-    override public void InstantiatePoint(int x, int y)
+    override public GameObject InstantiatePoint(int x, int y)
     {
 
         processingResultIndex = Random.Range(0, ProcessingResults.Length);
@@ -29,7 +29,7 @@ public class ProcessingPoint : Point
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         processingPointsList.Add(point);
 
-
+        return point;
     }
     public override void Functionality(Inventory truckInventory)
     {

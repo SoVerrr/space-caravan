@@ -29,7 +29,8 @@ public class PointManager : MonoBehaviour
                 Debug.Log("New point overlapping with another, wrong position");
             else
             {
-                planetPrefab.InstantiatePoint(x, y);
+                var point = planetPrefab.InstantiatePoint(x, y);
+                point.transform.parent = GameObject.Find("Points").transform;
                 for (int xCoord = x - spawnSpacing; xCoord < x + spawnSpacing; xCoord++)
                 {
                     for (int yCoord = y - spawnSpacing; yCoord < y + spawnSpacing; yCoord++)

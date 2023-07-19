@@ -6,11 +6,12 @@ public class HubPoint : Point
 {
     public List<GameObject> hubPointList;
     private List<TradeRoute> routeList;
-    override public void InstantiatePoint(int x, int y)
+    override public GameObject InstantiatePoint(int x, int y)
     {
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         hubPointList.Add(point);
         grid.status[x, y] = GridStatus.HubPoint;
+        return point;
     }
     public override void Functionality(Inventory truckInventory)
     {
