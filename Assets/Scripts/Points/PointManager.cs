@@ -15,7 +15,6 @@ public class PointManager : MonoBehaviour
         int[] coords = FindSpawnSpot();
         if (coords == null || coords.Length == 0)
         {
-            Debug.Log("No more suitable spawn points");
             return;
         }
         else
