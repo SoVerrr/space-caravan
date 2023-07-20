@@ -31,8 +31,8 @@ public class HubPoint : Point
 
     private void OnMouseDown()
     {
+        HubUI.SetParentHub(this);
         UI.SetActive(!isUiEnabled);
         isUiEnabled = !isUiEnabled;
-        Debug.Log(isUiEnabled);
     }
 }
