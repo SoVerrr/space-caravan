@@ -10,16 +10,17 @@ public class ProcessingPoint : Point
     [SerializeField] private ProcessingResult[] ProcessingResults;
     private int processingResultIndex;
     [SerializeField] TextMeshProUGUI textElement;
+    private string[] materialsNeeded;
+    private int[] numberofMaterials;
+    private string materialsPrint;
 
     override public void InstantiatePoint(int x, int y)
     {
 
         processingResultIndex = Random.Range(0, ProcessingResults.Length);
-
-        string[] materialsNeeded = ProcessingResults[processingResultIndex].GetMaterialNeeded();
-        int[] numberofMaterials = ProcessingResults[processingResultIndex].GetNumberOfMaterialNeeded();
-        string materialsPrint = ProcessingResults[processingResultIndex].GetResultName().ToString()+"\n";
-
+        materialsNeeded = ProcessingResults[processingResultIndex].GetMaterialNeeded();
+        numberofMaterials = ProcessingResults[processingResultIndex].GetNumberOfMaterialNeeded();
+        materialsPrint = "Craft "+ProcessingResults[processingResultIndex].GetResultName().ToString()+"\n";
         for(int i=0; i<materialsNeeded.Length;i++){
             materialsPrint += materialsNeeded[i]+" "+numberofMaterials[i]+"\n";
         }
@@ -30,6 +31,24 @@ public class ProcessingPoint : Point
 
 
     }
+    public override void Functionality(Inventory truckInventory)
+    {
+        int canProduce = 0;
+        //count how many items can be produced by setting smallest quotient from materials available and materials needed
+        for (int i = 0; i < materialsNeeded.Length; i++)
+        {
+            if (Mathf.Floor(truckInventory.getItemValue(materialsNeeded[i]) / numberofMaterials[i]) < canProduce)
+                canProduce = Mathf.FloorToInt(truckInventory.getItemValue(materialsNeeded[i]) / numberofMaterials[i]);
+        }
+        //subtracting needed amount of materials from inventorty
+        for (int i = 0; i < materialsNeeded.Length; i++)
+        {
+            truckInventory.substractItem(materialsNeeded[i], numberofMaterials[i] * canProduce);
+        }
+        //adding produced items to truck inventory
+        truckInventory.addItem(ProcessingResults[processingResultIndex].GetResultName(), canProduce);
+    }
+
     static ProcessingPoint()
     {
         processingPointsList = new List<GameObject>();

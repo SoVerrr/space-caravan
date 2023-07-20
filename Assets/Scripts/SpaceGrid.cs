@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI; // Text UI
 
 public enum GridStatus
 {
@@ -23,10 +23,15 @@ public class SpaceGrid : MonoBehaviour
     [SerializeField] private int gridSizeX, gridSizeY;
     [SerializeField] private GameObject tile;
     [SerializeField] private Camera mainCamera;
-
+    [SerializeField] Text textElement;
     public Vector3[,] tileArray;
     public GridStatus[,] status;
     public SpawnStatus[,] spawnStatus;
+    [SerializeField] public int roadCounter;
+    [SerializeField] public int roadLimit;
+    private int availableroads;  
+
+
     private void GenerateGrid()
     {
         for (int x = 0; x < gridSizeX; x++)
@@ -77,6 +82,7 @@ public class SpaceGrid : MonoBehaviour
     {
         if (aiAgent)
         {
+
             return gridStatus == GridStatus.Route;
         }
 
@@ -113,8 +119,27 @@ public class SpaceGrid : MonoBehaviour
             }
 
         }
-         
+        
     }
+
+    public int GetRoadCounter(){
+        roadCounter=0;
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for(int y = 0; y < gridSizeY; y++)
+            {
+                if(status[x,y]==GridStatus.Route){
+                    roadCounter+=1;
+                }
+            }
+        }
+        //Debug.Log(roadCounter);
+        availableroads = roadLimit-roadCounter;
+        textElement.text = "Available roads: "+availableroads;
+        return availableroads;
+
+    }
+
 
     public List<Vector2Int> GetAllAdjacentCellStatusOfType(int x, int y, GridStatus type)
     {
@@ -198,7 +223,7 @@ public class SpaceGrid : MonoBehaviour
 
     void Update()
     {
-        
+        GetRoadCounter();
     }
 
 

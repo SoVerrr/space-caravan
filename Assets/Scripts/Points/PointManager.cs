@@ -9,7 +9,7 @@ public class PointManager : MonoBehaviour
     [SerializeField] public MaterialPoint materialPoint;
     [SerializeField] public ProcessingPoint processingPoint;
     [SerializeField] SpaceGrid grid;
-
+    [SerializeField] int spawnSpacing;
     public void GeneratePoint(Point planetPrefab)
     {
         int[] coords = FindSpawnSpot();
@@ -30,9 +30,9 @@ public class PointManager : MonoBehaviour
             else
             {
                 planetPrefab.InstantiatePoint(x, y);
-                for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
+                for (int xCoord = x - spawnSpacing; xCoord < x + spawnSpacing; xCoord++)
                 {
-                    for (int yCoord = y - 4; yCoord < y + 4; yCoord++)
+                    for (int yCoord = y - spawnSpacing; yCoord < y + spawnSpacing; yCoord++)
                     {
 
                         if (xCoord >= 0 && xCoord < grid.DimensionX() && yCoord >= 0 && yCoord < grid.DimensionY())
