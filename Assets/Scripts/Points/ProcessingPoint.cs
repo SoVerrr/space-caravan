@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
-using System.Collections.Generic;
 public class ProcessingPoint : Point
 {
     public static List<GameObject> processingPointsList;

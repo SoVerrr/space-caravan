@@ -31,7 +31,7 @@ public class HubPoint : Point
 
     private void OnMouseDown()
     {
-        HubUI.SetParentHub(this);
+        TradeRouteManager.Instance.SetParentHub(this);
         UI.SetActive(!isUiEnabled);
         isUiEnabled = !isUiEnabled;
     }
