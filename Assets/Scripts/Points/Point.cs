@@ -16,4 +16,20 @@ public abstract class Point : MonoBehaviour
             Functionality(collision.gameObject.GetComponent<Inventory>());
         }
     }
+
+    private void OnMouseDown()
+    {
+        if(this is HubPoint)
+        {
+            return;
+        }
+        else
+        {
+            if (TradeRouteManager.Instance.isRouteBeingCreated)
+            {
+                Debug.Log("Added to route");
+                TradeRouteManager.Instance.currentlyCreatedRoute.AddToRoute(this);
+            }
+        }
+    }
 }

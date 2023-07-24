@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public InputManager inputManager;
     public RouteManager routeManager;
-
+    [SerializeField] private GameObject HubUI;
     private void Start()
     {
         inputManager.OnMouseClick += routeManager.PlaceRoute;
@@ -20,5 +20,11 @@ public class GameManager : MonoBehaviour
     //    Debug.Log(position);
     //    routeManager.PlaceRoute(position);
     //}
-
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F) && TradeRouteManager.Instance.isRouteBeingCreated)
+        {
+            HubUI.SetActive(true);
+        }
+    }
 }

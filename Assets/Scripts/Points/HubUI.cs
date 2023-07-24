@@ -13,8 +13,7 @@ public class HubUI : MonoBehaviour
     public void NewRouteButton()
     {
         TradeRouteManager.Instance.isRouteBeingCreated = true;
-        CloseWindow();
-
+        TradeRouteManager.Instance.StartNewRoute();
     }
     private void OnEnable()
     {
@@ -22,6 +21,7 @@ public class HubUI : MonoBehaviour
     }
     private void OnDisable()
     {
-        TradeRouteManager.Instance.parentHub = null;
+        if(!TradeRouteManager.Instance.isRouteBeingCreated)
+            TradeRouteManager.Instance.parentHub = null;
     }
 }
