@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 0}
   routeManager: {fileID: 0}
+  HubUI: {fileID: 0}
 --- !u!114 &4983457262464664278
 MonoBehaviour:
   m_ObjectHideFlags: 0
