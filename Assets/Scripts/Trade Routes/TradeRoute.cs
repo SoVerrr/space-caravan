@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TradeRoute : MonoBehaviour
+public class TradeRoute
 {
     private List<Point> tradeRoute;
     // Start is called before the first frame update
@@ -31,5 +31,10 @@ public class TradeRoute : MonoBehaviour
             return 0;
         }
 
+    }
+    public void PrintRoute()
+    {
+        foreach (var item in tradeRoute)
+            Debug.Log(item);
     }
 }

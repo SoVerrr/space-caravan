@@ -14,10 +14,15 @@ public class HubUI : MonoBehaviour
     {
         TradeRouteManager.Instance.isRouteBeingCreated = true;
         TradeRouteManager.Instance.StartNewRoute();
+        CloseWindow();
     }
     private void OnEnable()
     {
+        if (TradeRouteManager.Instance.isRouteBeingCreated)
+        {
+            TradeRouteManager.Instance.FinishCurrentRoute();
 
+        }
     }
     private void OnDisable()
     {

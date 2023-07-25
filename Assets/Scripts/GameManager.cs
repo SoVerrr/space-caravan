@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
     public InputManager inputManager;
     public RouteManager routeManager;
     [SerializeField] private GameObject HubUI;
+    [SerializeField] private Point point;
     private void Start()
     {
         inputManager.OnMouseClick += routeManager.PlaceRoute;
         inputManager.OnMouseHold += routeManager.PlaceRoute;
         inputManager.OnMouseUp += routeManager.FinishPlacingRoute;
+        inputManager.OnPointClick += point.PointClickEvent;
     }
 
     //private void HandleMouseClick(Vector3Int position)

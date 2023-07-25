@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3063720534060243483}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4560950227519702083}
+        m_TargetAssemblyTypeName: HubUI, Assembly-CSharp
+        m_MethodName: NewRouteButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4983457262386332837
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 0}
   routeManager: {fileID: 0}
-  HubUI: {fileID: 0}
+  HubUI: {fileID: 5685840376892548641}
+  point: {fileID: 0}
 --- !u!114 &4983457262464664278
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
 {
     public Action<Vector3Int> OnMouseClick, OnMouseHold;
     public Action OnMouseUp;
+    public Action<Point> OnPointClick;
 
     public LayerMask spaceMask;
     private int roadCounter;
@@ -20,6 +21,7 @@ public class InputManager : MonoBehaviour
         CheckClickDownEvent();
         CheckClickUpEvent();
         CheckClickHoldEvent();
+        CheckPointClickEvent();
         roadCounter = spacerGrid.GetRoadCounter();
     }
 
@@ -38,7 +40,22 @@ public class InputManager : MonoBehaviour
     
         return null;
     }
+    private Transform? RaycastObject()
+    {
+        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition); // Wskazuje kamera tam gdzie klikniete
 
+        if (Physics.Raycast(ray, out hit))
+        {
+
+            Transform objectHit = hit.transform;
+            if(objectHit)
+                return objectHit;
+        }
+
+
+        return null;
+    }
     private void CheckClickHoldEvent()
     {
        
@@ -66,11 +83,25 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && roadCounter > 0 ) //  && EventSystem.current.IsPointerOverGameObject() == false
         {
             var position = RaycastSpace();
-
+            var objectHit = RaycastObject();
             if (position != null)
             {
                 OnMouseClick?.Invoke(position.Value);
             }
+            if(objectHit.gameObject.GetComponent<HubPoint>() != null)
+                OnPointClick?.Invoke(objectHit.gameObject.GetComponent<HubPoint>());
         }
     }
+
+    private void CheckPointClickEvent()
+    {
+        if (Input.GetMouseButtonDown(0) && TradeRouteManager.Instance.isRouteBeingCreated)
+        {
+            Transform objectHit = RaycastObject();
+            var point = objectHit.gameObject.GetComponent<Point>();
+            if (point)
+                OnPointClick?.Invoke(point);
+        }
+    }
+
 }

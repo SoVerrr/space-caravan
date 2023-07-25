@@ -17,18 +17,19 @@ public abstract class Point : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    public void PointClickEvent(Point point)
     {
-        if(this is HubPoint)
+        if(point is HubPoint)
         {
-            return;
+            Debug.Log("abcd");
+            point.gameObject.GetComponent<HubPoint>().HubPointClickEvent();
         }
         else
         {
             if (TradeRouteManager.Instance.isRouteBeingCreated)
             {
                 Debug.Log("Added to route");
-                TradeRouteManager.Instance.currentlyCreatedRoute.AddToRoute(this);
+                TradeRouteManager.Instance.currentlyCreatedRoute.AddToRoute(point);
             }
         }
     }

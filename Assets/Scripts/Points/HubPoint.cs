@@ -24,10 +24,25 @@ public class HubPoint : Point
         routeList.Add(new TradeRoute(points));
     }
 
-    private void OnMouseDown()
+    public void HubPointClickEvent()
     {
         TradeRouteManager.Instance.SetParentHub(this);
         UI.SetActive(!isUiEnabled);
         isUiEnabled = !isUiEnabled;
+    }
+    private void Awake()
+    {
+        routeList = new List<TradeRoute>();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            foreach (var item in routeList)
+            {
+                Debug.Log("---ROUTE---");
+                item.PrintRoute();
+            }
+        }
     }
 }

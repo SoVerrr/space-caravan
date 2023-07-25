@@ -16,6 +16,12 @@ public class TradeRouteManager : MonoBehaviour
     {
         currentlyCreatedRoute = new TradeRoute();
     }
+    public void FinishCurrentRoute()
+    {
+        parentHub.routeList.Add(currentlyCreatedRoute);
+        currentlyCreatedRoute = null;
+        isRouteBeingCreated = false;
+    }
     private void Awake()
     {
         if (Instance != null && Instance != this)
