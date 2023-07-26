@@ -32,6 +32,10 @@ public class TradeRoute
         }
 
     }
+    public List<Point> GetRoute()
+    {
+        return tradeRoute;
+    }
     public void PrintRoute()
     {
         foreach (var item in tradeRoute)
