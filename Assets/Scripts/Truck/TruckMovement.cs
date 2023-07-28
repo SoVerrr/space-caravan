@@ -78,9 +78,10 @@ public class TruckMovement : MonoBehaviour
                 finalPath = RetracePath(currentCell, startNode);
                 return;
             }
-            List<Vector2Int> adjacent = grid.GetAdjacentCells(currentCell.position, true);
+            List<Vector2Int> adjacent = grid.GetAdjacentCells(currentCell.position, false);
             foreach (var item in adjacent)
             {
+                Debug.Log("aaaaaa");
                 Node neighour = new Node(item, currentCell, CostF(item), CostH(item), CostG(item));
                 if (closedCells.Contains(neighour)) continue;
                 int newMovementCostToNeighbour = currentCell.costG + GetDistance(currentCell.position, neighour.position);
@@ -109,8 +110,13 @@ public class TruckMovement : MonoBehaviour
     }
     public void SendOnRoute(TradeRoute route)
     {
-        foreach (var item in route.GetRoute())
+        List<Point> tradeRoute = route.GetRoute();
+        for(int i = 0; i < tradeRoute.Count; i++)
         {
+            if (i < tradeRoute.Count - 1)
+                SendTruck(tradeRoute[i].GetPointPosition(), tradeRoute[i + 1].GetPointPosition());
+            else
+                SendTruck(tradeRoute[i].GetPointPosition(), tradeRoute[0].GetPointPosition());
         }
     }
 }

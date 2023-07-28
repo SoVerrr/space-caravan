@@ -113,6 +113,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   hubPointList: []
   UI: {fileID: 0}
+  truckPrefab: {fileID: 1452474200504713116, guid: 729ecf2e44fac4c4bb3a4b0dd72c16ea, type: 3}
 --- !u!114 &3930071609722861345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,15 +140,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f08e8dd2acf89749a60f78993333341, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f08e8dd2acf89749a60f78993333341, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f08e8dd2acf89749a60f78993333341, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f08e8dd2acf89749a60f78993333341, type: 3}
       propertyPath: m_LocalPosition.x

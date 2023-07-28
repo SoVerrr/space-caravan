@@ -16,7 +16,10 @@ public abstract class Point : MonoBehaviour
             Functionality(collision.gameObject.GetComponent<Inventory>());
         }
     }
-
+    public Vector2Int GetPointPosition()
+    {
+        return new Vector2Int(xCoordinate, yCoordinate);
+    }
     public void PointClickEvent(Point point)
     {
         if(point is HubPoint)

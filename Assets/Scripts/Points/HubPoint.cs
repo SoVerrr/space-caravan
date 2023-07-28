@@ -7,6 +7,7 @@ public class HubPoint : Point
     public List<GameObject> hubPointList;
     public List<TradeRoute> routeList;
     [SerializeField] private GameObject UI;
+    [SerializeField] private GameObject truckPrefab;
     static public bool isUiEnabled = false;
     override public GameObject InstantiatePoint(int x, int y)
     {
@@ -42,6 +43,14 @@ public class HubPoint : Point
             {
                 Debug.Log("---ROUTE---");
                 item.PrintRoute();
+            }
+        }
+        if (Input.GetMouseButton(1))
+        {
+            foreach (var item in routeList)
+            {
+                var truck = Instantiate(truckPrefab, transform.position, Quaternion.identity);
+                truck.GetComponent<TruckMovement>().SendOnRoute(item);
             }
         }
     }
