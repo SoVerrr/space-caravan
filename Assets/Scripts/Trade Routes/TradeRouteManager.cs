@@ -14,7 +14,7 @@ public class TradeRouteManager : MonoBehaviour
     }
     public void StartNewRoute()
     {
-        currentlyCreatedRoute = new TradeRoute();
+        currentlyCreatedRoute = new TradeRoute(parentHub);
     }
     public void FinishCurrentRoute()
     {

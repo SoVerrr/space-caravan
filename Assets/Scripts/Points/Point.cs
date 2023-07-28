@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Point : MonoBehaviour
 {
-    private int xCoordinate, yCoordinate;
+    protected int xCoordinate, yCoordinate;
     [SerializeField] protected SpaceGrid grid;
     abstract public GameObject InstantiatePoint(int x, int y);
     abstract public void Functionality(Inventory truckInventory);
@@ -18,7 +18,7 @@ public abstract class Point : MonoBehaviour
     }
     public Vector2Int GetPointPosition()
     {
-        return new Vector2Int(xCoordinate, yCoordinate);
+        return new Vector2Int((int)gameObject.transform.position.x, (int)gameObject.transform.position.x);
     }
     public void PointClickEvent(Point point)
     {

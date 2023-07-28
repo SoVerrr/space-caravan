@@ -25,7 +25,10 @@ public class SellPoint : Point
             buyListPrint += SellingResults[i].GetResultName().ToString()+" "+price.ToString()+"g"+"\n";
         }
         textElement.text = buyListPrint;
+        this.xCoordinate = x;
+        this.yCoordinate = y;
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+
         sellPointList.Add(point);
         grid.status[x, y] = GridStatus.SellPoint;
         return point;

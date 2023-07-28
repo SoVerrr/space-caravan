@@ -25,7 +25,10 @@ public class ProcessingPoint : Point
         }
         grid.status[x, y] = GridStatus.MaterialPoint;
         textElement.text = materialsPrint;
+        this.xCoordinate = x;
+        this.yCoordinate = y;
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+        
         processingPointsList.Add(point);
 
         return point;

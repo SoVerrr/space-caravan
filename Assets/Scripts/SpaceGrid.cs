@@ -121,7 +121,10 @@ public class SpaceGrid : MonoBehaviour
         }
         
     }
-
+    public Vector2Int GetGridSize()
+    {
+        return new Vector2Int(gridSizeX, gridSizeY);
+    }
     public int GetRoadCounter(){
         roadCounter=0;
         for (int x = 0; x < gridSizeX; x++)

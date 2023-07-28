@@ -57,6 +57,21 @@ public class TruckMovement : MonoBehaviour
         }
         return path;
     }
+    private List<Vector2Int> GetAdjacent(Node cell)
+    {
+        Debug.Log($"CellPos: {cell.position.x} , {cell.position.y}");
+        Debug.Log($"GridSize: {grid.GetGridSize()}");
+        List<Vector2Int> adjacent = new List<Vector2Int>();
+        if (cell.position.x - 1 >= 0 && grid[cell.position.x - 1, cell.position.y] != GridStatus.Empty)
+            adjacent.Add(new Vector2Int(cell.position.x - 1, cell.position.y));
+        if (cell.position.x + 1 <= grid.GetGridSize().x && grid[cell.position.x + 1, cell.position.y] != GridStatus.Empty)
+            adjacent.Add(new Vector2Int(cell.position.x + 1, cell.position.y));
+        if (cell.position.y - 1 >= 0 && grid[cell.position.x, cell.position.y - 1] != GridStatus.Empty)
+            adjacent.Add(new Vector2Int(cell.position.x, cell.position.y - 1));
+        if (cell.position.y + 1 <= grid.GetGridSize().y && grid[cell.position.x, cell.position.y + 1] != GridStatus.Empty)
+            adjacent.Add(new Vector2Int(cell.position.x, cell.position.y + 1));
+        return adjacent;
+    }
     private void FindPath(Vector2Int startPosition, Vector2Int endPosition)
     {
         openCells = new List<Node>();
@@ -73,12 +88,14 @@ public class TruckMovement : MonoBehaviour
             }
             openCells.Remove(currentCell);
             closedCells.Add(currentCell);
+            Debug.Log($"current: {currentCell.position}     end: {endPosition}");
             if (currentCell.position == endPosition)
             {
+                
                 finalPath = RetracePath(currentCell, startNode);
                 return;
             }
-            List<Vector2Int> adjacent = grid.GetAdjacentCells(currentCell.position, false);
+            List<Vector2Int> adjacent = GetAdjacent(currentCell);
             foreach (var item in adjacent)
             {
                 Debug.Log("aaaaaa");
@@ -104,7 +121,7 @@ public class TruckMovement : MonoBehaviour
         {
             while(transform.position.x != item.x && transform.position.z != item.y)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(item.x, transform.position.y, item.y), 5 * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(item.x, transform.position.y, item.y), Time.deltaTime);
             }
         }
     }
