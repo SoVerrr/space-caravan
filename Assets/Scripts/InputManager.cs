@@ -101,7 +101,7 @@ public class InputManager : MonoBehaviour
             if (point)
                 OnPointClick?.Invoke(point);
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             Transform objectHit = RaycastObject();
             var point = objectHit.gameObject.GetComponent<Point>();
