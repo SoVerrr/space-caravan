@@ -8,8 +8,7 @@ public class InputManager : MonoBehaviour
 {
     public Action<Vector3Int> OnMouseClick, OnMouseHold;
     public Action OnMouseUp;
-    public Action<Point> OnPointClick;
-
+    public Action<Point> OnPointClick, OnHubRightClick;
     public LayerMask spaceMask;
     private int roadCounter;
     [SerializeField]
@@ -101,6 +100,13 @@ public class InputManager : MonoBehaviour
             var point = objectHit.gameObject.GetComponent<Point>();
             if (point)
                 OnPointClick?.Invoke(point);
+        }
+        if (Input.GetMouseButton(1))
+        {
+            Transform objectHit = RaycastObject();
+            var point = objectHit.gameObject.GetComponent<Point>();
+            if (point)
+                OnHubRightClick?.Invoke(point);
         }
     }
 

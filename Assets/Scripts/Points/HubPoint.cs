@@ -37,6 +37,15 @@ public class HubPoint : Point
     {
         routeList = new List<TradeRoute>();
     }
+    public void HubRightClick()
+    {
+        Debug.Log($"routelist count: {routeList.Count}");
+        foreach(TradeRoute route in routeList)
+        {
+            var truck = Instantiate(truckPrefab, this.transform.position, Quaternion.identity);
+            truck.GetComponent<TruckMovement>().SendOnRoute(route);
+        }
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -45,14 +54,6 @@ public class HubPoint : Point
             {
                 Debug.Log("---ROUTE---");
                 item.PrintRoute();
-            }
-        }
-        if (Input.GetMouseButton(1))
-        {
-            foreach (var item in routeList)
-            {
-                var truck = Instantiate(truckPrefab, transform.position, Quaternion.identity);
-                truck.GetComponent<TruckMovement>().SendOnRoute(item);
             }
         }
     }

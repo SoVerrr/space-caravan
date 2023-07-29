@@ -18,7 +18,7 @@ public abstract class Point : MonoBehaviour
     }
     public Vector2Int GetPointPosition()
     {
-        return new Vector2Int((int)gameObject.transform.position.x, (int)gameObject.transform.position.x);
+        return new Vector2Int((int)gameObject.transform.position.x, (int)gameObject.transform.position.z);
     }
     public void PointClickEvent(Point point)
     {
@@ -34,6 +34,13 @@ public abstract class Point : MonoBehaviour
                 Debug.Log("Added to route");
                 TradeRouteManager.Instance.currentlyCreatedRoute.AddToRoute(point);
             }
+        }
+    }
+    public void HubRightClickEvent(Point point)
+    {
+        if(point is HubPoint)
+        {
+            point.gameObject.GetComponent<HubPoint>().HubRightClick();
         }
     }
 }

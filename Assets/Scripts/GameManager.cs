@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         inputManager.OnMouseHold += routeManager.PlaceRoute;
         inputManager.OnMouseUp += routeManager.FinishPlacingRoute;
         inputManager.OnPointClick += point.PointClickEvent;
+        inputManager.OnHubRightClick += point.HubRightClickEvent;
     }
 
     //private void HandleMouseClick(Vector3Int position)

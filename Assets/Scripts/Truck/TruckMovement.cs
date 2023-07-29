@@ -4,136 +4,36 @@ using UnityEngine;
 
 public class TruckMovement : MonoBehaviour
 {
-    private List<Node> openCells;
-    private HashSet<Node> closedCells;
-    public List<Vector2Int> finalPath;
-    private Vector2Int targetCell;
-    private Vector2Int startCell;
+
     [SerializeField] SpaceGrid grid;
-    class Node
+    public void SendTruck(Point startingPoint, Point endPoint)
     {
-        public Node parent;
-        public Vector2Int position;
-        public int costF, costH, costG;
-        public Node(Vector2Int currentCell, Node parentCell, int costF, int costH, int costG)
+        Vector2Int startPos = startingPoint.GetPointPosition();
+        Vector2Int endPos = endPoint.GetPointPosition();
+        Debug.Log($"Startpos:{startPos} | endpos: {endPos}");
+        List<Vector2Int> path = Pathfinding.AStarSearch(grid, startPos, endPos, true);
+        path.Reverse();
+        StartCoroutine(MoveTruckToPosition(path));
+    }
+    IEnumerator MoveTruckToPosition(List<Vector2Int> path)
+    {
+        foreach (Vector2Int pathItem in path)
         {
-            parent = parentCell;
-            position = currentCell;
-            this.costF = costF;
-            this.costG = costG;
-            this.costH = costH;
-            
+            Vector3 target = new Vector3(pathItem.x, 0, pathItem.y);
+            while (transform.position != target)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime);
+                yield return null;
+            }
         }
     }
-    private Node startNode;
-    int GetDistance(Vector2Int currentPosition, Vector2Int destination)
+    public void SendOnRoute(TradeRoute tradeRoute)
     {
-        int distX = Mathf.Abs(currentPosition.x - destination.x);
-        int distZ = Mathf.Abs(currentPosition.y - destination.y);
-        if (distZ > distX)
-            return 14 * distZ + 10 * (distX - distZ);
-        return 14 * distX + 10 * (distZ - distX);
-    }
-    public int CostH(Vector2Int currentPosition)
-    {
-        return GetDistance(currentPosition, targetCell);
-    }
-    int CostG(Vector2Int currentPosition)
-    {
-        return GetDistance(currentPosition, startCell);
-    }
-    int CostF(Vector2Int currentPosition)
-    {
-        return CostH(currentPosition) + CostG(currentPosition);
-    }
-    List<Vector2Int> RetracePath(Node startNode, Node finishNode)
-    {
-        List<Vector2Int> path = new List<Vector2Int>();
-        Node currentNode = startNode;
-        while(currentNode.position != finishNode.position)
+        List<Point> route = tradeRoute.GetRoute();
+        for (int i = 0; i < route.Count - 1; i++)
         {
-            path.Add(currentNode.position);
-            currentNode = currentNode.parent;
-        }
-        return path;
-    }
-    private List<Vector2Int> GetAdjacent(Node cell)
-    {
-        Debug.Log($"CellPos: {cell.position.x} , {cell.position.y}");
-        Debug.Log($"GridSize: {grid.GetGridSize()}");
-        List<Vector2Int> adjacent = new List<Vector2Int>();
-        if (cell.position.x - 1 >= 0 && grid[cell.position.x - 1, cell.position.y] != GridStatus.Empty)
-            adjacent.Add(new Vector2Int(cell.position.x - 1, cell.position.y));
-        if (cell.position.x + 1 <= grid.GetGridSize().x && grid[cell.position.x + 1, cell.position.y] != GridStatus.Empty)
-            adjacent.Add(new Vector2Int(cell.position.x + 1, cell.position.y));
-        if (cell.position.y - 1 >= 0 && grid[cell.position.x, cell.position.y - 1] != GridStatus.Empty)
-            adjacent.Add(new Vector2Int(cell.position.x, cell.position.y - 1));
-        if (cell.position.y + 1 <= grid.GetGridSize().y && grid[cell.position.x, cell.position.y + 1] != GridStatus.Empty)
-            adjacent.Add(new Vector2Int(cell.position.x, cell.position.y + 1));
-        return adjacent;
-    }
-    private void FindPath(Vector2Int startPosition, Vector2Int endPosition)
-    {
-        openCells = new List<Node>();
-        closedCells = new HashSet<Node>();
-        startNode = new Node(startPosition, null, CostF(startPosition), CostH(startPosition), CostG(startPosition));
-        openCells.Add(startNode);
-        while(openCells.Count > 0)
-        {
-            Node currentCell = openCells[0];
-            foreach (var cell in openCells)
-            {
-                if (currentCell.costF < cell.costF || currentCell.costF == cell.costF && currentCell.costH > cell.costH)
-                    currentCell = cell;
-            }
-            openCells.Remove(currentCell);
-            closedCells.Add(currentCell);
-            Debug.Log($"current: {currentCell.position}     end: {endPosition}");
-            if (currentCell.position == endPosition)
-            {
-                
-                finalPath = RetracePath(currentCell, startNode);
-                return;
-            }
-            List<Vector2Int> adjacent = GetAdjacent(currentCell);
-            foreach (var item in adjacent)
-            {
-                Debug.Log("aaaaaa");
-                Node neighour = new Node(item, currentCell, CostF(item), CostH(item), CostG(item));
-                if (closedCells.Contains(neighour)) continue;
-                int newMovementCostToNeighbour = currentCell.costG + GetDistance(currentCell.position, neighour.position);
-                if (newMovementCostToNeighbour < neighour.costG || openCells.Contains(neighour))
-                {
-                    neighour.costG = newMovementCostToNeighbour;
-                    if (!openCells.Contains(neighour))
-                        openCells.Add(neighour);
-                }
 
-
-            }
-        }
-    }
-
-    public void SendTruck(Vector2Int startingPoint, Vector2Int endingPoint)
-    {
-        FindPath(startingPoint, endingPoint);
-        foreach (var item in finalPath)
-        {
-            while(transform.position.x != item.x && transform.position.z != item.y)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(item.x, transform.position.y, item.y), Time.deltaTime);
-            }
-        }
-    }
-    public void SendOnRoute(TradeRoute route)
-    {
-        List<Point> tradeRoute = route.GetRoute();
-        for(int i = 0; i < tradeRoute.Count; i++)
-        {
-            if (i < tradeRoute.Count - 1)
-                SendTruck(tradeRoute[i].GetPointPosition(), tradeRoute[i + 1].GetPointPosition());
-            else
-                SendTruck(tradeRoute[i].GetPointPosition(), tradeRoute[0].GetPointPosition());
+            SendTruck(route[i], route[i + 1]);
         }
     }
 }

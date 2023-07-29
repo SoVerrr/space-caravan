@@ -83,7 +83,7 @@ public class SpaceGrid : MonoBehaviour
         if (aiAgent)
         {
 
-            return gridStatus == GridStatus.Route;
+            return gridStatus != /*GridStatus.Route*/GridStatus.Empty;
         }
 
         return gridStatus == GridStatus.Empty || gridStatus == GridStatus.Route;
