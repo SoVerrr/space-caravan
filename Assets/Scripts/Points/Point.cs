@@ -13,6 +13,7 @@ public abstract class Point : MonoBehaviour
     {
         if(collision.gameObject.tag == "Vehicle")
         {
+            Debug.Log("Functioned");
             Functionality(collision.gameObject.GetComponent<Inventory>());
         }
     }

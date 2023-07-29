@@ -6,14 +6,7 @@ public class TruckMovement : MonoBehaviour
 {
 
     [SerializeField] SpaceGrid grid;
-    public void SendTruck(Point startingPoint, Point endPoint)
-    {
-        /*Vector2Int startPos = startingPoint.GetPointPosition();
-        Vector2Int endPos = endPoint.GetPointPosition();
-        Debug.Log($"Startpos:{startPos} | endpos: {endPos}");
-        List<Vector2Int> path = Pathfinding.AStarSearch(grid, startPos, endPos, true);
-        path.Reverse();*/
-    }
+
     IEnumerator MoveTruckToPosition(List<Point> route)
     {
         for (int i = 0; i < route.Count; i++)
@@ -52,9 +45,5 @@ public class TruckMovement : MonoBehaviour
     {
         List<Point> route = tradeRoute.GetRoute();
         StartCoroutine(MoveTruckToPosition(route));
-        /*for (int i = 0; i < route.Count - 1; i++)
-        {
-            SendTruck(route[i], route[i + 1]);
-        }*/
     }
 }
