@@ -8,7 +8,7 @@ public class TruckManager : MonoBehaviour
     TruckMovement TruckMovement;
     public Vector3 currentPosition;
     public Vector3 targetPosition = new Vector3(0,0,0);
-    [SerializeField] private GameObject UI;
+    [SerializeField] private GameObject inventoryUI;
     static public bool isUiEnabled = false;
 
     void Start()
@@ -42,7 +42,7 @@ public class TruckManager : MonoBehaviour
     {
         Debug.Log("Truck clicked!!!");
 
-        UI.SetActive(!isUiEnabled);
+        truck.inventoryUI.SetActive(!isUiEnabled);
         isUiEnabled = !isUiEnabled;
 
     }
