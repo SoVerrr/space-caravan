@@ -303,6 +303,7 @@ MonoBehaviour:
   routeManager: {fileID: 0}
   HubUI: {fileID: 5685840376892548641}
   point: {fileID: 7792914219286464075, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
+  truck: {fileID: 5519658907959760654, guid: 729ecf2e44fac4c4bb3a4b0dd72c16ea, type: 3}
 --- !u!114 &4983457262464664278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +320,7 @@ MonoBehaviour:
   pause: {fileID: 4983457263464862039}
   start: {fileID: 4983457262606373260}
   speedUp: {fileID: 4983457262386332839}
-  customTime: 100
+  customTime: 5
 --- !u!114 &4983457262464664273
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class TruckManager : MonoBehaviour
     TruckMovement TruckMovement;
     public Vector3 currentPosition;
     public Vector3 targetPosition = new Vector3(0,0,0);
+    [SerializeField] private GameObject UI;
+    static public bool isUiEnabled = false;
 
     void Start()
     {
@@ -29,16 +31,24 @@ public class TruckManager : MonoBehaviour
         Debug.Log("truck pos: ");Debug.Log(transform.position);
     }
 
-    void moveByTile(Vector3 target)
-    {
-        currentPosition = transform.position;
-        transform.position = Vector3.MoveTowards(currentPosition, target, 0.1f*Time.deltaTime);
-        Debug.Log("truck pos: ");Debug.Log(transform.position);
-    }
+    //void moveByTile(Vector3 target)
+    //{
+    //    currentPosition = transform.position;
+    //    transform.position = Vector3.MoveTowards(currentPosition, target, 0.1f*Time.deltaTime);
+    //    Debug.Log("truck pos: ");Debug.Log(transform.position);
+    //}
 
+    public void TruckClickEvent(TruckManager truck)
+    {
+        Debug.Log("Truck clicked!!!");
+
+        UI.SetActive(!isUiEnabled);
+        isUiEnabled = !isUiEnabled;
+
+    }
     // Update is called once per frame
     void Update()
     {
-            moveByTile(targetPosition);
+            //moveByTile(targetPosition);
     }
 }

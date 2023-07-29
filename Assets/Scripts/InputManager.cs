@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public Action<Vector3Int> OnMouseClick, OnMouseHold;
     public Action OnMouseUp;
     public Action<Point> OnPointClick, OnHubRightClick;
+    public Action<TruckManager> OnTruckClick;
     public LayerMask spaceMask;
     private int roadCounter;
     [SerializeField]
@@ -21,6 +22,7 @@ public class InputManager : MonoBehaviour
         CheckClickUpEvent();
         CheckClickHoldEvent();
         CheckPointClickEvent();
+        CheckTruckClickEvent();
         roadCounter = spacerGrid.GetRoadCounter();
     }
 
@@ -89,6 +91,8 @@ public class InputManager : MonoBehaviour
             }
             if(objectHit.gameObject.GetComponent<HubPoint>() != null)
                 OnPointClick?.Invoke(objectHit.gameObject.GetComponent<HubPoint>());
+
+            
         }
     }
 
@@ -107,6 +111,18 @@ public class InputManager : MonoBehaviour
             var point = objectHit.gameObject.GetComponent<Point>();
             if (point)
                 OnHubRightClick?.Invoke(point);
+        }
+        
+    }
+
+    private void CheckTruckClickEvent()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Transform objectHit = RaycastObject();
+            var truck = objectHit.gameObject.GetComponent<TruckManager>();
+            if (truck)
+                OnTruckClick?.Invoke(truck);
         }
     }
 
