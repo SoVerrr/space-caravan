@@ -25,7 +25,7 @@ public class PointManager : MonoBehaviour
             Collider[] hitColliders = new Collider[3];
             int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
             if (colliders > 0)
-                Debug.Log("New point overlapping with another, wrong position");
+                return;
             else
             {
                 var point = planetPrefab.InstantiatePoint(x, y);

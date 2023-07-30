@@ -14,21 +14,16 @@ public class TruckManager : MonoBehaviour
     void Start()
     {
         Inventory truckInventory = new Inventory();
-        Debug.Log("truck pos: ");Debug.Log(transform.position);
 
         //TruckMovement = new TruckMovement();
         
         truckInventory.addItem("coal", 40);
-        Debug.Log(truckInventory.getItemValue("coal"));
         truckInventory.addItem("coal", 49);
-        Debug.Log(truckInventory.getItemValue("coal"));
         truckInventory.addItem("coal", 999999);
-        Debug.Log(truckInventory.getItemValue("coal"));
         // Instantiate(gameObject, new Vector3(1, 0, 1), Quaternion.identity);
         //TruckMovement.move_forward();
         
         //transform.localPosition = Vector3.MoveTowards(currentPosition, new Vector3(currentPosition[0]+10, 0, currentPosition[2]+10), 0.5f);
-        Debug.Log("truck pos: ");Debug.Log(transform.position);
     }
 
     //void moveByTile(Vector3 target)

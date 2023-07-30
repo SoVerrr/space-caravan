@@ -9,6 +9,7 @@ public class HubPoint : Point
     [SerializeField] private GameObject UI;
     [SerializeField] private GameObject truckPrefab;
     static public bool isUiEnabled = false;
+    public List<bool> isTruckOnRoute;
     override public GameObject InstantiatePoint(int x, int y)
     {
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
@@ -37,17 +38,29 @@ public class HubPoint : Point
     {
         routeList = new List<TradeRoute>();
     }
-    public void HubRightClick()
+    public void TruckBack(int index)
     {
-        Debug.Log($"routelist count: {routeList.Count}");
-        foreach(TradeRoute route in routeList)
-        {
-            var truck = Instantiate(truckPrefab, this.transform.position, Quaternion.identity);
-            truck.GetComponent<TruckMovement>().SendOnRoute(route);
-        }
+        isTruckOnRoute[index] = false;
     }
     private void Update()
     {
+        if(isTruckOnRoute.Count != routeList.Count)
+        {
+            isTruckOnRoute.Add(false);
+        }
+        for (int i = 0; i < isTruckOnRoute.Count; i++)
+        {
+            if (!isTruckOnRoute[i])
+            {
+                
+                var truck = Instantiate(truckPrefab, this.transform.position, Quaternion.identity);
+                truck.GetComponent<TruckMovement>().SendOnRoute(routeList[i], this, i);
+                isTruckOnRoute[i] = true;
+            }
+            Debug.Log($"Route index: {i} | State:{isTruckOnRoute[i]}");
+        }
+
+
         if (Input.GetKeyDown(KeyCode.G))
         {
             foreach (var item in routeList)

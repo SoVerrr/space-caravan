@@ -11,14 +11,17 @@ public class TruckMovement : MonoBehaviour
     private List<Vector2Int> currentPath;
     private int currentPathCheckpoint = 0;
     private int currentRouteCheckpoint = 1;
-
+    private int truckIndex;
+    private HubPoint parentHub;
     private void Awake()
     {
         currentRoute = new List<Point>();
     }
 
-    public void SendOnRoute(TradeRoute tradeRoute)
+    public void SendOnRoute(TradeRoute tradeRoute, HubPoint parent, int index)
     {
+        parentHub = parent;
+        truckIndex = index;
         currentRoute = tradeRoute.GetRoute();
         currentPath = GetPathToPoint(1);
         currentPathCheckpoint++;
@@ -27,9 +30,18 @@ public class TruckMovement : MonoBehaviour
 
     private List<Vector2Int> GetPathToPoint(int pointIndex)
     {
-        List<Vector2Int> path = Pathfinding.AStarSearch(grid, currentRoute[pointIndex - 1].GetPointPosition(), currentRoute[pointIndex].GetPointPosition(), true);
-        path.Reverse();
-        return path;
+        try
+        {
+            List<Vector2Int> path = Pathfinding.AStarSearch(grid, currentRoute[pointIndex - 1].GetPointPosition(), currentRoute[pointIndex].GetPointPosition(), true);
+            path.Reverse();
+            return path;
+        }
+        catch
+        {
+            Debug.Log($"Index:{pointIndex} | PathCount:{currentRoute.Count} ");
+            
+            return null;
+        }
     }
 
     private List<Vector2Int> GetPathToBeginning()
@@ -69,16 +81,19 @@ public class TruckMovement : MonoBehaviour
         if (HasFinishedRoute())
         {
             isOnRoute = false;
-            return;
+            parentHub.TruckBack(truckIndex);
+            Destroy(gameObject);
         }
+
         if (currentRouteCheckpoint == currentRoute.Count)
         {
             currentPath = GetPathToBeginning();
         }
-        else
+        else if(currentRouteCheckpoint < currentRoute.Count)
         {
             currentPath = GetPathToPoint(currentRouteCheckpoint);
         }
+
     }
     private void Update()
     {

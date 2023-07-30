@@ -37,11 +37,4 @@ public abstract class Point : MonoBehaviour
             }
         }
     }
-    public void HubRightClickEvent(Point point)
-    {
-        if(point is HubPoint)
-        {
-            point.gameObject.GetComponent<HubPoint>().HubRightClick();
-        }
-    }
 }

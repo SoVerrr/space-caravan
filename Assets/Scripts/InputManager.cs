@@ -89,8 +89,6 @@ public class InputManager : MonoBehaviour
             {
                 OnMouseClick?.Invoke(position.Value);
             }
-            if(objectHit.gameObject.GetComponent<HubPoint>() != null)
-                OnPointClick?.Invoke(objectHit.gameObject.GetComponent<HubPoint>());
 
             
         }
@@ -105,14 +103,14 @@ public class InputManager : MonoBehaviour
             if (point)
                 OnPointClick?.Invoke(point);
         }
-        if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(0))
         {
             Transform objectHit = RaycastObject();
             var point = objectHit.gameObject.GetComponent<Point>();
-            if (point)
-                OnHubRightClick?.Invoke(point);
+            if (objectHit.gameObject.GetComponent<HubPoint>() != null)
+                OnPointClick?.Invoke(objectHit.gameObject.GetComponent<HubPoint>());
         }
-        
+
     }
 
     private void CheckTruckClickEvent()
