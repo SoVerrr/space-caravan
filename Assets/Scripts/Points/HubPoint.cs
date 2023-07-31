@@ -57,7 +57,6 @@ public class HubPoint : Point
                 truck.GetComponent<TruckMovement>().SendOnRoute(routeList[i], this, i);
                 isTruckOnRoute[i] = true;
             }
-            Debug.Log($"Route index: {i} | State:{isTruckOnRoute[i]}");
         }
 
 

@@ -41,9 +41,13 @@ public class TruckManager : MonoBehaviour
         isUiEnabled = !isUiEnabled;
 
     }
+    private void SetRotation()
+    {
+        transform.LookAt(currentPosition + GetComponent<TruckMovement>().GetCurrentTarget());
+    }
     // Update is called once per frame
     void Update()
     {
-            //moveByTile(targetPosition);
+        SetRotation();
     }
 }

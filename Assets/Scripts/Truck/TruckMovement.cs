@@ -95,6 +95,12 @@ public class TruckMovement : MonoBehaviour
         }
 
     }
+    public Vector3 GetCurrentTarget() 
+    { 
+        if(isOnRoute)
+            return new Vector3(currentPath[currentPathCheckpoint].x, 0, currentPath[currentPathCheckpoint].y);
+        return Vector3.zero;
+    }
     private void Update()
     {
         if (!isOnRoute)
