@@ -30,25 +30,36 @@ public class TruckMovement : MonoBehaviour
 
     private List<Vector2Int> GetPathToPoint(int pointIndex)
     {
-        try
-        {
-            List<Vector2Int> path = Pathfinding.AStarSearch(grid, currentRoute[pointIndex - 1].GetPointPosition(), currentRoute[pointIndex].GetPointPosition(), true);
-            path.Reverse();
+
+        List<Vector2Int> path = Pathfinding.AStarSearch(grid, currentRoute[pointIndex - 1].GetPointPosition(), currentRoute[pointIndex].GetPointPosition(), true);
+        path.Reverse();
+        if (path.Count > 0)
             return path;
-        }
-        catch
-        {
-            Debug.Log($"Index:{pointIndex} | PathCount:{currentRoute.Count} ");
-            
-            return null;
-        }
+        else
+            return GetPathNoConnection();
     }
 
     private List<Vector2Int> GetPathToBeginning()
     {
-        return Pathfinding.AStarSearch(grid, currentRoute[0].GetPointPosition(), currentRoute[currentRoute.Count - 1].GetPointPosition(), true);
+        return Pathfinding.AStarSearch(grid, currentRoute[0].GetPointPosition(), new Vector2Int((int)transform.position.x, (int)transform.position.z), true);
     }
+    private List<Vector2Int> GetPathNoConnection()
+    {
+        currentRoute.RemoveAt(currentRouteCheckpoint);
+        if (currentRoute.Count == 1)
+        {
+            FinishRoute();
+        }
+        if (currentRoute.Count == currentRouteCheckpoint)
+        {
+            return Pathfinding.AStarSearch(grid, currentRoute[0].GetPointPosition(), new Vector2Int((int)transform.position.x, (int)transform.position.z), true);
+        }
+        else
+        {
+            return GetPathToPoint(currentRouteCheckpoint);
+        }
 
+    }
     private bool HasReachedCheckpoint(int index)
     {
         return transform.position == new Vector3(currentPath[index].x, 0, currentPath[index].y);
@@ -80,9 +91,7 @@ public class TruckMovement : MonoBehaviour
         currentRouteCheckpoint++;
         if (HasFinishedRoute())
         {
-            isOnRoute = false;
-            parentHub.TruckBack(truckIndex);
-            Destroy(gameObject);
+            FinishRoute();
         }
 
         if (currentRouteCheckpoint == currentRoute.Count)
@@ -94,6 +103,12 @@ public class TruckMovement : MonoBehaviour
             currentPath = GetPathToPoint(currentRouteCheckpoint);
         }
 
+    }
+    private void FinishRoute()
+    {
+        isOnRoute = false;
+        parentHub.TruckBack(truckIndex);
+        Destroy(gameObject);
     }
     public Vector3 GetCurrentTarget() 
     { 
