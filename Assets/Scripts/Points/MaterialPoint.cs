@@ -9,16 +9,20 @@ public class MaterialPoint : Point
     private PointDataMaterial materialData;
     override public GameObject InstantiatePoint(int x, int y)
     {
-        materialData = new PointDataMaterial();
         //Debug.Log("coords: " + x + " " + y + " type: " + materialData.GetProductionRate());
-        textElement.text = "Collect\n" +materialData.GetProductionRate().ToString()+" "+materialData.GetMaterialType().ToString()+"\n";
+        var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+        point.GetComponent<MaterialPoint>().SetValues(x, y);
+        grid.status[x, y] = GridStatus.MaterialPoint;
+        materialPointList.Add(point);
+        
+        return point;
+    }
+    private void SetValues(int x, int y)
+    {
+        materialData = new PointDataMaterial();
         this.xCoordinate = x;
         this.yCoordinate = y;
-        var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
-        grid.status[x, y] = GridStatus.MaterialPoint;
-        
-        materialPointList.Add(point);
-        return point;
+        textElement.text = "Collect\n" + materialData.GetProductionRate().ToString() + " " + materialData.GetMaterialType().ToString() + "\n";
     }
     public override void Functionality(Inventory truckInventory)
     {

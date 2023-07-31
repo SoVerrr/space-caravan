@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7403609447736398157}
   - component: {fileID: 6428448683387621332}
   - component: {fileID: 5747229553469825562}
+  - component: {fileID: 9083171975671535578}
   m_Layer: 0
   m_Name: Processing Point
   m_TagString: Untagged
@@ -116,6 +117,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 895c53aa749b9dc43bf35738d22baaf9, type: 2}
   - {fileID: 11400000, guid: 9358053be8813f6498217f1877c677ea, type: 2}
   textElement: {fileID: 6248714672425238244}
+--- !u!114 &9083171975671535578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991931501848368911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0977394fe63a4c94f83162861e3e0d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5510451962234917735
 GameObject:
   m_ObjectHideFlags: 0

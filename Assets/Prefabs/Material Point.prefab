@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7403609447736398157}
   - component: {fileID: 6428448683387621332}
   - component: {fileID: 911485131529837218}
+  - component: {fileID: 5364397502012514831}
   m_Layer: 0
   m_Name: Material Point
   m_TagString: Untagged
@@ -112,6 +113,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   textElement: {fileID: 3826742830519751824}
+--- !u!114 &5364397502012514831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991931501848368911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0977394fe63a4c94f83162861e3e0d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3081919494698885017
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     public InputManager inputManager;
     public RouteManager routeManager;
+    public int score = 0;
     [SerializeField] private GameObject HubUI;
     [SerializeField] private Point point;
     [SerializeField] private TruckManager truck;
@@ -24,6 +26,15 @@ public class GameManager : MonoBehaviour
     //    Debug.Log(position);
     //    routeManager.PlaceRoute(position);
     //}
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.F) && TradeRouteManager.Instance.isRouteBeingCreated)

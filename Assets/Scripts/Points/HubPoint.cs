@@ -13,15 +13,20 @@ public class HubPoint : Point
     override public GameObject InstantiatePoint(int x, int y)
     {
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+        point.GetComponent<HubPoint>().SetValues(x, y);
         hubPointList.Add(point);
         grid.status[x, y] = GridStatus.HubPoint;
+        
+        return point;
+    }
+    private void SetValues(int x, int y)
+    {
         this.xCoordinate = x;
         this.yCoordinate = y;
-        return point;
     }
     public override void Functionality(Inventory truckInventory)
     {
-        Debug.Log("Collision");
+        Debug.Log($"Score: {GameManager.Instance.score}");
     }
     public void CreateTradeRoute(params Point[] points)
     {
@@ -34,17 +39,19 @@ public class HubPoint : Point
         UI.SetActive(!isUiEnabled);
         isUiEnabled = !isUiEnabled;
     }
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         routeList = new List<TradeRoute>();
     }
     public void TruckBack(int index)
     {
         isTruckOnRoute[index] = false;
     }
-    private void Update()
+    protected override void Update()
     {
-        if(isTruckOnRoute.Count != routeList.Count)
+        base.Update();
+        if (isTruckOnRoute.Count != routeList.Count)
         {
             isTruckOnRoute.Add(false);
         }
@@ -52,13 +59,12 @@ public class HubPoint : Point
         {
             if (!isTruckOnRoute[i])
             {
-                
-                var truck = Instantiate(truckPrefab, this.transform.position, Quaternion.identity);
+
+                var truck = Instantiate(truckPrefab, new Vector3(transform.position.x, truckPrefab.transform.localPosition.y, transform.position.z), Quaternion.identity);
                 truck.GetComponent<TruckMovement>().SendOnRoute(routeList[i], this, i);
                 isTruckOnRoute[i] = true;
             }
         }
-
 
         if (Input.GetKeyDown(KeyCode.G))
         {

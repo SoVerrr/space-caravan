@@ -16,31 +16,38 @@ public class ProcessingPoint : Point
     override public GameObject InstantiatePoint(int x, int y)
     {
 
+        
+        var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
+        point.GetComponent<ProcessingPoint>().SetValues(x, y);
+        processingPointsList.Add(point);
+
+        return point;
+    }
+    private void SetValues(int x, int y)
+    {
         processingResultIndex = Random.Range(0, ProcessingResults.Length);
         materialsNeeded = ProcessingResults[processingResultIndex].GetMaterialNeeded();
         numberofMaterials = ProcessingResults[processingResultIndex].GetNumberOfMaterialNeeded();
-        materialsPrint = "Craft "+ProcessingResults[processingResultIndex].GetResultName().ToString()+"\n";
-        for(int i=0; i<materialsNeeded.Length;i++){
-            materialsPrint += materialsNeeded[i]+" "+numberofMaterials[i]+"\n";
+        materialsPrint = "Craft " + ProcessingResults[processingResultIndex].GetResultName().ToString() + "\n";
+        for (int i = 0; i < materialsNeeded.Length; i++)
+        {
+            materialsPrint += materialsNeeded[i] + " " + numberofMaterials[i] + "\n";
         }
         grid.status[x, y] = GridStatus.MaterialPoint;
         textElement.text = materialsPrint;
         this.xCoordinate = x;
         this.yCoordinate = y;
-        var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
-        
-        processingPointsList.Add(point);
-
-        return point;
     }
     public override void Functionality(Inventory truckInventory)
     {
-        int canProduce = 0;
+        int canProduce = 999;
         //count how many items can be produced by setting smallest quotient from materials available and materials needed
         for (int i = 0; i < materialsNeeded.Length; i++)
         {
             if (Mathf.Floor(truckInventory.getItemValue(materialsNeeded[i]) / numberofMaterials[i]) < canProduce)
+            {
                 canProduce = Mathf.FloorToInt(truckInventory.getItemValue(materialsNeeded[i]) / numberofMaterials[i]);
+            }
         }
         //subtracting needed amount of materials from inventorty
         for (int i = 0; i < materialsNeeded.Length; i++)

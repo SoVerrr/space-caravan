@@ -13,8 +13,12 @@ public class Inventory : MonoBehaviour
     int maxVal = 255;
     Dictionary<string, int> Item = new Dictionary<string, int>()
     {
-        {"rock", 0},
-        {"coal", 0}
+        {"coal", 0},
+        {"iron", 0},
+        {"gold", 0},
+        {"thing1", 0},
+        {"thing2", 0},
+        {"thing3", 0}
     };
 
     public int getItemValue(string itemName)

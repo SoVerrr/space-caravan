@@ -62,7 +62,7 @@ public class TruckMovement : MonoBehaviour
     }
     private bool HasReachedCheckpoint(int index)
     {
-        return transform.position == new Vector3(currentPath[index].x, 0, currentPath[index].y);
+        return transform.position == new Vector3(currentPath[index].x, transform.localPosition.y, currentPath[index].y);
     }
 
     private bool HasFinishedRoute()
@@ -72,7 +72,7 @@ public class TruckMovement : MonoBehaviour
 
     private void GoToCheckpoint(int index)
     {
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentPath[index].x, 0, currentPath[index].y), Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentPath[index].x, transform.localPosition.y, currentPath[index].y), Time.deltaTime);
     }
 
     private bool NextCheckpoint()
@@ -113,7 +113,7 @@ public class TruckMovement : MonoBehaviour
     public Vector3 GetCurrentTarget() 
     { 
         if(isOnRoute)
-            return new Vector3(currentPath[currentPathCheckpoint].x, 0, currentPath[currentPathCheckpoint].y);
+            return new Vector3(currentPath[currentPathCheckpoint].x, transform.localPosition.y, currentPath[currentPathCheckpoint].y);
         return Vector3.zero;
     }
     private void Update()
