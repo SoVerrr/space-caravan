@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class SellPoint : Point
 {
     public static List<GameObject> sellPointList;
