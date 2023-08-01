@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 public class MaterialPoint : Point
 {
     public static List<GameObject> materialPointList;
-    //[SerializeField] TextMeshProUGUI textElement;
-    [SerializeField] Text textElement;
+    [SerializeField] TextMeshProUGUI textElement;
     private PointDataMaterial materialData;
     override public GameObject InstantiatePoint(int x, int y)
     {
@@ -19,27 +17,12 @@ public class MaterialPoint : Point
         
         return point;
     }
-
-
-    void OnMouseOver()
-    {
-        textElement.text = "Collect\n" + materialData.GetProductionRate().ToString() + " " + materialData.GetMaterialType().ToString() + "\n";
-    }
-
-    void OnMouseExit()
-    {
-        textElement.text = "";
-    }
-
-
-
-
     private void SetValues(int x, int y)
     {
         materialData = new PointDataMaterial();
         this.xCoordinate = x;
         this.yCoordinate = y;
-        //textElement.text = "Collect\n" + materialData.GetProductionRate().ToString() + " " + materialData.GetMaterialType().ToString() + "\n";
+        textElement.text = "Collect\n" + materialData.GetProductionRate().ToString() + " " + materialData.GetMaterialType().ToString() + "\n";
     }
     public override void Functionality(Inventory truckInventory)
     {

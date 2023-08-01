@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class SellPoint : Point
-{
+{ 
     public static List<GameObject> sellPointList;
-    [SerializeField] private ProcessingResult[] SellingResults;
-    private int[] sellingPrices;
+    [SerializeField] SellPointData sellPointData;
     [SerializeField] TextMeshProUGUI textElement;
 
     private string buyListPrint;
@@ -15,6 +18,9 @@ public class SellPoint : Point
     private int priceMax;
     private int priceMin;
     private int price;
+
+    List<string> names;
+    private int[] sellingPrices;
 
     override public GameObject InstantiatePoint(int x, int y)
     { 
@@ -26,14 +32,19 @@ public class SellPoint : Point
     }
     private void SetValues(int x, int y)
     {
+        sellPointData.SetData();
+        names = sellPointData.GetNames();
+        sellingPrices = new int[names.Count];
+        foreach (string name in names)
+            Debug.Log(name);
+        List<int> maxPrices = sellPointData.GetMaxPrices();
+        List<int> minPrices = sellPointData.GetMinPrices();
         buyListPrint = "Sell:\n";
-        for (int i = 0; i < SellingResults.Length; i++)
+        for (int i = 0; i < names.Count; i++)
         {
-            priceMax = SellingResults[i].GetPriceMax();
-            priceMin = SellingResults[i].GetPriceMin();
-            price = Random.Range(priceMin, priceMax);
+            price = Random.Range(minPrices[i], maxPrices[i]);
             sellingPrices[i] = price;
-            buyListPrint += SellingResults[i].GetResultName().ToString() + " " + price.ToString() + "g" + "\n";
+            buyListPrint += names[i] + " " + price.ToString() + "g" + "\n";
         }
         textElement.text = buyListPrint;
         this.xCoordinate = x;
@@ -41,18 +52,16 @@ public class SellPoint : Point
     }
     override public void Functionality(Inventory truckInventory)
     {
-        for (int i = 0; i < SellingResults.Length; i++)
+        for (int i = 0; i < names.Count; i++)
         {
-            GameManager.Instance.score += truckInventory.getItemValue(SellingResults[i].GetResultName()) * sellingPrices[i];
-            truckInventory.substractItem(SellingResults[i].GetResultName(), truckInventory.getItemValue(SellingResults[i].GetResultName()));
+            GameManager.Instance.score += truckInventory.getItemValue(names[i]) * sellingPrices[i];
+            truckInventory.substractItem(names[i], truckInventory.getItemValue(names[i]));
 
         }
-        //TODO: add items/money for selling
     }
     protected override void Awake()
     {
         base.Awake();
-        sellingPrices = new int[SellingResults.Length];
     }
     static SellPoint()
     {
