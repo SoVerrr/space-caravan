@@ -63,29 +63,29 @@ public class SpaceGrid : MonoBehaviour
         gridSizeYTemp = gridSizeY;
     }
 
-    public int ResizeGrid(){
-        gridSizeXTemp +=1;
-        gridSizeYTemp +=1;
+    // public int ResizeGrid(){
+    //     gridSizeXTemp +=1;
+    //     gridSizeYTemp +=1;
 
-        tileArrayTemp = new Vector3[gridSizeXTemp, gridSizeYTemp];
-        statusTemp = new GridStatus[gridSizeXTemp, gridSizeYTemp];
-        spawnStatusTemp = new SpawnStatus[gridSizeXTemp, gridSizeYTemp];
-        // creating new Grid with new X and Y
-        for (int x = 0; x < gridSizeXTemp; x++)
-        {
-            for(int y = 0; y < gridSizeYTemp; y++)
-            {
-                tileArrayTemp[x, y] = new Vector3(x, 0, y);
-                statusTemp[x, y] = GridStatus.Empty;
-                spawnStatusTemp[x, y] = SpawnStatus.Spawnable;
-            }
-        }
+    //     tileArrayTemp = new Vector3[gridSizeXTemp, gridSizeYTemp];
+    //     statusTemp = new GridStatus[gridSizeXTemp, gridSizeYTemp];
+    //     spawnStatusTemp = new SpawnStatus[gridSizeXTemp, gridSizeYTemp];
+    //     // creating new Grid with new X and Y
+    //     for (int x = 0; x < gridSizeXTemp; x++)
+    //     {
+    //         for(int y = 0; y < gridSizeYTemp; y++)
+    //         {
+    //             tileArrayTemp[x, y] = new Vector3(x, 0, y);
+    //             statusTemp[x, y] = GridStatus.Empty;
+    //             spawnStatusTemp[x, y] = SpawnStatus.Spawnable;
+    //         }
+    //     }
 
-        // Debug.Log(tileArrayTemp);
-        // return gridSizeXTemp;
-        // Debug.Log(gridSizeX);
-        // Debug.Log(gridSizeY);
-    }
+    //     // Debug.Log(tileArrayTemp);
+    //     // return gridSizeXTemp;
+    //     // Debug.Log(gridSizeX);
+    //     // Debug.Log(gridSizeY);
+    // }
 
 
 

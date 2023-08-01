@@ -36,8 +36,8 @@ public class TimeManager : MonoBehaviour
                 //pointManager.GeneratePoint(pointManager.hubPoint);
                 //Debug.Log("chuj 15");
                 //x1 = grid.ResizeGrid();
-                x1 = grid.ResizeGrid();
-                Debug.Log(x1);
+                // x1 = grid.ResizeGrid();
+                // Debug.Log(x1);
 
             }
             else if (Timer.time % 5 == 0)
