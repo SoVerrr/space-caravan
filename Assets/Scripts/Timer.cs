@@ -84,7 +84,7 @@ public class Timer : MonoBehaviour
             timeChanged?.Invoke();
             timeRemaining =1;
             textElement.text = time.ToString();
-            MainCamera.orthographicSize += 0.005f;
+            //MainCamera.orthographicSize += 0.005f;
         }
     }
 }
