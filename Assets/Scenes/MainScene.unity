@@ -281,17 +281,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1385864331687247655, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
   m_PrefabInstance: {fileID: 235551541}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &295615765 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 786665066824825027, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-  m_PrefabInstance: {fileID: 4983457263435601373}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &362512569 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4983457262606373266, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
@@ -347,10 +336,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 500
+  far clip plane: 1000
   field of view: 90
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -488,7 +477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109, y: 475.36145}
+  m_AnchoredPosition: {x: -454, y: 475.36145}
   m_SizeDelta: {x: 901.8875, y: 88.0395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &444612943
@@ -616,14 +605,6 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1555258114}
-    - target: {fileID: 5747229553469825562, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
-      propertyPath: chuj2
-      value: 
-      objectReference: {fileID: 295615765}
-    - target: {fileID: 5747229553469825562, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
-      propertyPath: textElement
-      value: 
-      objectReference: {fileID: 295615765}
     - target: {fileID: 5850875920480369648, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -787,10 +768,6 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1555258114}
-    - target: {fileID: 911485131529837218, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
-      propertyPath: textElement
-      value: 
-      objectReference: {fileID: 295615765}
     - target: {fileID: 1991931501848368911, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
       propertyPath: m_Name
       value: Material Point
@@ -1598,26 +1575,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 163032610}
     m_Modifications:
-    - target: {fileID: 786665066824825027, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139050804117003771, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -466
-      objectReference: {fileID: 0}
-    - target: {fileID: 3284503647924764285, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 3284503647924764285, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 370
-      objectReference: {fileID: 0}
-    - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: grid
-      value: 
-      objectReference: {fileID: 1555258114}
     - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: pointManager
       value: 
@@ -1634,18 +1591,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 395711841}
-    - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: customTime
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 395711841}
     - target: {fileID: 4983457262464664279, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1694,10 +1639,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 395711841}
-    - target: {fileID: 5905830252971267347, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
-      propertyPath: m_text
-      value: hljkhlkjhlkjhlkjhlkjhklhjlhkjhklhkjhlkjhk
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
 --- !u!4 &4983457263435601374 stripped
