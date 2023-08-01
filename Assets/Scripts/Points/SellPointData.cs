@@ -4,25 +4,44 @@ using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-public class SellPointData : MonoBehaviour
-{
-    private string sellName;
-    private int priceMax;
-    private int priceMin;
+[CreateAssetMenu]
+public class SellPointData : ScriptableObject
+{ 
     private int listSize;
     private int processListSize;
     private bool showRawMaterials;
     private bool showProcessingResults;
 
+    private List<int> priceMaxListRaw = new List<int>();
+    private List<int> priceMinListRaw = new List<int>();
+    private List<string> nameListRaw = new List<string>();
+    private List<ProcessingResult> resultList = new List<ProcessingResult>();
+
     private List<int> priceMaxList = new List<int>();
     private List<int> priceMinList = new List<int>();
     private List<string> nameList = new List<string>();
-    private List<ProcessingResult> resultList = new List<ProcessingResult>();
     public void ConvertProcessingToSell(ProcessingResult result)
     {
-        sellName = result.GetResultName();
-        priceMax = result.GetPriceMax();
-        priceMin = result.GetPriceMin();
+        nameList.Add(result.GetResultName());
+        priceMaxList.Add(result.GetPriceMax());
+        priceMinList.Add(result.GetPriceMin());
+    }
+    public void SetData()
+    {
+        if(nameList.Count > 0)
+        {
+            return;
+        }
+        foreach (var item in resultList)
+        {
+            ConvertProcessingToSell(item);
+        }
+        for (int i = 0; i < priceMaxListRaw.Count; i++)
+        {
+            nameList.Add(nameListRaw[i]);
+            priceMaxList.Add(priceMaxListRaw[i]);
+            priceMinList.Add(priceMinListRaw[i]);
+        }
     }
     #region Editor
 #if UNITY_EDITOR
@@ -31,23 +50,27 @@ public class SellPointData : MonoBehaviour
     {
         public override void OnInspectorGUI()
         {
-            SellPointData sellPointData = (SellPointData)target;
+
+
             base.OnInspectorGUI();
+            SellPointData sellPointData = (SellPointData)target;
+            EditorUtility.SetDirty(sellPointData);
+            EditorUtility.SetDirty(target);
             EditorGUILayout.Space();
             sellPointData.showRawMaterials = EditorGUILayout.Foldout(sellPointData.showRawMaterials, "Raw Materials", true);
             if (sellPointData.showRawMaterials)
             {
-                while (sellPointData.priceMaxList.Count > sellPointData.listSize)
+                while (sellPointData.priceMaxListRaw.Count > sellPointData.listSize)
                 {
-                    sellPointData.priceMaxList.RemoveAt(sellPointData.priceMaxList.Count - 1);
-                    sellPointData.priceMinList.RemoveAt(sellPointData.priceMinList.Count - 1);
-                    sellPointData.nameList.RemoveAt(sellPointData.nameList.Count - 1);
+                    sellPointData.priceMaxListRaw.RemoveAt(sellPointData.priceMaxListRaw.Count - 1);
+                    sellPointData.priceMinListRaw.RemoveAt(sellPointData.priceMinListRaw.Count - 1);
+                    sellPointData.nameListRaw.RemoveAt(sellPointData.nameListRaw.Count - 1);
                 }
-                while (sellPointData.priceMaxList.Count < sellPointData.listSize)
+                while (sellPointData.priceMaxListRaw.Count < sellPointData.listSize)
                 {
-                    sellPointData.priceMaxList.Add(0);
-                    sellPointData.priceMinList.Add(0);
-                    sellPointData.nameList.Add(null);
+                    sellPointData.priceMaxListRaw.Add(0);
+                    sellPointData.priceMinListRaw.Add(0);
+                    sellPointData.nameListRaw.Add("");
                 }
                 for (int i = 0; i < sellPointData.listSize; i++)
                 {
@@ -99,27 +122,35 @@ public class SellPointData : MonoBehaviour
             EditorGUILayout.BeginHorizontal();
 
             EditorGUILayout.LabelField("Name", GUILayout.MaxWidth(50));
-            sellPointData.nameList[i] = EditorGUILayout.TextField(sellPointData.nameList[i], GUILayout.MaxWidth(200));
+            sellPointData.nameListRaw[i] = EditorGUILayout.TextField(sellPointData.nameListRaw[i], GUILayout.MaxWidth(200));
 
             EditorGUILayout.LabelField("PriceMin", GUILayout.MaxWidth(60));
-            sellPointData.priceMinList[i] = EditorGUILayout.IntField(sellPointData.priceMinList[i], GUILayout.MaxWidth(30));
+            sellPointData.priceMinListRaw[i] = EditorGUILayout.IntField(sellPointData.priceMinListRaw[i], GUILayout.MaxWidth(30));
 
             EditorGUILayout.LabelField("PriceMax", GUILayout.MaxWidth(60));
-            sellPointData.priceMaxList[i] = EditorGUILayout.IntField(sellPointData.priceMaxList[i], GUILayout.MaxWidth(30));
+            sellPointData.priceMaxListRaw[i] = EditorGUILayout.IntField(sellPointData.priceMaxListRaw[i], GUILayout.MaxWidth(30));
 
             EditorGUILayout.EndHorizontal();
         }
     }
 #endif
     #endregion
-    void Start()
+    public List<string> GetNames()
     {
-        
+        return nameList;
     }
-
+    public List<int> GetMaxPrices()
+    {
+        return priceMaxList;
+    }
+    public List<int> GetMinPrices()
+    {
+        return priceMinList;
+    }
     // Update is called once per frame
     void Update()
     {
         
+
     }
 }

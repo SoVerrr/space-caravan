@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3091093828431113101}
   - component: {fileID: 4585577613246122883}
   - component: {fileID: -2321132258643022815}
-  - component: {fileID: 4544874456921235602}
   m_Layer: 0
   m_Name: Sell Point
   m_TagString: Untagged
@@ -113,10 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  SellingResults:
-  - {fileID: 11400000, guid: 85c182d663947984bb3a60e6b20d403d, type: 2}
-  - {fileID: 11400000, guid: 895c53aa749b9dc43bf35738d22baaf9, type: 2}
-  - {fileID: 11400000, guid: 9358053be8813f6498217f1877c677ea, type: 2}
+  sellPointData: {fileID: 11400000, guid: 1b2b6b771bcb446449716af25d42eff0, type: 2}
   textElement: {fileID: 5952204337339207511}
 --- !u!114 &-2321132258643022815
 MonoBehaviour:
@@ -128,18 +124,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0977394fe63a4c94f83162861e3e0d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4544874456921235602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871932651797338867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c08fb80cff45d3445bed9f591490bc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5415702051882971382
