@@ -1615,6 +1615,10 @@ PrefabInstance:
       value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 1555258114}
+    - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: pointManager
       value: 
       objectReference: {fileID: 120971114}
@@ -1634,6 +1638,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 395711841}
+    - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: customTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: mainCamera
       value: 
