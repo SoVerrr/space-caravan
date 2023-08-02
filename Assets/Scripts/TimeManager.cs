@@ -6,6 +6,9 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     [SerializeField] private PointManager pointManager;
+    [SerializeField] private SpaceGrid spaceGrid;
+    private int roadLimit;
+
 
     private Point[] pointsArray;
     private int counter = 0;
@@ -27,6 +30,13 @@ public class TimeManager : MonoBehaviour
             {
                 pointManager.GeneratePoint(pointManager.hubPoint);
             }
+            else if (Timer.time % 50 == 0)
+            {
+
+                roadLimit+=20;
+                ReturnRoadLimit();
+
+            }
             else if (Timer.time % 20 == 0)
             {
                 pointManager.GeneratePoint(pointsArray[counter]);
@@ -38,12 +48,22 @@ public class TimeManager : MonoBehaviour
             }
         }
     }
+
+    public int ReturnRoadLimit()
+    {
+        return roadLimit;
+    }
+
+
+
     private void Awake()
     {
         pointsArray = new Point[3] {pointManager.materialPoint, pointManager.processingPoint, pointManager.sellPoint};
+        roadLimit = spaceGrid.GetRoadLimit();
     }
     private void Start()
     {
         pointManager.GeneratePoint(pointManager.materialPoint);
+        //roadLimit = SpaceGrid.GetRoadLimit();
     }
 }

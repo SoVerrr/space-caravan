@@ -30,7 +30,7 @@ public class SpaceGrid : MonoBehaviour
     [SerializeField] public int roadCounter;
     [SerializeField] public int roadLimit;
     private int availableroads;  
-
+    [SerializeField] private TimeManager timeManager;
 
     private int gridSizeXTemp, gridSizeYTemp;
     public Vector3[,] tileArrayTemp;
@@ -60,6 +60,10 @@ public class SpaceGrid : MonoBehaviour
         
     }
 
+    public int GetRoadLimit()
+    {
+        return roadLimit;
+    }
 
 
     // public int ResizeGrid(){
@@ -176,6 +180,7 @@ public class SpaceGrid : MonoBehaviour
             }
         }
         //Debug.Log(roadCounter);
+        roadLimit = timeManager.ReturnRoadLimit();
         availableroads = roadLimit-roadCounter;
         textElement.text = "Available roads: "+availableroads;
         return availableroads;
