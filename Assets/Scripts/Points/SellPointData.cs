@@ -5,12 +5,18 @@ using UnityEngine;
 using UnityEditor;
 #endif
 [CreateAssetMenu]
+[System.Serializable]
 public class SellPointData : ScriptableObject
 { 
     private int listSize;
     private int processListSize;
     private bool showRawMaterials;
     private bool showProcessingResults;
+
+    [HideInInspector][SerializeField] List<int> priceMaxArr;
+    [HideInInspector][SerializeField] List<int> priceMinArr;
+    [HideInInspector][SerializeField] List<string> nameArr;
+    [HideInInspector][SerializeField] ProcessingResult[] processArr;
 
     private List<int> priceMaxListRaw = new List<int>();
     private List<int> priceMinListRaw = new List<int>();
@@ -45,90 +51,56 @@ public class SellPointData : ScriptableObject
     }
     #region Editor
 #if UNITY_EDITOR
+    [System.Serializable]
     [CustomEditor(typeof(SellPointData)), CanEditMultipleObjects]
     public class SellPointDataEditor : Editor
     {
+        SerializedProperty priceMax;
+        SerializedProperty priceMin;
+        SerializedProperty materialName;
+        SerializedProperty processingResult;
+
+        bool showMaterials;
+        bool showProcessing;
+
+        private void OnEnable()
+        {
+            priceMax = serializedObject.FindProperty(nameof(priceMaxArr));
+            priceMin = serializedObject.FindProperty(nameof(priceMinArr));
+            materialName = serializedObject.FindProperty(nameof(nameArr));
+            processingResult = serializedObject.FindProperty(nameof(processArr));
+        }
         public override void OnInspectorGUI()
         {
-
-
+            serializedObject.Update();
             base.OnInspectorGUI();
-            SellPointData sellPointData = (SellPointData)target;
-            EditorGUILayout.Space();
-            sellPointData.showRawMaterials = EditorGUILayout.Foldout(sellPointData.showRawMaterials, "Raw Materials", true);
-            if (sellPointData.showRawMaterials)
+            showMaterials = EditorGUILayout.Foldout(showMaterials, "Raw Materials");
+            if (showMaterials)
             {
-                while (sellPointData.priceMaxListRaw.Count > sellPointData.listSize)
-                {
-                    sellPointData.priceMaxListRaw.RemoveAt(sellPointData.priceMaxListRaw.Count - 1);
-                    sellPointData.priceMinListRaw.RemoveAt(sellPointData.priceMinListRaw.Count - 1);
-                    sellPointData.nameListRaw.RemoveAt(sellPointData.nameListRaw.Count - 1);
-                }
-                while (sellPointData.priceMaxListRaw.Count < sellPointData.listSize)
-                {
-                    sellPointData.priceMaxListRaw.Add(0);
-                    sellPointData.priceMinListRaw.Add(0);
-                    sellPointData.nameListRaw.Add("");
-                }
-                for (int i = 0; i < sellPointData.listSize; i++)
-                {
-                    DrawSellData(sellPointData, i);
-                }
                 EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("+", GUILayout.MaxWidth(20)))
-                {
-                    sellPointData.listSize++;
-                }
-                if (GUILayout.Button("-", GUILayout.MaxWidth(20)))
-                {
-                    sellPointData.listSize--;
-                }
+                EditorGUILayout.PropertyField(materialName, GUILayout.Width(200));
+                EditorGUILayout.PropertyField(priceMin, GUILayout.Width(200));
+                EditorGUILayout.PropertyField(priceMax);
                 EditorGUILayout.EndHorizontal();
             }
-            sellPointData.showProcessingResults = EditorGUILayout.Foldout(sellPointData.showProcessingResults, "Processing Results", true);
-            if (sellPointData.showRawMaterials)
+            showProcessing = EditorGUILayout.Foldout(showProcessing, "Processing results");
+            if (showProcessing)
             {
-                while(sellPointData.resultList.Count > sellPointData.processListSize)
-                {
-                    sellPointData.resultList.RemoveAt(sellPointData.resultList.Count - 1);
-                }
-                while (sellPointData.resultList.Count < sellPointData.processListSize)
-                {
-                    sellPointData.resultList.Add(null);
-                }
-                EditorGUILayout.BeginVertical();
-                for (int i = 0; i < sellPointData.processListSize; i++)
-                {
-                    sellPointData.resultList[i] = (ProcessingResult)EditorGUILayout.ObjectField(sellPointData.resultList[i], typeof(ProcessingResult), false);
-                }
-                EditorGUILayout.EndVertical();
-                EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("+", GUILayout.MaxWidth(20)))
-                {
-                    sellPointData.processListSize++;
-                }
-                if (GUILayout.Button("-", GUILayout.MaxWidth(20)))
-                {
-                    sellPointData.processListSize--;
-                }
-                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.PropertyField(processingResult, GUILayout.Width(200));
             }
+            UpdateListSizes();
+            serializedObject.ApplyModifiedProperties();
         }
-        static void DrawSellData(SellPointData sellPointData, int i)
+        private void UpdateListSizes()
         {
-            
-            EditorGUILayout.BeginHorizontal();
-
-            EditorGUILayout.LabelField("Name", GUILayout.MaxWidth(50));
-            sellPointData.nameListRaw[i] = EditorGUILayout.TextField(sellPointData.nameListRaw[i], GUILayout.MaxWidth(200));
-
-            EditorGUILayout.LabelField("PriceMin", GUILayout.MaxWidth(60));
-            sellPointData.priceMinListRaw[i] = EditorGUILayout.IntField(sellPointData.priceMinListRaw[i], GUILayout.MaxWidth(30));
-
-            EditorGUILayout.LabelField("PriceMax", GUILayout.MaxWidth(60));
-            sellPointData.priceMaxListRaw[i] = EditorGUILayout.IntField(sellPointData.priceMaxListRaw[i], GUILayout.MaxWidth(30));
-
-            EditorGUILayout.EndHorizontal();
+            if(materialName.arraySize > priceMin.arraySize || materialName.arraySize < priceMin.arraySize)
+            {
+                priceMin.arraySize = materialName.arraySize;
+            }
+            if(materialName.arraySize > priceMax.arraySize || materialName.arraySize < priceMax.arraySize)
+            {
+                priceMax.arraySize = materialName.arraySize;
+            }
         }
     }
 #endif

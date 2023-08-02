@@ -1109,6 +1109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sell Point
       objectReference: {fileID: 0}
+    - target: {fileID: 1871932651797338867, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4585568374485263233, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -10,5 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c08fb80cff45d3445bed9f591490bc1c, type: 3}
-  m_Name: 
+  m_Name: Sell data
   m_EditorClassIdentifier: 
+  priceMaxArr: 020000000400000008000000
+  priceMinArr: 010000000200000004000000
+  nameArr:
+  - coal
+  - iron
+  - gold
+  processArr:
+  - {fileID: 11400000, guid: 85c182d663947984bb3a60e6b20d403d, type: 2}
+  - {fileID: 11400000, guid: 895c53aa749b9dc43bf35738d22baaf9, type: 2}
+  - {fileID: 11400000, guid: 9358053be8813f6498217f1877c677ea, type: 2}
