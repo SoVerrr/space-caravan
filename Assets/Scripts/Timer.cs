@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     [SerializeField] float customTime;
     private float DisplayTime;
 
-
+    [SerializeField] Camera MainCamera;
 
     private float oneSecond;
 
@@ -25,6 +25,7 @@ public class Timer : MonoBehaviour
     {
         buttons();
         Time.timeScale = customTime;
+        MainCamera.orthographicSize = 10f;
     }
     void Update()
     {
@@ -84,6 +85,7 @@ public class Timer : MonoBehaviour
             timeChanged?.Invoke();
             timeRemaining =1;
             textElement.text = time.ToString();
+            //MainCamera.orthographicSize += 0.005f;
         }
     }
 }

@@ -336,10 +336,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 500
   field of view: 90
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -605,6 +605,10 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1555258114}
+    - target: {fileID: 5747229553469825562, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
+      propertyPath: textElement
+      value: 
+      objectReference: {fileID: 1562529391}
     - target: {fileID: 5850875920480369648, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -768,6 +772,10 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1555258114}
+    - target: {fileID: 911485131529837218, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
+      propertyPath: textElement
+      value: 
+      objectReference: {fileID: 1562529391}
     - target: {fileID: 1991931501848368911, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
       propertyPath: m_Name
       value: Material Point
@@ -1104,6 +1112,10 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1555258114}
+    - target: {fileID: 4585577613246122883, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
+      propertyPath: textElement
+      value: 
+      objectReference: {fileID: 1562529391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
 --- !u!4 &1005569608 stripped
@@ -1311,6 +1323,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1562529391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1271627757790381602, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+  m_PrefabInstance: {fileID: 4983457263435601373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1568498036 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 911485131529837218, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
@@ -1575,6 +1598,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 163032610}
     m_Modifications:
+    - target: {fileID: 802800687179077667, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 802800687179077667, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 802800687179077667, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -775
+      objectReference: {fileID: 0}
+    - target: {fileID: 802800687179077667, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 267
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271627757790381602, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271627757790381602, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271627757790381602, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271627757790381602, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271627757790381602, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271627757790381602, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: pointManager
       value: 
@@ -1591,6 +1654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 395711841}
     - target: {fileID: 4983457262464664279, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
-
+using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,7 +11,7 @@ public class SellPoint : Point
 { 
     public static List<GameObject> sellPointList;
     [SerializeField] SellPointData sellPointData;
-    [SerializeField] TextMeshProUGUI textElement;
+    [SerializeField] Text textElement; 
 
     private string buyListPrint;
 
@@ -30,6 +30,19 @@ public class SellPoint : Point
         grid.status[x, y] = GridStatus.SellPoint;
         return point;
     }
+
+    void OnMouseOver()
+    {
+        textElement.text = buyListPrint;
+    }
+
+    void OnMouseExit()
+    {
+        textElement.text = "";
+    }
+
+
+
     private void SetValues(int x, int y)
     {
         sellPointData.SetData();
@@ -45,8 +58,10 @@ public class SellPoint : Point
             price = Random.Range(minPrices[i], maxPrices[i]);
             sellingPrices[i] = price;
             buyListPrint += names[i] + " " + price.ToString() + "g" + "\n";
+            //Debug.Log(buyListPrint);
         }
-        textElement.text = buyListPrint;
+        //Debug.Log(buyListPrint);
+        //textElement.text = buyListPrint;
         this.xCoordinate = x;
         this.yCoordinate = y;
     }

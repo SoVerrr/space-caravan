@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI;
 public class ProcessingPoint : Point
 {
     public static List<GameObject> processingPointsList;
     [SerializeField] private ProcessingResult[] ProcessingResults;
     private int processingResultIndex;
-    [SerializeField] TextMeshProUGUI textElement;
+    [SerializeField] Text textElement; 
     private string[] materialsNeeded;
     private int[] numberofMaterials;
     private string materialsPrint;
@@ -23,6 +24,20 @@ public class ProcessingPoint : Point
 
         return point;
     }
+
+
+
+    void OnMouseOver()
+    {
+        textElement.text = materialsPrint;
+    }
+
+    void OnMouseExit()
+    {
+        textElement.text = "";
+    }
+
+
     private void SetValues(int x, int y)
     {
         processingResultIndex = Random.Range(0, ProcessingResults.Length);
@@ -34,7 +49,7 @@ public class ProcessingPoint : Point
             materialsPrint += materialsNeeded[i] + " " + numberofMaterials[i] + "\n";
         }
         grid.status[x, y] = GridStatus.MaterialPoint;
-        textElement.text = materialsPrint;
+        //textElement.text = materialsPrint;
         this.xCoordinate = x;
         this.yCoordinate = y;
     }

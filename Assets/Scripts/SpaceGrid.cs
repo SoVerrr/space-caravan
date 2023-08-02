@@ -32,6 +32,13 @@ public class SpaceGrid : MonoBehaviour
     private int availableroads;  
 
 
+    private int gridSizeXTemp, gridSizeYTemp;
+    public Vector3[,] tileArrayTemp;
+    public GridStatus[,] statusTemp;
+    public SpawnStatus[,] spawnStatusTemp;
+
+
+
     private void GenerateGrid()
     {
         for (int x = 0; x < gridSizeX; x++)
@@ -52,6 +59,38 @@ public class SpaceGrid : MonoBehaviour
         mainCamera.transform.position = new Vector3(gridSizeX/2, 14, gridSizeY/2);
         
     }
+
+
+
+    // public int ResizeGrid(){
+    //     gridSizeXTemp +=1;
+    //     gridSizeYTemp +=1;
+
+    //     tileArrayTemp = new Vector3[gridSizeXTemp, gridSizeYTemp];
+    //     statusTemp = new GridStatus[gridSizeXTemp, gridSizeYTemp];
+    //     spawnStatusTemp = new SpawnStatus[gridSizeXTemp, gridSizeYTemp];
+    //     // creating new Grid with new X and Y
+    //     for (int x = 0; x < gridSizeXTemp; x++)
+    //     {
+    //         for(int y = 0; y < gridSizeYTemp; y++)
+    //         {
+    //             tileArrayTemp[x, y] = new Vector3(x, 0, y);
+    //             statusTemp[x, y] = GridStatus.Empty;
+    //             spawnStatusTemp[x, y] = SpawnStatus.Spawnable;
+    //         }
+    //     }
+
+    //     // Debug.Log(tileArrayTemp);
+    //     // return gridSizeXTemp;
+    //     // Debug.Log(gridSizeX);
+    //     // Debug.Log(gridSizeY);
+    // }
+
+
+
+
+
+
     public Vector3 AccessCell(int x, int y) { return tileArray[x, y]; }
 
     public List<Vector2Int> GetAdjacentCells(Vector2Int cell, bool isAgent)
