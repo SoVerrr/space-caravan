@@ -1068,6 +1068,17 @@ Transform:
   m_Father: {fileID: 407903641}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824356094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+  m_PrefabInstance: {fileID: 4983457263435601373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6fe48e64f7bab49a1d156a1077ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &899426519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,6 +1364,8 @@ MonoBehaviour:
   textElement: {fileID: 444091828}
   roadCounter: 0
   roadLimit: 40
+  addRoad: 15
+  timeManager: {fileID: 824356094}
 --- !u!4 &1555258115
 Transform:
   m_ObjectHideFlags: 0
@@ -1695,6 +1708,14 @@ PrefabInstance:
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: SpaceGrid
+      value: 
+      objectReference: {fileID: 1555258114}
+    - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: spaceGrid
+      value: 
+      objectReference: {fileID: 1555258114}
+    - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: pointManager
       value: 
       objectReference: {fileID: 120971114}
@@ -1716,7 +1737,7 @@ PrefabInstance:
       objectReference: {fileID: 395711841}
     - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: customTime
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664279, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_RootOrder
