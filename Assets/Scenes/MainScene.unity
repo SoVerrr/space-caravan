@@ -1714,6 +1714,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 395711841}
+    - target: {fileID: 4983457262464664278, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: customTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4983457262464664279, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: m_RootOrder
       value: 1
