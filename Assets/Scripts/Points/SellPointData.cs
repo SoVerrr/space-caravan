@@ -38,15 +38,15 @@ public class SellPointData : ScriptableObject
         {
             return;
         }
-        foreach (var item in resultList)
+        foreach (var item in processArr)
         {
             ConvertProcessingToSell(item);
         }
-        for (int i = 0; i < priceMaxListRaw.Count; i++)
+        for (int i = 0; i < priceMaxArr.Count; i++)
         {
-            nameList.Add(nameListRaw[i]);
-            priceMaxList.Add(priceMaxListRaw[i]);
-            priceMinList.Add(priceMinListRaw[i]);
+            nameList.Add(nameArr[i]);
+            priceMaxList.Add(priceMaxArr[i]);
+            priceMinList.Add(priceMinArr[i]);
         }
     }
     #region Editor
