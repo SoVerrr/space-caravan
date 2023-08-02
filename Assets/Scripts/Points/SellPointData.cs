@@ -54,8 +54,6 @@ public class SellPointData : ScriptableObject
 
             base.OnInspectorGUI();
             SellPointData sellPointData = (SellPointData)target;
-            EditorUtility.SetDirty(sellPointData);
-            EditorUtility.SetDirty(target);
             EditorGUILayout.Space();
             sellPointData.showRawMaterials = EditorGUILayout.Foldout(sellPointData.showRawMaterials, "Raw Materials", true);
             if (sellPointData.showRawMaterials)
