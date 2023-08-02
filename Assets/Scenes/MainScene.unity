@@ -204,9 +204,54 @@ Transform:
   - {fileID: 504770015}
   - {fileID: 1700782840}
   - {fileID: 444612944}
+  - {fileID: 213837521}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &213837520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 213837521}
+  - component: {fileID: 213837522}
+  m_Layer: 0
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &213837521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213837520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 163032610}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213837522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213837520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3edd0e96697b647a9ae381e3afe750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 1931939177}
 --- !u!1001 &235551541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1470,6 +1515,17 @@ Transform:
   m_Father: {fileID: 407903641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1931939177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3662467146790034167, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+  m_PrefabInstance: {fileID: 4983457263435601373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1941759074 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7792914219286464075, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
