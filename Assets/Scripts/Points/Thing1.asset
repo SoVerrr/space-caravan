@@ -17,5 +17,5 @@ MonoBehaviour:
   - iron
   - gold
   numberOfMaterialsNeeded: 0200000003000000
-  priceMax: 30
+  priceMax: 29
   priceMin: 20
