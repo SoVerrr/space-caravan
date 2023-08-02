@@ -23,11 +23,11 @@ public class TimeManager : MonoBehaviour
     {
         if (Timer.time > 1)
         {
-            if (Timer.time % 40 == 0)
+            if (Timer.time % 160 == 0)
             {
                 pointManager.GeneratePoint(pointManager.hubPoint);
             }
-            else if (Timer.time % 5 == 0)
+            else if (Timer.time % 20 == 0)
             {
                 pointManager.GeneratePoint(pointsArray[counter]);
                 if(counter != 2)
@@ -44,5 +44,6 @@ public class TimeManager : MonoBehaviour
     }
     private void Start()
     {
+        pointManager.GeneratePoint(pointManager.materialPoint);
     }
 }
