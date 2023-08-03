@@ -6,6 +6,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     [SerializeField] private PointManager pointManager;
+    [SerializeField] private SpaceGrid spaceGrid;
 
     private Point[] pointsArray;
     private int counter = 0;
@@ -27,6 +28,10 @@ public class TimeManager : MonoBehaviour
             {
                 pointManager.GeneratePoint(pointManager.hubPoint);
             }
+            else if (Timer.time % 50 == 0)
+            {
+                spaceGrid.AddRoads();
+            }
             else if (Timer.time % 20 == 0)
             {
                 pointManager.GeneratePoint(pointsArray[counter]);
@@ -38,6 +43,8 @@ public class TimeManager : MonoBehaviour
             }
         }
     }
+
+
     private void Awake()
     {
         pointsArray = new Point[3] {pointManager.materialPoint, pointManager.processingPoint, pointManager.sellPoint};
