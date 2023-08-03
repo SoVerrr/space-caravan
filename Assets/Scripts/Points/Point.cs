@@ -17,7 +17,6 @@ public abstract class Point : MonoBehaviour
     {
         if(point is HubPoint)
         {
-            Debug.Log("abcd");
             point.gameObject.GetComponent<HubPoint>().HubPointClickEvent();
         }
         else

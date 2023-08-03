@@ -5,6 +5,7 @@ using UnityEngine;
 public class TradeRoute
 {
     private List<Point> tradeRoute;
+    private string routeName;
     // Start is called before the first frame update
     public TradeRoute(params Point[] points)
     {
@@ -40,5 +41,10 @@ public class TradeRoute
     {
         foreach (var item in tradeRoute)
             Debug.Log(item);
+    }
+    public string RouteName
+    {
+        get { return routeName; }
+        set { routeName = value; }
     }
 }

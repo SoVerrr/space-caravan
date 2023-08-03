@@ -16,8 +16,9 @@ public class TradeRouteManager : MonoBehaviour
     {
         currentlyCreatedRoute = new TradeRoute(parentHub);
     }
-    public void FinishCurrentRoute()
+    public void FinishCurrentRoute(string routeName)
     {
+        currentlyCreatedRoute.RouteName = routeName;
         parentHub.routeList.Add(currentlyCreatedRoute);
         currentlyCreatedRoute = null;
         isRouteBeingCreated = false;

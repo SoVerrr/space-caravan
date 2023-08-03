@@ -6,7 +6,7 @@ public class HubPoint : Point
 {
     public List<GameObject> hubPointList;
     public List<TradeRoute> routeList;
-    [SerializeField] private GameObject UI;
+    [SerializeField] public GameObject UI;
     [SerializeField] private GameObject truckPrefab;
     static public bool isUiEnabled = false;
     public List<bool> isTruckOnRoute;
