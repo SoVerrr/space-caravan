@@ -26,7 +26,6 @@ public class HubPoint : Point
     }
     public override void Functionality(Inventory truckInventory)
     {
-        Debug.Log($"Score: {GameManager.Instance.score}");
     }
     public void CreateTradeRoute(params Point[] points)
     {

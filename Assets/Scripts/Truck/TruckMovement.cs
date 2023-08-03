@@ -22,7 +22,7 @@ public class TruckMovement : MonoBehaviour
     {
         parentHub = parent;
         truckIndex = index;
-        currentRoute = tradeRoute.GetRoute();
+        currentRoute = new List<Point>(tradeRoute.GetRoute());
         currentPath = GetPathToPoint(1);
         currentPathCheckpoint++;
         isOnRoute = true;
@@ -128,12 +128,13 @@ public class TruckMovement : MonoBehaviour
         }
         else if (HasReachedCheckpoint(currentPathCheckpoint))
         {
+            Debug.Log($"Route: {currentRoute.Count}");
             if (!NextCheckpoint())
             {
                 UpdatePath();
             }
         }
-            
+        
 
     }
 }
