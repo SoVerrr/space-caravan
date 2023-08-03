@@ -17,4 +17,5 @@ public class UIManager : MonoBehaviour
     {
         score.text = $"Score: {GameManager.Instance.score}";
     }
+
 }

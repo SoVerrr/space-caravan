@@ -13,6 +13,7 @@ public class HubUI : MonoBehaviour
     [SerializeField] private GameObject removeRouteButton;
     [SerializeField] private GameObject newRouteButton;
     [SerializeField] private GameObject routeButtonParent;
+    [SerializeField] private GameObject finishRouteButton;
 
     // Start is called before the first frame update
 
@@ -21,11 +22,16 @@ public class HubUI : MonoBehaviour
         HubPoint.isUiEnabled = false;
         transform.gameObject.SetActive(false);
     }
-
+    public void FinishRoute()
+    {
+        gameObject.SetActive(true);
+        finishRouteButton.SetActive(false);
+    }
     public void NewRouteButton()
     {
         TradeRouteManager.Instance.isRouteBeingCreated = true;
         TradeRouteManager.Instance.StartNewRoute();
+        finishRouteButton.SetActive(true);
         CloseWindow();
     }
     public void RouteButton()
@@ -70,6 +76,7 @@ public class HubUI : MonoBehaviour
 
     private void OnEnable()
     {
+        newRouteButton.transform.localPosition = new Vector3(-375, 275, 0);
         parentHub = TradeRouteManager.Instance.parentHub;
         if (parentHub.routeList.Count > 0)
         {
