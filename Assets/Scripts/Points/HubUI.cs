@@ -14,7 +14,6 @@ public class HubUI : MonoBehaviour
     [SerializeField] private GameObject newRouteButton;
     [SerializeField] private GameObject routeButtonParent;
 
-    private bool confirmRoute = false;
     // Start is called before the first frame update
 
     public void CloseWindow()
@@ -64,7 +63,6 @@ public class HubUI : MonoBehaviour
     }
     public void ConfirmRouteNameButton()
     {
-        confirmRoute = true;
         TradeRouteManager.Instance.FinishCurrentRoute(routeNameInput.GetComponent<TMP_InputField>().text);
         confirmRouteField.SetActive(false);
         parentHub.UI.SetActive(false);
