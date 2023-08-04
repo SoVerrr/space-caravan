@@ -51,6 +51,8 @@ public class TimeManager : MonoBehaviour
     }
     private void Start()
     {
-        pointManager.GeneratePoint(pointManager.materialPoint);
+        // pointManager.GeneratePoint(pointManager.materialPoint);
+        // pointManager.GeneratePoint(pointManager.materialPoint);
+        // pointManager.GeneratePoint(pointManager.materialPoint);
     }
 }

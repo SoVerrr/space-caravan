@@ -48,8 +48,8 @@ public class SellPoint : Point
         sellPointData.SetData();
         names = sellPointData.GetNames();
         sellingPrices = new int[names.Count];
-        foreach (string name in names)
-            Debug.Log(name);
+        //foreach (string name in names)
+            //Debug.Log(name);
         List<int> maxPrices = sellPointData.GetMaxPrices();
         List<int> minPrices = sellPointData.GetMinPrices();
         buyListPrint = "Sell:\n";

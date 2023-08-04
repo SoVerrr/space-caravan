@@ -10,7 +10,7 @@ public class PointManager : MonoBehaviour
     [SerializeField] public ProcessingPoint processingPoint;
     [SerializeField] SpaceGrid grid;
     [SerializeField] int spawnSpacing;
-    public void GeneratePoint(Point planetPrefab)
+    public void GeneratePoint(Point pointPrefab)
     {
         int[] coords = FindSpawnSpot();
         if (coords == null || coords.Length == 0)
@@ -28,7 +28,7 @@ public class PointManager : MonoBehaviour
                 return;
             else
             {
-                var point = planetPrefab.InstantiatePoint(x, y);
+                var point = pointPrefab.InstantiatePoint(x, y);
                 point.transform.parent = GameObject.Find("Points").transform;
                 for (int xCoord = x - spawnSpacing; xCoord < x + spawnSpacing; xCoord++)
                 {
@@ -42,7 +42,7 @@ public class PointManager : MonoBehaviour
             }
         }
     }
-    public void GeneratePlanet(Point planetPrefab, int x, int y)
+    public void GeneratePoint(Point pointPrefab, int x, int y)
     {
         Collider[] hitColliders = new Collider[3];
         int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
@@ -50,7 +50,7 @@ public class PointManager : MonoBehaviour
             Debug.Log("New planet overlapping with another, wrong position");
         else
         {
-            planetPrefab.InstantiatePoint(x, y);
+            pointPrefab.InstantiatePoint(x, y);
             for (int xCoord = x - 4; xCoord < x + 4; xCoord++)
             {
                 for (int yCoord = y - 4; yCoord < y + 4; yCoord++)
@@ -61,6 +61,49 @@ public class PointManager : MonoBehaviour
             }
         }
     }
+
+    public void GeneratePoint(Point pointPrefab, string materialType)
+    {
+
+        if(pointPrefab is MaterialPoint)
+        {
+            pointPrefab = (MaterialPoint)pointPrefab;
+        }
+
+        int[] coords = FindSpawnSpot();
+        if (coords == null || coords.Length == 0)
+        {
+            return;
+        }
+        else
+        {
+            int x = coords[0];
+            int y = coords[1];
+
+            Collider[] hitColliders = new Collider[3];
+            int colliders = Physics.OverlapSphereNonAlloc(new Vector3(x, 0, y), 0.3f, hitColliders);
+            if (colliders > 0)
+                return;
+            else
+            {
+                var point = pointPrefab.InstantiateMaterialPoint(x, y, materialType);
+                point.transform.parent = GameObject.Find("Points").transform;
+                for (int xCoord = x - spawnSpacing; xCoord < x + spawnSpacing; xCoord++)
+                {
+                    for (int yCoord = y - spawnSpacing; yCoord < y + spawnSpacing; yCoord++)
+                    {
+
+                        if (xCoord >= 0 && xCoord < grid.DimensionX() && yCoord >= 0 && yCoord < grid.DimensionY())
+                            grid.spawnStatus[xCoord, yCoord] = SpawnStatus.NotSpawnable;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
     private int[] FindSpawnSpot(){
         List<int[]> spawnableCoords = new List<int[]>();
         for(int x = 0; x < grid.DimensionX(); x++)
@@ -80,8 +123,10 @@ public class PointManager : MonoBehaviour
     }
     void Start()
     {
-        GeneratePlanet(hubPoint, grid.DimensionX() / 2, grid.DimensionY() / 2);
-        
+        GeneratePoint(hubPoint, grid.DimensionX() / 2, grid.DimensionY() / 2);
+        GeneratePoint(materialPoint,"coal");
+        GeneratePoint(materialPoint);
+        GeneratePoint(materialPoint);
     }
     void Update()
     {
