@@ -65,10 +65,6 @@ public class PointManager : MonoBehaviour
     public void GeneratePoint(Point pointPrefab, string materialType)
     {
 
-        if(pointPrefab is MaterialPoint)
-        {
-            pointPrefab = (MaterialPoint)pointPrefab;
-        }
 
         int[] coords = FindSpawnSpot();
         if (coords == null || coords.Length == 0)
@@ -86,7 +82,8 @@ public class PointManager : MonoBehaviour
                 return;
             else
             {
-                var point = pointPrefab.InstantiateMaterialPoint(x, y, materialType);
+
+                var point = pointPrefab.GetComponent<MaterialPoint>().InstantiateMaterialPoint(x, y, materialType);
                 point.transform.parent = GameObject.Find("Points").transform;
                 for (int xCoord = x - spawnSpacing; xCoord < x + spawnSpacing; xCoord++)
                 {
