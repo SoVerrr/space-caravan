@@ -43,14 +43,12 @@ public class MaterialPoint : Point
         materialData = new PointDataMaterial();
         this.xCoordinate = x;
         this.yCoordinate = y;
-        //textElement.text = "Collect\n" + materialData.GetProductionRate().ToString() + " " + materialData.GetMaterialType().ToString() + "\n";
     }
     private void SetValues(int x, int y, string material)
     {
-        materialData = new PointDataMaterial();
+        materialData = new PointDataMaterial(material);
         this.xCoordinate = x;
         this.yCoordinate = y;
-        //textElement.text = "Collect\n" + materialData.GetProductionRate().ToString() + " " + materialData.GetMaterialType().ToString() + "\n";
     }
     public override void Functionality(Inventory truckInventory)
     {

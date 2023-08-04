@@ -64,8 +64,6 @@ public class PointManager : MonoBehaviour
 
     public void GeneratePoint(Point pointPrefab, string materialType)
     {
-
-
         int[] coords = FindSpawnSpot();
         if (coords == null || coords.Length == 0)
         {
@@ -100,7 +98,6 @@ public class PointManager : MonoBehaviour
 
     }
 
-
     private int[] FindSpawnSpot(){
         List<int[]> spawnableCoords = new List<int[]>();
         for(int x = 0; x < grid.DimensionX(); x++)
@@ -122,8 +119,8 @@ public class PointManager : MonoBehaviour
     {
         GeneratePoint(hubPoint, grid.DimensionX() / 2, grid.DimensionY() / 2);
         GeneratePoint(materialPoint,"coal");
-        GeneratePoint(materialPoint);
-        GeneratePoint(materialPoint);
+        GeneratePoint(materialPoint,"iron");
+        GeneratePoint(materialPoint,"gold");
     }
     void Update()
     {
