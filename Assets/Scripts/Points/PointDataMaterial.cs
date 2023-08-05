@@ -7,14 +7,15 @@ public class PointDataMaterial : PointData
     [SerializeField] private static string[] materialTypeList;
     private int productionRate; 
     public string materialType;
-  
-    void Start(){
-        Dictionary<string,int> materialsCounter = new Dictionary<string, int>(){
-            {"coal",1},
-            {"iron",1},
-            {"gold",1}
+    private static float occuranceModifier;
+
+    static Dictionary<string,float> materialsWeight = new Dictionary<string, float>()
+    {
+            {"coal",33},
+            {"iron",33},
+            {"gold",33}
         };
-    }
+    
     public PointDataMaterial(int prodRate, string matType)
     {
         productionRate = prodRate;
@@ -22,9 +23,20 @@ public class PointDataMaterial : PointData
     }
     public PointDataMaterial()
     {
+        occuranceModifier = 1;
+
         materialTypeList = new string[3] {"coal", "iron", "gold"};
         productionRate = Random.Range(5, 30);
         materialType = materialTypeList[Random.Range(0, materialTypeList.Length)];
+
+        for(int i =0;i<materialTypeList.Length;i++){
+            if(materialTypeList[i]==materialType){
+                materialsWeight[materialTypeList[i]]-=occuranceModifier;
+            }
+            else{
+                materialsWeight[materialTypeList[i]]+=occuranceModifier/(materialTypeList.Length-1);
+            }
+        }
     }
 
     public PointDataMaterial(string material)
