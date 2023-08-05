@@ -22,11 +22,13 @@ public class HubUI : MonoBehaviour
         HubPoint.isUiEnabled = false;
         transform.gameObject.SetActive(false);
     }
+
     public void FinishRoute()
     {
         gameObject.SetActive(true);
         finishRouteButton.SetActive(false);
     }
+
     public void NewRouteButton()
     {
         TradeRouteManager.Instance.isRouteBeingCreated = true;
@@ -34,25 +36,26 @@ public class HubUI : MonoBehaviour
         finishRouteButton.SetActive(true);
         CloseWindow();
     }
+
     public void RouteButton()
     {
-
+        removeRouteButton.SetActive(true);
+        removeRouteButton.transform.localPosition = new Vector3(-150, 275 - 150 * buttonPressedIndex, 0);
     }
-    private void PopulateNameList()
+    public void RemoveRouteButton()
     {
-        foreach (var item in parentHub.routeList)
-        {
-            Debug.Log(item.RouteName);
-        }
+        parentHub.routeList.RemoveAt(buttonPressedIndex);
+        UpdateRouteButtons();
+        removeRouteButton.SetActive(false);
     }
 
     private void CreateRouteButtons()
     {
-        PopulateNameList();
         for(int i = 0; i < parentHub.routeList.Count; i++)
         {
             Vector3 position = new Vector3(-375, 275 - 155*i, 0);
             var button = Instantiate(routeButtonPrefab);
+
             button.GetComponent<ButtonMaker>().SetText(parentHub.routeList[i].RouteName);
             button.transform.parent = routeButtonParent.transform;
             button.transform.localPosition = position;
@@ -61,6 +64,13 @@ public class HubUI : MonoBehaviour
         }
         newRouteButton.transform.localPosition = new Vector3(-375, 275 - 150 * parentHub.routeList.Count, 0);
     }
+
+    private void UpdateRouteButtons()
+    {
+        DestroyRouteButtons();
+        CreateRouteButtons();
+    }
+
     private void DestroyRouteButtons()
     {
         foreach(Transform child in routeButtonParent.transform)
@@ -68,6 +78,7 @@ public class HubUI : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
     public void ConfirmRouteNameButton()
     {
         TradeRouteManager.Instance.FinishCurrentRoute(routeNameInput.GetComponent<TMP_InputField>().text);
@@ -77,6 +88,7 @@ public class HubUI : MonoBehaviour
 
     private void OnEnable()
     {
+        UIManager.Instance.isUIOpen = true;
         newRouteButton.transform.localPosition = new Vector3(-375, 275, 0);
         parentHub = TradeRouteManager.Instance.parentHub;
         if (parentHub.routeList.Count > 0)
@@ -91,6 +103,7 @@ public class HubUI : MonoBehaviour
 
     private void OnDisable()
     {
+        UIManager.Instance.isUIOpen = false;
         DestroyRouteButtons();
         parentHub = null;
         if (!TradeRouteManager.Instance.isRouteBeingCreated)

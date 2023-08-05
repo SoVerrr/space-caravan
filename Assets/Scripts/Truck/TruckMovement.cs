@@ -128,7 +128,6 @@ public class TruckMovement : MonoBehaviour
         }
         else if (HasReachedCheckpoint(currentPathCheckpoint))
         {
-            Debug.Log($"Route: {currentRoute.Count}");
             if (!NextCheckpoint())
             {
                 UpdatePath();

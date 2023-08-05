@@ -45,14 +45,22 @@ public class HubPoint : Point
     }
     public void TruckBack(int index)
     {
-        isTruckOnRoute[index] = false;
+        if (routeList.Count == 0)
+            return;
+
+        if (index < routeList.Count)
+            isTruckOnRoute[index] = false;
     }
     protected override void Update()
     {
         base.Update();
-        if (isTruckOnRoute.Count != routeList.Count)
+        if (isTruckOnRoute.Count < routeList.Count)
         {
             isTruckOnRoute.Add(false);
+        }
+        if (isTruckOnRoute.Count > routeList.Count)
+        {
+            isTruckOnRoute.RemoveAt(0);
         }
         for (int i = 0; i < isTruckOnRoute.Count; i++)
         {
