@@ -1493,13 +1493,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a3f146355d3f649be6314af0ac7f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  routeNameInput: {fileID: 0}
+  routeNameInput: {fileID: 2210503349471804966}
   routeButtonPrefab: {fileID: 0}
-  confirmRouteField: {fileID: 0}
-  removeRouteButton: {fileID: 0}
-  newRouteButton: {fileID: 0}
-  routeButtonParent: {fileID: 0}
-  finishRouteButton: {fileID: 0}
+  confirmRouteField: {fileID: 8787679609762924393}
+  removeRouteButton: {fileID: 6048118018180608539}
+  newRouteButton: {fileID: 1788930551545080245}
+  routeButtonParent: {fileID: 5600468008308855473}
+  finishRouteButton: {fileID: 7819279768834996491}
 --- !u!1 &6048118018180608539
 GameObject:
   m_ObjectHideFlags: 0

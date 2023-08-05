@@ -14,7 +14,7 @@ public class HubUI : MonoBehaviour
     [SerializeField] private GameObject newRouteButton;
     [SerializeField] private GameObject routeButtonParent;
     [SerializeField] private GameObject finishRouteButton;
-
+    public static int buttonPressedIndex;
     // Start is called before the first frame update
 
     public void CloseWindow()
@@ -57,6 +57,7 @@ public class HubUI : MonoBehaviour
             button.transform.parent = routeButtonParent.transform;
             button.transform.localPosition = position;
             button.transform.localScale = Vector3.one;
+            button.GetComponent<ButtonMaker>().ButtonIndex = i; 
         }
         newRouteButton.transform.localPosition = new Vector3(-375, 275 - 150 * parentHub.routeList.Count, 0);
     }
