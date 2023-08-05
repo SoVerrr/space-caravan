@@ -7,7 +7,8 @@ public class PointDataMaterial : PointData
     [SerializeField] private static string[] materialTypeList;
     private int productionRate; 
     public string materialType;
-    private static float occuranceModifier;
+    private float randomNumber;
+    private static float sum;
 
     static Dictionary<string,float> materialsWeight = new Dictionary<string, float>()
     {
@@ -15,6 +16,11 @@ public class PointDataMaterial : PointData
             {"iron",33},
             {"gold",33}
         };
+
+   // static List<string,float,float> generatingWeight = new List<string,float,float>();
+
+
+    List<float> weightsList = new List<float>();
     
     public PointDataMaterial(int prodRate, string matType)
     {
@@ -23,18 +29,32 @@ public class PointDataMaterial : PointData
     }
     public PointDataMaterial()
     {
-        occuranceModifier = 1;
 
         materialTypeList = new string[3] {"coal", "iron", "gold"};
         productionRate = Random.Range(5, 30);
+        sum = 0;
+        sum = materialsWeight[materialTypeList[0]];
+        weightsList.Add(sum);
+        
+        for(int i=1;i<materialTypeList.Length;i++){
+            sum+=materialsWeight[materialTypeList[i]];
+            weightsList.Add(sum);
+
+        }
+
+
+        
+        randomNumber = Random.Range(1,weightsList[materialTypeList.Length-1]);
+        Debug.Log(randomNumber);
+
         materialType = materialTypeList[Random.Range(0, materialTypeList.Length)];
 
         for(int i =0;i<materialTypeList.Length;i++){
             if(materialTypeList[i]==materialType){
-                materialsWeight[materialTypeList[i]]-=occuranceModifier;
+                materialsWeight[materialTypeList[i]]-=GameManager.Instance.occuranceModifier;
             }
             else{
-                materialsWeight[materialTypeList[i]]+=occuranceModifier/(materialTypeList.Length-1);
+                materialsWeight[materialTypeList[i]]+=GameManager.Instance.occuranceModifier/(materialTypeList.Length-1);
             }
         }
     }
