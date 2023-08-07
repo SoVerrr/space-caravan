@@ -18,5 +18,9 @@ public class Item : MonoBehaviour
         minPrice = material.minPrice;
         objectType = "material";
     }
+    public Item(ProcessingResult processingResult)
+    {
+
+    }
 
 }
