@@ -20,3 +20,4 @@ MonoBehaviour:
   numberOfMaterialsNeeded: 010000000200000003000000
   priceMax: 20
   priceMin: 10
+  resultID: t3

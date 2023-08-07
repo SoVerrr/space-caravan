@@ -19,3 +19,4 @@ MonoBehaviour:
   numberOfMaterialsNeeded: 0100000001000000
   priceMax: 10
   priceMin: 1
+  resultID: t2
