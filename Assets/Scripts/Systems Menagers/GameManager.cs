@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject HubUI;
     [SerializeField] private Point point;
     [SerializeField] private TruckManager truck;
+    [SerializeField] public float occuranceModifier;
     private void Start()
     {
         inputManager.OnMouseClick += routeManager.PlaceRoute;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MaterialPoint : Point
 {
     public static List<GameObject> materialPointList;
-    [SerializeField] Text textElement; 
+    [SerializeField] Text textElement;
     private PointDataMaterial materialData;
     override public GameObject InstantiatePoint(int x, int y)
     {
