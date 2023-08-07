@@ -14,6 +14,8 @@ public class ItemList : ScriptableObject
         foreach (var material in rawMaterials)
         {
             items.Add(new Item(material));
+            //Debug.Log(material);
+            Debug.Log(items);
         }
     }
     private void ConvertProcessingToItems()
@@ -27,5 +29,15 @@ public class ItemList : ScriptableObject
     {
         ConvertRawToItems();
         ConvertProcessingToItems();
+    }
+
+    public List<Item> GetItems(){
+
+        // foreach (var material in items)
+        // {
+        //     Debug.Log(material);
+        // }
+
+        return items;
     }
 }

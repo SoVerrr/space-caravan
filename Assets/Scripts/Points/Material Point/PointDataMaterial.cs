@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PointDataMaterial : PointData
 {
-    [SerializeField] private static string[] materialTypeList;
+
+    private static string[] materialTypeList;
     private int productionRate; 
     public string materialType;
     private float randomNumber;
     private static float sum;
+
+    //public MaterialPoint itemList;
+
+   // public static List<GameObject> ;
 
     static Dictionary<string,float> materialsWeight = new Dictionary<string, float>()
     {
@@ -27,6 +32,11 @@ public class PointDataMaterial : PointData
 
     public PointDataMaterial()
     {
+        //Debug.Log(GameManager.Instance.itemList.material);
+        foreach(var value in GameManager.Instance.itemList.GetItems()){
+
+           // Debug.Log(value);
+        }
 
         materialTypeList = new string[3] {"coal", "iron", "gold"};
         productionRate = Random.Range(5, 30);
@@ -38,18 +48,12 @@ public class PointDataMaterial : PointData
         for(int i=1;i<materialTypeList.Length;i++){
             sum+=materialsWeight[materialTypeList[i]];
             weightsList.Add(sum);
-
         }
-        //Debug.Log("coal:"+weightsList[0]+"-"+weightsList[1]+"     iron:"+weightsList[1]+"-"+weightsList[2]+"      gold:"+weightsList[2]+"-"+weightsList[3]);
- 
 
         randomNumber = Random.Range(1,weightsList[materialTypeList.Length-1]);
-        //Debug.Log("Random number:"+randomNumber);
-
 
         for(int i =0; i<weightsList.Count-1;i++){
             if(weightsList[i]<randomNumber && randomNumber<=weightsList[i+1]){
-                //Debug.Log(materialTypeList[i]);
                 materialType = materialTypeList[i];
             }
         }
@@ -62,7 +66,6 @@ public class PointDataMaterial : PointData
                 materialsWeight[materialTypeList[i]]+=GameManager.Instance.occuranceModifier/(materialTypeList.Length-1);
             }
         }
-
     }
 
     public PointDataMaterial(string material)
