@@ -17,9 +17,6 @@ public class PointDataMaterial : PointData
             {"gold",33}
         };
 
-   // static List<string,float,float> generatingWeight = new List<string,float,float>();
-
-
     List<float> weightsList = new List<float>();
     
     public PointDataMaterial(int prodRate, string matType)
@@ -27,6 +24,7 @@ public class PointDataMaterial : PointData
         productionRate = prodRate;
         materialType = matType;
     }
+
     public PointDataMaterial()
     {
 
@@ -34,6 +32,7 @@ public class PointDataMaterial : PointData
         productionRate = Random.Range(5, 30);
         sum = 0;
         sum = materialsWeight[materialTypeList[0]];
+        weightsList.Add(1);
         weightsList.Add(sum);
         
         for(int i=1;i<materialTypeList.Length;i++){
@@ -41,13 +40,19 @@ public class PointDataMaterial : PointData
             weightsList.Add(sum);
 
         }
+        //Debug.Log("coal:"+weightsList[0]+"-"+weightsList[1]+"     iron:"+weightsList[1]+"-"+weightsList[2]+"      gold:"+weightsList[2]+"-"+weightsList[3]);
+ 
 
-
-        
         randomNumber = Random.Range(1,weightsList[materialTypeList.Length-1]);
-        Debug.Log(randomNumber);
+        //Debug.Log("Random number:"+randomNumber);
 
-        materialType = materialTypeList[Random.Range(0, materialTypeList.Length)];
+
+        for(int i =0; i<weightsList.Count-1;i++){
+            if(weightsList[i]<randomNumber && randomNumber<=weightsList[i+1]){
+                //Debug.Log(materialTypeList[i]);
+                materialType = materialTypeList[i];
+            }
+        }
 
         for(int i =0;i<materialTypeList.Length;i++){
             if(materialTypeList[i]==materialType){
@@ -57,6 +62,7 @@ public class PointDataMaterial : PointData
                 materialsWeight[materialTypeList[i]]+=GameManager.Instance.occuranceModifier/(materialTypeList.Length-1);
             }
         }
+
     }
 
     public PointDataMaterial(string material)
