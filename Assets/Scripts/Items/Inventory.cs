@@ -21,9 +21,40 @@ public class Inventory : MonoBehaviour
         {"thing3", 0}
     };
 
-    public int getItemValue(string itemName)
+    Dictionary<Item, int> itemList = new Dictionary<Item, int>();
+
+    public void AddItem(Item item, int quantity)
     {
-        return Item[itemName];
+        if(!itemList.ContainsKey(item))
+        {
+            itemList.Add(item, quantity);
+        }
+        else
+        {
+            itemList[item] += quantity;
+        }
+    }
+    public void RemoveItem(Item item, int quantity)
+    {
+        if (itemList.ContainsKey(item))
+        {
+            itemList[item] -= quantity;
+            if(itemList[item] <= 0)
+            {
+                itemList.Remove(item);
+            }
+        }
+    }
+    public int GetItemQuantity(Item item)
+    {
+        if(itemList.ContainsKey(item))
+            return itemList[item];
+        return 0;
+    }
+
+    public int getItemValue(string item)
+    {
+        return Item[item];
     }
 
     public void addItem(string itemName, int addedVal)
