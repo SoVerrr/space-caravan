@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Items/ProcessingResult")]
 public class ProcessingResult : ScriptableObject
 {
     [SerializeField] string resultName;
@@ -10,10 +10,14 @@ public class ProcessingResult : ScriptableObject
     [SerializeField] int[] numberOfMaterialsNeeded;
     [SerializeField] int priceMax;
     [SerializeField] int priceMin;
-
+    [SerializeField] string resultID;
     public string GetResultName()
     {       
         return resultName;
+    }
+    public string GetResultID()
+    {
+        return resultID;
     }
     public string[] GetMaterialNeeded()
     {

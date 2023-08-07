@@ -907,6 +907,8 @@ MonoBehaviour:
   HubUI: {fileID: 5685840376892548641}
   point: {fileID: 7792914219286464075, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
   truck: {fileID: 5519658907959760654, guid: 729ecf2e44fac4c4bb3a4b0dd72c16ea, type: 3}
+  occuranceModifier: 10
+  itemList: {fileID: 11400000, guid: bf7b4a78c66c6054aad1085f01aa30d8, type: 2}
 --- !u!114 &4983457262464664278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routeNameInput: {fileID: 2210503349471804966}
   routeButtonPrefab: {fileID: 0}
-  confirmRouteField: {fileID: 8787679609762924393}
+  confirmRouteField: {fileID: 7726889276064636147}
   removeRouteButton: {fileID: 6048118018180608539}
   newRouteButton: {fileID: 1788930551545080245}
   routeButtonParent: {fileID: 5600468008308855473}
@@ -1518,7 +1520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1684981250776005654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1620,7 +1622,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5500953464991106903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4560950227519702083}
+        m_TargetAssemblyTypeName: HubUI, Assembly-CSharp
+        m_MethodName: RemoveRouteButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6146627977705766272
 GameObject:
   m_ObjectHideFlags: 0

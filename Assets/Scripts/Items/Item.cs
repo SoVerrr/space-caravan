@@ -20,7 +20,11 @@ public class Item : MonoBehaviour
     }
     public Item(ProcessingResult processingResult)
     {
-
+        itemName = processingResult.GetResultName();
+        itemID = processingResult.GetResultID();
+        maxPrice = processingResult.GetPriceMax();
+        minPrice = processingResult.GetPriceMin();
+        objectType = "processing";
     }
 
 }
