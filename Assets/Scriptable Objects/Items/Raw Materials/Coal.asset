@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d34def5cc72e904a85f10c44ea8b14a, type: 3}
   m_Name: Coal
   m_EditorClassIdentifier: 
-  materialName: 
-  itemID: 
-  maxPrice: 0
-  minPrice: 0
+  materialName: Coal
+  itemID: c1
+  maxPrice: 3
+  minPrice: 1

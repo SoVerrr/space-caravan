@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7aab4ceaf8489345b1233d7dc355740, type: 3}
   m_Name: Item List
   m_EditorClassIdentifier: 
-  rawMaterials: []
-  processingResults: []
+  rawMaterials:
+  - {fileID: 11400000, guid: 568f2441d5cc0134fad146f02f193e32, type: 2}
+  - {fileID: 11400000, guid: 12006297f0b4bf74d9f7062b99a144c8, type: 2}
+  - {fileID: 11400000, guid: 78c17ecabd39ebc448977f497137f01e, type: 2}
+  processingResults:
+  - {fileID: 11400000, guid: 85c182d663947984bb3a60e6b20d403d, type: 2}
+  - {fileID: 11400000, guid: 895c53aa749b9dc43bf35738d22baaf9, type: 2}
+  - {fileID: 11400000, guid: 9358053be8813f6498217f1877c677ea, type: 2}
