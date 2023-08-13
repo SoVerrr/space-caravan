@@ -252,7 +252,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 1931939177}
+  spaceGrid: {fileID: 1555258114}
   isUIOpen: 0
+  basicTax: 100
+  roadTax: 1
+  hubPointTax: 25
+  materialPointTax: 15
+  sellPointTax: 10
+  processingPointTax: 20
 --- !u!1001 &235551541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1878,6 +1885,10 @@ PrefabInstance:
       propertyPath: spaceGrid
       value: 
       objectReference: {fileID: 1555258114}
+    - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 213837522}
     - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: pointManager
       value: 

@@ -16,7 +16,7 @@ public class HubPoint : Point
         point.GetComponent<HubPoint>().SetValues(x, y);
         hubPointList.Add(point);
         grid.status[x, y] = GridStatus.HubPoint;
-        
+        GameManager.Instance.hubPointCounter+=1;
         return point;
     }
     private void SetValues(int x, int y)

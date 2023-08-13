@@ -28,6 +28,7 @@ public class SellPoint : Point
         point.GetComponent<SellPoint>().SetValues(x, y);
         sellPointList.Add(point);
         grid.status[x, y] = GridStatus.SellPoint;
+        GameManager.Instance.sellPointCounter+=1;
         return point;
     }
 

@@ -15,7 +15,7 @@ public class MaterialPoint : Point
         point.GetComponent<MaterialPoint>().SetValues(x, y);
         grid.status[x, y] = GridStatus.MaterialPoint;
         materialPointList.Add(point);
-        
+        GameManager.Instance.materialPointCounter+=1;
         return point;
     }
 
@@ -26,7 +26,7 @@ public class MaterialPoint : Point
         point.GetComponent<MaterialPoint>().SetValues(x, y, material);
         grid.status[x, y] = GridStatus.MaterialPoint;
         materialPointList.Add(point);
-        
+        GameManager.Instance.materialPointCounter+=1;
         return point;
     }
 

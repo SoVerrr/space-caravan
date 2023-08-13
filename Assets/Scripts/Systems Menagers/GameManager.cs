@@ -14,8 +14,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TruckManager truck;
     [SerializeField] public float occuranceModifier;
     [SerializeField] public ItemList itemList;
+
+    public int hubPointCounter;
+    public int processingPointCounter; 
+    public int sellPointCounter; 
+    public int materialPointCounter;
+  
+
+
     private void Start()
     {
+        // materialPointCounter = 0;
+        // hubPointCounter = 0;
         itemList.InitializeItemList();
         inputManager.OnMouseClick += routeManager.PlaceRoute;
         inputManager.OnMouseHold += routeManager.PlaceRoute;

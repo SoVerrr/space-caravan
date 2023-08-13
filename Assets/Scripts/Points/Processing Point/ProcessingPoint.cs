@@ -21,7 +21,7 @@ public class ProcessingPoint : Point
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         point.GetComponent<ProcessingPoint>().SetValues(x, y);
         processingPointsList.Add(point);
-
+        GameManager.Instance.processingPointCounter+=1;
         return point;
     }
 

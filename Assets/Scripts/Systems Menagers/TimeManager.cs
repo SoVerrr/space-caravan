@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] private PointManager pointManager;
     [SerializeField] private SpaceGrid spaceGrid;
+    [SerializeField] private UIManager uiManager;
 
     private Point[] pointsArray;
     private int counter = 0;
@@ -28,10 +29,17 @@ public class TimeManager : MonoBehaviour
             {
                 pointManager.GeneratePoint(pointManager.hubPoint);
             }
+
+            else if (Timer.time % 168 == 0 && Timer.time >= 332)
+            {
+                uiManager.Tax();
+            }
+
             else if (Timer.time % 50 == 0)
             {
                 spaceGrid.AddRoads();
             }
+
             else if (Timer.time % 20 == 0)
             {
                 pointManager.GeneratePoint(pointsArray[counter]);
