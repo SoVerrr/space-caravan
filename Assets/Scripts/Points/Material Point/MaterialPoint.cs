@@ -8,6 +8,7 @@ public class MaterialPoint : Point
     public static List<GameObject> materialPointList;
     [SerializeField] Text textElement;
     private PointDataMaterial materialData;
+    [SerializeField] private PointManager pointManager;
     override public GameObject InstantiatePoint(int x, int y)
     {
         //Debug.Log("coords: " + x + " " + y + " type: " + materialData.GetProductionRate());
@@ -15,7 +16,7 @@ public class MaterialPoint : Point
         point.GetComponent<MaterialPoint>().SetValues(x, y);
         grid.status[x, y] = GridStatus.MaterialPoint;
         materialPointList.Add(point);
-        GameManager.Instance.materialPointCounter+=1;
+        pointManager.materialPointCounter+=1;
         return point;
     }
 
@@ -26,7 +27,7 @@ public class MaterialPoint : Point
         point.GetComponent<MaterialPoint>().SetValues(x, y, material);
         grid.status[x, y] = GridStatus.MaterialPoint;
         materialPointList.Add(point);
-        GameManager.Instance.materialPointCounter+=1;
+        pointManager.materialPointCounter+=1;
         return point;
     }
 

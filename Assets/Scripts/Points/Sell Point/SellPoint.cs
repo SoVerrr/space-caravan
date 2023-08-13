@@ -12,7 +12,7 @@ public class SellPoint : Point
     public static List<GameObject> sellPointList;
     [SerializeField] SellPointData sellPointData;
     [SerializeField] Text textElement; 
-
+    [SerializeField] private PointManager pointManager;
     private string buyListPrint;
 
     private int priceMax;
@@ -28,7 +28,7 @@ public class SellPoint : Point
         point.GetComponent<SellPoint>().SetValues(x, y);
         sellPointList.Add(point);
         grid.status[x, y] = GridStatus.SellPoint;
-        GameManager.Instance.sellPointCounter+=1;
+        pointManager.sellPointCounter+=1;
         return point;
     }
 

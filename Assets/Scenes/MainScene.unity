@@ -172,6 +172,10 @@ MonoBehaviour:
   processingPoint: {fileID: 1317976195}
   grid: {fileID: 1555258114}
   spawnSpacing: 3
+  hubPointCounter: 0
+  processingPointCounter: 0
+  sellPointCounter: 0
+  materialPointCounter: 0
 --- !u!1 &163032609
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +209,7 @@ Transform:
   - {fileID: 1700782840}
   - {fileID: 444612944}
   - {fileID: 213837521}
+  - {fileID: 631882814}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -252,14 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 1931939177}
-  spaceGrid: {fileID: 1555258114}
   isUIOpen: 0
-  basicTax: 100
-  roadTax: 1
-  hubPointTax: 25
-  materialPointTax: 15
-  sellPointTax: 10
-  processingPointTax: 20
 --- !u!1001 &235551541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,6 +325,10 @@ PrefabInstance:
       propertyPath: truckPrefab
       value: 
       objectReference: {fileID: 2047883426}
+    - target: {fileID: 7792914219286464075, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
+      propertyPath: pointManager
+      value: 
+      objectReference: {fileID: 120971114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14831f9f94e263c439c03980b64a0e6c, type: 3}
 --- !u!4 &235551542 stripped
@@ -662,6 +664,10 @@ PrefabInstance:
       propertyPath: textElement
       value: 
       objectReference: {fileID: 1562529391}
+    - target: {fileID: 5747229553469825562, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
+      propertyPath: pointManager
+      value: 
+      objectReference: {fileID: 120971114}
     - target: {fileID: 5850875920480369648, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -713,6 +719,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5850875920480369648, guid: 63eee1209d6ad044eba4e63d17802270, type: 3}
   m_PrefabInstance: {fileID: 569039423}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &631882813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 631882814}
+  - component: {fileID: 631882815}
+  m_Layer: 0
+  m_Name: TaxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &631882814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631882813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 163032610}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &631882815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631882813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4976a5ba2e25766418c5e46e8201c946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceGrid: {fileID: 1555258114}
+  pointManager: {fileID: 120971114}
+  basicTax: 100
+  basicTaxIncrease: 100
+  roadTax: 1
+  hubPointTax: 25
+  materialPointTax: 15
+  sellPointTax: 10
+  processingPointTax: 20
 --- !u!1 &644488874
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +887,10 @@ PrefabInstance:
       propertyPath: textElement
       value: 
       objectReference: {fileID: 1562529391}
+    - target: {fileID: 911485131529837218, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
+      propertyPath: pointManager
+      value: 
+      objectReference: {fileID: 120971114}
     - target: {fileID: 1991931501848368911, guid: 8d06526ff01761b4cae3405b6e422e9c, type: 3}
       propertyPath: m_Name
       value: Material Point
@@ -1284,6 +1346,10 @@ PrefabInstance:
       propertyPath: textElement
       value: 
       objectReference: {fileID: 1562529391}
+    - target: {fileID: 4585577613246122883, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
+      propertyPath: pointManager
+      value: 
+      objectReference: {fileID: 120971114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cad3896e73fd55b44a63c41a612fb36d, type: 3}
 --- !u!4 &1005569608 stripped
@@ -1889,6 +1955,10 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 213837522}
+    - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
+      propertyPath: taxManager
+      value: 
+      objectReference: {fileID: 631882815}
     - target: {fileID: 4983457262464664273, guid: 2ec95c002621a404dbd1c89802e42728, type: 3}
       propertyPath: pointManager
       value: 

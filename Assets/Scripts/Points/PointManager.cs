@@ -10,6 +10,16 @@ public class PointManager : MonoBehaviour
     [SerializeField] public ProcessingPoint processingPoint;
     [SerializeField] SpaceGrid grid;
     [SerializeField] int spawnSpacing;
+
+
+    public int hubPointCounter;
+    public int processingPointCounter; 
+    public int sellPointCounter; 
+    public int materialPointCounter;
+
+
+
+
     public void GeneratePoint(Point pointPrefab)
     {
         int[] coords = FindSpawnSpot();

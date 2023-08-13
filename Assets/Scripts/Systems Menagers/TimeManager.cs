@@ -7,7 +7,7 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] private PointManager pointManager;
     [SerializeField] private SpaceGrid spaceGrid;
-    [SerializeField] private UIManager uiManager;
+    [SerializeField] private TaxManager taxManager;
 
     private Point[] pointsArray;
     private int counter = 0;
@@ -32,7 +32,8 @@ public class TimeManager : MonoBehaviour
 
             else if (Timer.time % 168 == 0 && Timer.time >= 332)
             {
-                uiManager.Tax();
+                taxManager.Tax();
+                taxManager.BasicTaxIncrease();
             }
 
             else if (Timer.time % 50 == 0)
@@ -59,8 +60,6 @@ public class TimeManager : MonoBehaviour
     }
     private void Start()
     {
-        // pointManager.GeneratePoint(pointManager.materialPoint);
-        // pointManager.GeneratePoint(pointManager.materialPoint);
-        // pointManager.GeneratePoint(pointManager.materialPoint);
+
     }
 }

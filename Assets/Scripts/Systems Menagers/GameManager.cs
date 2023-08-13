@@ -15,10 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float occuranceModifier;
     [SerializeField] public ItemList itemList;
 
-    public int hubPointCounter;
-    public int processingPointCounter; 
-    public int sellPointCounter; 
-    public int materialPointCounter;
+    // public int hubPointCounter;
+    // public int processingPointCounter; 
+    // public int sellPointCounter; 
+    // public int materialPointCounter;
   
 
 

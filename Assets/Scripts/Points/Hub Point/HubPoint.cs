@@ -8,6 +8,8 @@ public class HubPoint : Point
     public List<TradeRoute> routeList;
     [SerializeField] public GameObject UI;
     [SerializeField] private GameObject truckPrefab;
+    [SerializeField] private PointManager pointManager;   
+
     static public bool isUiEnabled = false;
     public List<bool> isTruckOnRoute;
     override public GameObject InstantiatePoint(int x, int y)
@@ -16,7 +18,7 @@ public class HubPoint : Point
         point.GetComponent<HubPoint>().SetValues(x, y);
         hubPointList.Add(point);
         grid.status[x, y] = GridStatus.HubPoint;
-        GameManager.Instance.hubPointCounter+=1;
+        pointManager.hubPointCounter+=1;
         return point;
     }
     private void SetValues(int x, int y)

@@ -13,6 +13,7 @@ public class ProcessingPoint : Point
     private string[] materialsNeeded;
     private int[] numberofMaterials;
     private string materialsPrint;
+    [SerializeField] private PointManager pointManager;   
 
     override public GameObject InstantiatePoint(int x, int y)
     {
@@ -21,7 +22,7 @@ public class ProcessingPoint : Point
         var point = Instantiate(gameObject, new Vector3(x, 0, y), Quaternion.identity);
         point.GetComponent<ProcessingPoint>().SetValues(x, y);
         processingPointsList.Add(point);
-        GameManager.Instance.processingPointCounter+=1;
+        pointManager.processingPointCounter+=1;
         return point;
     }
 
